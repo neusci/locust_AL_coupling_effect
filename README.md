@@ -1,4 +1,4 @@
-# locust_AL_noise
+# locust_AL_coupling_effect
 
 Mainly from
 
@@ -6,23 +6,22 @@ Mainly from
 - locust_AL_aa and
 - LALtriple/LAL
 
-
 ```
-- fig 1
+- Figure 1
 - bandpower (to determine the time-region) DONE
 - reliable response                        DONE
 - firerate (avg)                           DONE
 
-- fig 2
+- Figure 2
 - hist-eq                                  DONE
-- gain curve                               doing
+- gain curve                               DONE - NG
 
-- fig 3
+- Figure 3
 - Euc dist                                 DONE
 
-- fig 4
+- Figure 4
 - PCC                                      DONE
 
-- fig 5
+- Figure 5
 - classify                                 DONE
 ```
