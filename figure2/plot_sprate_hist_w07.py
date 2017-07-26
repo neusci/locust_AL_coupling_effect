@@ -13,8 +13,8 @@ print()
 osc_bgn=1100
 osc_end=1350
 c = 0
-sList=[0]
-#sList=shift_list
+#sList=[0]
+sList=shift_list
 
 
 def load_resp_sf_at_momment(m0,m1):
