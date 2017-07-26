@@ -1,0 +1,9 @@
+py plot_active_diverg_overTrial_on_var_th.py
+py plot_barjumper_number_error_among_trial.py
+py plot_barjumper_number.py
+py plot_decorr.py
+py plot_inactive_vs_osc_corr_coeff.py
+py plot_sf_avg_var.py
+py plot_sf_std_vs_avg.py
+py plot_sf_vs_neuron_ratio.py
+py plot_trans_osc_sf_corr.py
