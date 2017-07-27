@@ -11,10 +11,12 @@ Mainly from
 - bandpower (to determine the time-region) DONE
 - reliable response                        DONE
 - firerate (avg)                           DONE
+- faster onnet firerate rising             DONE
 
 - Figure 2
 - hist-eq                                  DONE
 - gain curve                               DONE - NG
+- sparseness                               DONE
 
 - Figure 3
 - Euc dist                                 DONE
