@@ -1,0 +1,346 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{tipa}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{latexsym, lineno, indentfirst, caption2}
+\usepackage[super,square,comma,numbers,sort&compress]{natbib}
+\usepackage{hyperref}
+% \usepackage{subcaption}
+\usepackage{graphicx,color,overpic}
+\usepackage[loose]{subfigure}
+\usepackage[rflt]{floatflt}
+\usepackage{multirow}
+% \usepackage[nomarkers]{endfloat}
+\usepackage{diagbox}
+% \usepackage{supertabular}
+% \listfiles
+%%% ------------------------------
+\setlength{\topmargin}{-1cm} \setlength{\oddsidemargin}{0mm}
+\textwidth 16cm \textheight 24cm \parskip=6pt \subfigcapmargin=6mm
+\newcommand{\newsection}[1]{\section {#1} \setcounter{equation}{0}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\textfraction}{0.3}
+%%% ------------------------------
+%\citestyle{nature}
+\begin{document}
+\newcommand{\lr}[1]{\langle #1 \rangle}
+\newcommand{\llr}[1]{\langle \hspace{-2.5pt} \langle #1 \rangle \hspace{-2.5pt} \rangle}
+%%% &=& &=& &=& &=& &=& &=& &=& &=& %%% &=& &=& &=& &=& &=& &=& &=& &=& %%% &=& &=& ===
+
+\title{Odor representation decorrelation in locust's antennal lobe}
+\author{
+Mogei Wang\footnote{\emph{E-mail address}: mogeiwang@gmail.com (M. Wang).},
+Douglas Zhou\footnote{\emph{E-mail address}: zdz@cims.nyu.edu (D. Zhou).},
+David Cai\footnote{Corresponding author. \emph{E-mail address}: cai@cims.nyu.edu (D. Cai).}
+\\{\tiny{
+    Department of Mathematics, MOE-LSC, and Institute of Natural Sciences, Shanghai Jiao Tong University, Shanghai, China}} \vspace{-3mm} \\{\tiny{
+    Courant Institute of Mathematical Sciences and Center for Neural Science, New York University, New York, United States of America}} \vspace{-3mm} \\{\tiny{
+    NYUAD Institute, New York University Abu Dhabi, Abu Dhabi, United Arab Emirates
+}} } \date{} \maketitle \vspace{-10mm}
+
+\begin{abstract} \footnotesize
+  Equipped with food molecules and social and sexual related molecules detectors, the olfactory system is one of the most important sense for insects and mammals. Notcing odors are classified by receptor neurons, it is interesting to ask that, why they are processed again in antennal lobe in insects' olfactory system. We show in this study that, distances among representations are significantly larger than distances among stimuli.
+  %Similar results can also be observed in the correlation coefficient space and the Jaccard space.
+  That implies, antennal lobe improves the sensitive and precision of odor representation.
+\end{abstract}
+
+\section{Introduction}
+
+Classifing and identifing odors are of vital importance for the survival of both individual animals and their societies. Odors are generally noisy multidimensional objects which cannot be well described by just a few variables~\citep{Wilson2006}, while they are still expected to be distinctly classified in the olfactory system. This stimulates the interest of neuroscientist to investigate the mapping and coding schemes in the animals' olfactory system. In this study, we shall focus on the early stage of odor processing in locust's antennal lobe (AL).
+
+Locust's olfactory pathway starts from the antennae. Whenever an odor appears, odorant molecules stimulate olfactory receptor neurons (ORNs) in antennae, and the latter stimulate neurons in AL in turn. There are two kind of neurons in AL, that is, the excitatory projection neurons (PNs) and the inhibitory local neurons (LNs). Both PNs and LNs may receieve voltage fluctuations from ORNs, while only PNs relay olfactory information to higher brain centers, i.e., the mushroom body (MB). %(see Fig.~\ref{Fig:bulb} for detail).
+There are two tpical dynamical phenomena observed in AL, that is, the fast mode and the slow mode. The fast mode refers to that, PNs activities are synchronized in iesponsing odors, and a strong 20 Hz oscillation in the local field potential (LFP) can be observed in AL. The slow mode refers to the fact that, in response to a stimulus the firing rate of each PN is reproducible in a both odor specific and PN specific way. It has been reported that, odors may be identified in the moment when odors are just applied and the fast mode is quite strong~\citep{}.
+
+Unlike the other sences such as the visual system, the main target of olfactory system is merely to do the classification. Noticing various odors stimulus various sets of ORNs, we can see that, odors are identified in odor detection, which is the very first stage of odor processing. So, why locust has to process odors again in AL, before reaching the higher centers? There are hypotheses that, AL helps to decorrlates odors~\citep{}. Due to the simple fact that odors are not easy to manipulate in experiments, such hypotheses have never been well tested.
+
+%% \begin{figure}[!phtb] \centering
+%% %\usepackage{float}
+%% \begin{overpic}[scale=0.75]{figures/the_bulb.eps} \end{overpic}
+%% \caption[locust~AL]{\label{Fig:bulb} The locust AL}
+%% \end{figure}
+
+To test such hypotheses, we work on a carefully tested full-scale AL model, in which all neurons are of Hodgkin-Huxley type~\citep{Patel2009, Patel2013}. This model can well reproduce both the fast mode and the slow mode. Basing on this model and the PN fire rate in the period when odors are just applied, we show that, Euclidean distances between similar odors are increased after the processing of AL. Similar conclusition can also be drawen from the correlation coefficient space and the Jaccard space. %(the other indexes).
+\cdots
+
+%Additionally, we show that, \ldots We also show that, \ldots Finally, we \ldots
+
+\section{Results}
+
+%Previous studies~\citep{} suggested that, both the slow mode and the fast mode contribute to the odor representation in locust AL. The odor specific PN excitation and inhibition response pattern, which appears with a decay after the appearance of the odor, is regarded as the result of the slow mode. The fast mode, which appears much faster than the slow mode, can prevent too many PNs active at a narrow time window, and thus enlarges the difference of PN response pattern for different odors. The combining effects of the two mode on the appearance of an odor is plotted in Fig.~\ref{Fig:ttt}. % \subsection{Euclidean distance} \label{Sect:euclidean}
+
+% Fig:ttt plots PN response pattern for two odors
+%From Fig.~\ref{Fig:ttt}, we can see the very different PN response pattern for similar odors stimulating 90\% conjoint PNs and 100\% conjoint LNs. To describe the difference quantitatively, we plot the Euclidean distance between PNs firing rate vectors. The distance error among trials is plotted in Fig.~\ref{Fig:euc_dist_error}. The distance increasement with the increasement of inputs and the corresponding slopes is plotted in Fig.~\ref{Fig:euc_dist} (increased from .. to ..).
+
+%Feedback loop introduced by the coupling -> PN spiking rate distribution (temp/spec) -> enlarges the distances, i.e., decorrelation and sensitivity improvement (a figure here?). To investigate the decorrelation effection in AL, we would discuss 3 coefficients, that is, the Euclidean distance, the correlation coefficient, and the Jaccard distance.
+To show the difference enlargement and decorrelation effect, we plot the distances of given odors and their PN spiking rates~\ref{}.
+
+% !!!!!! plot period range 50-500ms (or 20-200?? or ???)
+% !!!!!! plot period position onset-offset (or 20-200??)
+%   ^---      a set of figures, one range for one figure, and various positions for each figure
+% !!!!!! define cross point, and plot its variation with period range and position..
+
+% !!!!!! plot distance vars from 2x to 0.95x,
+%         also the std vars, ...
+
+% !!!!!! the distance increases sharply for larger distance, what that means???
+
+\begin{figure}[phtb] \centering
+%\usepackage{float}
+\begin{overpic}[scale=0.3]{figures/distance_error.eps} \end{overpic} % \vspace{-2mm}
+\caption[qqq]{\label{Fig:euc_dist_error} \small Euclidean distance between PNs fire rate vectors. 4 odors are tested (see the $x$ axis). For each odor, distance differences between a random trial with 4 other trials are counted, and the averaged (max/min) values are plotted.}
+\end{figure}
+
+\begin{figure}[htbp]\centering
+\subfigure[Euclidean distances]{\label{Fig:ecud}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.25]{figures/distance.eps} \end{overpic}
+\end{minipage} }
+\hspace{0.5cm}
+\subfigure[slopes]{\label{Fig:ecud_slp}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.25]{figures/distance_slope.eps} \end{overpic}
+\end{minipage} } % \vspace{-2mm}
+\caption[short~Title~Here]{\label{Fig:euc_dist} \small Fig.~\ref{Fig:ecud} plots the increasement of Euclidean distances between representations with the increasement of Euclidean distances between inputing odors. It is averaged (max/min) of 4 curves, with each curve $i$ corresponds to a base odor $Q_i$, and the $j$-th point in the curve corresponds the distances between $Q_i^j$ and $Q_i^0$ where $i=0..3, j=0..19$ (see the appendix for detail). Trial errors have been subtracted. Fig.~\ref{Fig:ecud_slp} plots the slopes of successive 4 points in the curve in Fig.~\ref{Fig:ecud}.}
+\end{figure}
+
+
+\subsection{Correlation coefficient} \label{Sect:corr_coeff} % with single trial?
+
+The sigmoid function in odor representation in cortex~\citep{Miura2012} (and MB?). How it is formed? Suppose decorrlation taken place in higher centers \cdots
+
+\begin{figure}[phtb] \centering
+%\usepackage{float}
+\begin{overpic}[scale=0.3]{figures/sigmoid.eps} \end{overpic}
+\vspace{-2mm}
+\caption[qqq]{\label{Fig:sigmoid} \small 1.667 times Jaccard distances between representations. Sigmoid can be observed.}
+\end{figure}
+
+
+\subsection{Jaccard distance} \label{Sect:jaccard}
+
+Jaccard distances between representing PN sets, i.e., the PN subsets containing PNs whose fire rate no less than threshold, are discussed in this subsection.
+The distance error among trials is plotted in Fig.~\ref{Fig:jac_dist_error}, and the distance increasement with the increasement of inputs and the corresponding slopes is plotted in Fig.~\ref{Fig:jac_dist}.
+
+
+\begin{figure}[phtb] \centering
+%\usepackage{float}
+\begin{overpic}[scale=0.3]{figures/decorr_error.eps} \end{overpic} % \vspace{-2mm}
+\caption[qqq]{\label{Fig:jac_dist_error} \small Jaccard distance between representing PNs sets in various trials. 5 PN filtering thresholds (15Hz - 35Hz) are plotted (see the $x$ axis). 4 odors are investigated. For each odor, distance difference between a random trial with 4 other trials are counted. The averaged (max/min) values of the 4 odors are plotted.}
+\end{figure}
+
+\begin{figure}[htbp]\centering
+\subfigure[Euclidean distances]{\label{Fig:jacd}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.25]{figures/decorr.eps} \end{overpic}
+\end{minipage} }
+\hspace{0.5cm}
+\subfigure[slopes]{\label{Fig:jacd_slp}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.25]{figures/decorr_slope.eps} \end{overpic}
+\end{minipage} } % \vspace{-2mm}
+\caption[short~Title~Here]{\label{Fig:jac_dist} \small Fig.~\ref{Fig:jacd} plots the increasement of Jaccard distances between representations with the increasement of Jaccard distances between inputing odors. Trial errors have been subtracted, and the other data processings are also similar with Fig.~\ref{Fig:euc_dist}. Fig.~\ref{Fig:jacd_slp} plots the slopes of successive 8 points in the curve in Fig.~\ref{Fig:jacd}.}
+\end{figure}
+
+
+% dlsAvg = array([ 0.        ,  0.05676311,  0.08491419,  0.12708287,  0.17789773,  0.22722051,  0.26965876,  0.31171527,  0.32750243,  0.35691646,  0.39673812,  0.43152223,  0.46055339,  0.48566157,  0.50848016,  0.5340687 ,  0.55972757,  0.57932454,  0.60480825,  0.62695989])
+
+%% \subsection{Cross the barrier} \label{Sect:cross_bar}
+%% The number of PNs (*0.5) whose fire rate crosses the barrier of 25 Hz, and the corresponding slopes.
+
+
+\section{Discussion} \label{Sect:discussion}
+
+Lastly, parameters selection are discussed here.
+
+
+%% Odor discrimination
+
+% PNs are divided into two sets according to their fire rate. One set mainly contributes to oscillation, and the other set is closely related to odor representation.
+% Distance among odor representations in AL can be less than that among odors.
+% Distance among odor representations increase slowly for very similar odors; while for odors that are significantly different with each other, distances between them increase much faster.
+
+\section*{Acknowledgments}
+This work was supported by grants from Study on Group Dynamics and Information Theory of Complex Network of Cerebral Neurons, National Natural Science Foundation of China, (No. ---); The Dynamics of Cerebral Neuronal Network, Shanghai Committee of Science and Technology, (No. ---); Features of Cerebral Neuronal Network dynamics, Shanghai Committee of Science and Technology, (No. ---) \cdots
+
+\begin{thebibliography}{99} \scriptsize
+
+\bibitem{Wilson2006}
+Wilson RI, Mainen ZF. Early events in olfactory processing. Annu Rev Neurosci 29, 163 (2006)
+
+\bibitem{Mazor2005}
+Mazor, O., Laurent, G. Transient dynamics versus fixed points in odor representations by locust antennal lobe projection neurons. Neuron 48, 661 (2005)
+
+\bibitem{Patel2009}
+Mainak Patel, Aaditya V. Rangan, David Cai. A large-scale model of the locust antennal lobe. J Comput Neurosci 27, 553 (2009)
+
+\bibitem{Patel2013}
+Mainak J. Patel, Aaditya V. Rangan, David Cai. Coding of odors by temporal binding within a model network of the locust antennal lobe. Frontiers in Computational Neuroscience, (2013)
+
+\bibitem{Jortner2007}
+R A Jortner, S S Farivar, G Laurent. A simple connectivity scheme for sparse coding in an olfactory system. J Neurosci 27, 1659, 2007
+
+\bibitem{Miura2012}
+Keiji Miura, Zachary F. Mainen, Naoshige Uchida. Odor Representations in Olfactory Cortex: Distributed Rate Coding and Decorrelated Population Activity. Neuron 74, 1087 (2012)
+
+\end{thebibliography}
+
+% \newpage{}
+\section*{Appendix} \label{Sect:appendix}
+\subsection*{Model and stimuluses} \label{Sect:model}
+In this study, we use the same model and stimuluses with the previous work~\citep{}, with only a few parameters adjusted. In detail, there are 830 PNs and 300 LNs in the adjusted model, and the connection probabilities among them are also adjusted with values given in Table~\ref{tab:connect_prob}. The rate constants in the concentration of receptor G proteins in slow GABA current are adjusted to $r_1 = 1.0 mM^{-1}ms^{-1}, r_2 = 0.0025 ms^{-1}, r_3 = 0.1 ms^{-1}, r_4 = 0.060 ms^{-1}$.
+%% var r3, r4 float64 = 0, 0.1000, 0.0600 // !!! r4: 0.033(paper); 0.06(program) \\
+%% var r1, r2 float64 = 1.0000, 0.0025 // !!! r1, r2: 0.5, 0.0013(paper); 1.0, 0.0025(pragram)
+
+\begin{table}[htp]
+\centering
+\caption[connection probabilities]{connection probabilities among the neurons in AL} \label{tab:connect_prob}
+\begin{tabular}{c|c c} % after \\: \ hline or \ cline {col1−col2} \cline{col3−col4 }  \cdots
+\hline
+\backslashbox{from}{to} & PN & LN \\ \hline
+PN  & 0.010  & 0.010 \\
+LN  & 0.025  & 0.025 \\ \hline
+\end{tabular}
+\end{table}
+
+
+Odor are simulated by stimulating a set of 120 PNs and 120 LNs. In additional to the odor stimulus, PNs and LNs also accept background noises. Both odor stimulus and background noise are input in the form of Poisson spike trains with their mean rates (spike per second) and the strength of each spike ($\mu A$) given in Table~\ref{tab:inputs}.
+%% Stim PN 120 (of 830), LN 120 (of 300). While in the prev work, stim PN 36 (of 90), LN 12 (of 30).
+%% Each PN received current input in the form of a  with a mean rate of 3500 spikes/second and a spike strength of 0.0610 \mu A.
+
+\begin{table}[htp]
+\centering
+\caption[inputs to neurons]{parameters of odor stimulus and background noise input to PNs and LNs} \label{tab:inputs}
+\begin{tabular}{c|c c} % after \\: \ hline or \ cline {col1−col2} \cline{col3−col4 }  \cdots
+\hline
+\diagbox{source}{mean rate, strength}{target} & PNs & LNs \\ \hline
+ORNs stimulus    &   35, 0.0184 &   35, 0.0176 \\
+background noise & 3500, 0.0610 & 3500, 0.0001 \\ \hline
+\end{tabular}
+\end{table}
+
+%% BG_input_strength_PN  float64 = 0.06100 \\
+%% BG_input_strength_LN  float64 = 0.00010 \\
+%% ORN_input_strength_PN float64 = 0.01840 \\
+%% ORN_input_strength_LN float64 = 0.01760 \\
+
+%% %% prev
+%% %% BG_input_strength_PN  float64 = 0.06540
+%% %% BG_input_strength_LN  float64 = 0.00010
+%% %% ORN_input_strength_PN float64 = 0.01743
+%% %% ORN_input_strength_LN float64 = 0.01667
+
+%% \begin{table}[htop]
+%% \centering
+%% \caption[prev connection probabilities]{previous connection probabilities among the neurons in AL} \label{tab:connect_prob}
+%% \begin{tabular}{c|c c}
+%% % after \\: \ hline or \ cline {col1−col2} \cline{col3−col4 }  \cdots
+%% \hline
+%% \backslashbox{\(from\)}{\(to\)} & PN & LN \\ \hline
+%% PN  & 0.10  & 0.10 \\
+%% LN  & 0.15  & 0.25 \\ \hline
+%% \end{tabular}
+%% \end{table}
+
+\subsection{Model checking} \label{Sect:model_checking}
+
+Our model is adopted from the previous work~\citep{Patel2009, Patel2013}. In this study, we have it adjusted to the full scale, i.e., 830 PNs and 300 LNs. The network coupling probabilities and the stimulus intensities are also adjusted to reproduce the fast mode and the slow mode observed in experiments. The adjusted parameters are given in Appendix, and the reproductions of slow mode and fast mode are shown in Fig.~\ref{Fig:model}.
+
+\begin{figure}[htbp]\centering
+\subfigure[20 Hz peak]{\label{Fig:model_20Hz}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.2]{figures/psd_0_0_4.eps} \end{overpic}
+\end{minipage} }
+\hspace{0.5cm}
+\subfigure[bandpower]{\label{Fig:model_bandpower}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.2]{figures/sum_bandpower.eps} \end{overpic}
+\end{minipage} }
+\hspace{0.5cm}
+\subfigure[fire rate]{\label{Fig:model_firerate}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.2]{figures/sum_sprate.eps} \end{overpic}
+\end{minipage} }
+\hspace{0.5cm}
+\subfigure[response ratio]{\label{Fig:model_respratio}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.2]{figures/sum_response.eps} \end{overpic}
+\end{minipage} }
+\vspace{-2mm}
+\caption[short~Title~Here]{\label{Fig:model} \small Reproductions of slow mode and fast mode. Fig.~\ref{Fig:model_20Hz} shows a PSD of a derivated odor in a single trial. The PSD analyze analysis is applied on the averaged per PN voltage fluctuation, and the power of the very low frequency ($<5$Hz) is set to 0. Fig.~\ref{Fig:model_bandpower} gives the bandpower in {[15Hz,25Hz]} of 4 derivated odors averaged over 5 trials. The blue region indicates the max/min values of the 4 trial-averaged values corresponding to the 4 odors. Fig.~\ref{Fig:model_firerate} shows the averaged PN fire rates in successive 50ms timebins. It is also averaged (or max/min) over 4 odors and 5 trials. Fig.~\ref{Fig:model_respratio} shows the PN response ratio in successive 50ms timebins. It is also averaged (or max/min) over 4 odors, and for each odor a PN is regarded as response iff it fires in 80\% trials ($4/5$).}
+\end{figure}
+
+
+From Fig.~\ref{Fig:model_20Hz}, we can see a 20 Hz peak; and from Fig.~\ref{Fig:model_bandpower}, we can see a peak on the appearance of an odor, which decreases afterwards and disappears when the odor is withdrawen. From Fig.~\ref{Fig:model_firerate} and \ref{Fig:model_respratio}, we can see that, both the onset bounce and offset bounce are produced. In short, most qualitative results are reproduced in our model.
+
+%% \subsection{About the transition process} \label{Sect:transition}
+
+Previous investigation~\citep{Mazor2005} indicates that, odor identifing may take place in a short region in the transition process shortly after stimulus presents, and PNs activities after the transition process do not contribute to the identification significantly. % Now, we are trying to locate the exact boundaries of the transition process, i.e., the region that odors may be identified.Here, we mainly focus on the stability of PNs' fire rates. % and reproducibility of PNs' fire rates.
+According to previous studies and our experiences, we would mainly focus the region {[1000~ms, 1500~ms]}, that is, within 0.5 second from the odor onset. Although, some other regions are also discussed. As is can be seen from Fig.~\ref{Fig:trial_sf_corr} that, although this time region is rather short, PNs' fire rates in this region are reproducible over trials.
+
+\begin{figure}[phtb] \centering
+%\usepackage{float}
+\begin{overpic}[scale=0.3]{figures/trial_sf_corr.eps} \end{overpic} %\vspace{-2mm}
+\caption[qqq]{\label{Fig:trial_sf_corr} \small Correlationship of each PN's fire rate between trials in the time region {[1200~ms, 1500~ms]}. 4 odors are investigated, and for each odor the correlationship between 2 trials are plotted. All points are jittered to make the correlationship easier to observe.} % plot more figures here, for different range length and different range position. !!!!!!
+\end{figure}
+
+%% \begin{figure}[htbp]\centering
+%% \subfigure[20 Hz peak]{\label{Fig:sf_stab}
+%% \begin{minipage}[h]{0.4\textwidth}
+%% \begin{overpic}[scale=0.2]{figures/.eps} \end{overpic}
+%% \end{minipage} }
+%% \hspace{0.5cm}
+%% \subfigure[bandpower]{\label{Fig:sf_rep}
+%% \begin{minipage}[h]{0.4\textwidth}
+%% \begin{overpic}[scale=0.2]{figures/.eps} \end{overpic}
+%% \end{minipage} }
+%% \vspace{-2mm}
+%% \caption[short~Title~Here]{\label{Fig:trans_proc} \small  \cdots
+%% \end{figure}
+
+% Fast mode related things.
+
+%% \subsection{Modes related PN sets} \label{Sect:PNsets}
+%% A specific odor stimuluses a specific set of PNs, and this in turn leads to a specific distribution of fire rates among PNs which closely relate to representations of odors~\citep{Mazor2005}. Here, we plot the distribution of PNs fire rate (sorted from high to low) in the transition process in Fig.~\ref{Fig:sorted_sprate}. As is can be seen from this figure that, PNs can be divided into two sets according to their firing rates, since the number of PNs with firing rates around 25 Hz is rather small. PNs with firing rate larger than 25 Hz are in the active set, and PNs with firing rate less than 25 Hz are in the silent set. % (see Fig.~\ref{} for detail).
+
+%% \begin{figure}[phtb] \centering
+%% %\usepackage{float}
+%% \begin{overpic}[scale=0.3]{figures/sum_sorted.eps} \end{overpic}
+%% \caption[qqq]{\label{Fig:sorted_sprate} \small Sorted PNs fire rate. Each PN's 4-odors averaged (max/min) fire rate are plotted (for each odor 5 trials averaged fire rate are calculated).}
+%% \end{figure}
+
+%% %The active PNs are generally considered relate to the odor representation~\citep{}.
+%% Here we tend to find out the function of the silent PNs. In Fig.~\ref{Fig:silent_fast}, we plot the correlationship of the correlation coefficient of each PN's voltage fluctuation with the total voltage oscillation of all PNs (LFP) {\em{v.s.}} its firing rate in the region {[1200 ms, 1500 ms]}. We can see that, the two factors are significantly negatively correlated. We can see that, it is the silence PNs contribute to the fast mode oscillation.
+
+%% \begin{figure}[phtb] \centering
+%% %\usepackage{float}
+%% \begin{overpic}[scale=0.3]{figures/osc_corr_vs_fire_rate.eps} \end{overpic}
+%% \caption[qqq]{\label{Fig:silent_fast} \small The correlation coefficient of each PN's voltage fluctuation with LFP  {\emph{v.s.}}  each PN's firing rate. There are 4 odors plotted in the figure. For each odor, the 5-trials averaged fire rate and averaged correlation coefficients are plotted. To avoid the effection of voltage fluctuations caused by spikes, all PNs' voltages are truncated to no larger than -50mV. Although, the voltages are not adjusted then computing the LFP. All points are jittered to make the correlationship easier to observe.}
+%% \end{figure}
+
+
+%% \subsection{Threshold} \label{Sect:threshold}
+%% %% We have just seen that, PNs gather either in the active set or in the silent set, and the number of PNs in between is rather small. Such a fact implies that, there is a barrier in PN's spike rates, and most PNs cannot jump over the barrier (is this true?? try to plot std of PN fire rate, and its critical region \cdots)
+
+%% There are 830 PNs in AL which are randomly projected to 50000 KCs in MB, with the connection probability around 0.5. It is also known that, a KC can be driven to fire by 60-70 simultaneously fired PNs~\citep{Jortner2007}, and about 10\% KCs fire on the appearance of an odor. Then, we can estimate that, about 100-130 PNs have fired on the appearance of the odor (see Fig.~\ref{Fig:prob} for detail). %(60: 100-110; 70: 120-130).
+
+%% \begin{figure}[phtb] \centering
+%% %\usepackage{float}
+%% \begin{overpic}[scale=0.3]{figures/prob.eps} \end{overpic}
+%% \caption[qqq]{\label{Fig:prob} \small Suppose $m$ PNs fire. Randomly pick 415 PNs (each KC randomly connected to 50\% PNs), the probability that $k$ PNs fire is $P(m,k)=\frac{C(m,k) C(830-m,415-k)}{C(830,415)}$, where $C(x,y)=\frac{x!}{y! (x-y)!}$. Denote KC's threshold as $\theta$. The probability that no less than $\theta$ PNs fire, i.e., the probability that the target KC fires, is $P_{\theta}(m)=\sum_{\theta \le x \le m}P(m,x)$. Relationships $P_{50}(x), P_{60}(x), P_{70}(x)$ and $P_{80}(x)$ in the region $50 \le x \le 150$ are plotted here.}
+%% \end{figure}
+
+
+%% From Fig.~\ref{Fig:sorted_sprate} we can see that, when we selecting PNs with firing rates being 20 Hz - 30 Hz, the number of selected PNs in accordance with this number. We use the threshold 25 Hz whenever we need to filter PNs that significantly contribute to odor representations. Although, some other PN thresholds are also discussed.
+%% %% We can see the correspondence, and we choose the threshold 25 Hz.
+
+
+\subsection*{Experiment} \label{Sect:experiment}
+There are 4 base odors $Q_i, i=0..3$, each of which derivate 20 odors $Q_i^j, j=0..19$. Derivated odor $Q_i^j$ have $6j$ different stimulated PNs with its base odor $Q_i$. 5 trials are runned for each derivated odor, and 6.5 seconds are simulated for each trial.
+
+\subsection*{Data processing} \label{Sect:data_proc}
+ \cdots
+
+\end{document}

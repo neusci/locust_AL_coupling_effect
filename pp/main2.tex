@@ -1,0 +1,244 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{tipa}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{latexsym, lineno, indentfirst, caption2}
+\usepackage[super,square,comma,numbers,sort&compress]{natbib}
+\usepackage{hyperref}
+% \usepackage{subcaption}
+\usepackage{graphicx,color,overpic}
+\usepackage[loose]{subfigure}
+\usepackage[rflt]{floatflt}
+\usepackage{multirow}
+% \usepackage[nomarkers]{endfloat}
+\usepackage{diagbox}
+% \usepackage{supertabular}
+% \listfiles
+%%% ------------------------------
+\setlength{\topmargin}{-1cm} \setlength{\oddsidemargin}{0mm}
+\textwidth 16cm \textheight 24cm \parskip=6pt \subfigcapmargin=6mm
+\newcommand{\newsection}[1]{\section {#1} \setcounter{equation}{0}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\textfraction}{0.3}
+%%% ------------------------------
+%\citestyle{nature}
+\begin{document}
+\newcommand{\lr}[1]{\langle #1 \rangle}
+\newcommand{\llr}[1]{\langle \hspace{-2.5pt} \langle #1 \rangle \hspace{-2.5pt} \rangle}
+%%% &=& &=& &=& &=& &=& &=& &=& &=& %%% &=& &=& &=& &=& &=& &=& &=& &=& %%% &=& &=& ===
+
+\title{The effect of the fast mode oscillation in the locust olfactory lobe}
+\author{
+Mogei Wang\footnote{\emph{E-mail address}: mogeiwang@gmail.com (M. Wang).},
+Douglas Zhou\footnote{\emph{E-mail address}: zdz@cims.nyu.edu (D. Zhou).},
+David Cai\footnote{Corresponding author. \emph{E-mail address}: cai@cims.nyu.edu (D. Cai).}
+\\{\tiny{
+    Department of Mathematics, MOE-LSC, and Institute of Natural Sciences, Shanghai Jiao Tong University, Shanghai, China}} \vspace{-3mm} \\{\tiny{
+    Courant Institute of Mathematical Sciences and Center for Neural Science, New York University, New York, United States of America}} \vspace{-3mm} \\{\tiny{
+    NYUAD Institute, New York University Abu Dhabi, Abu Dhabi, United Arab Emirates
+}} }
+
+\date{} \maketitle \vspace{-10mm}
+
+\begin{abstract} \footnotesize
+Neural oscillation are canonical dynamical phenomena that have been observed in various neural circuits. The effect and function of these oscillations are still not clear, although they have been discussed for tens of years. Here we investigate a network with such dynamics in the locust's olfactory system. We study a simulation model whose scale is same with the real locust's annanel lobe. We find that, ...
+\end{abstract}
+
+\section{Introduction}
+Neural oscillations, which are results of synchronization within neural ensembles, are wildly observed in central nervous systems. Tens of years have passed since the oscillations were first observed in 1924, their functional roles are still not well understood. The fact that, both neuronal properties and network properties may have played important roles in the generation of these oscillations, makes understanding their mechanisms and functions even harder. %(https://en.wikipedia.org/wiki/Neural_oscillation)
+
+There is a long history of the discussion on the effection and function of oscillations to odor representation or discrimination. Recently, Jeanne and Wilson have reported that, the diverge and converge circuit structure in the Drosophila olfactory system may improve the ability of stimuli detection~\citep{}.  They found two convergences in their circuit, in which the first convergence improves peak detection accuracy, and the second convergence improves detection speed. However, what mechanism makes the two conveniences act so differently? We show in this study that, the neural oscillation may have played an important role here. The spatial effections caused by oscillations are also discussed.
+
+In this work, we study the fast mode oscillation, which is a kind of local field potential (LFP), in locust's antennal lobe (AL). The benifit of the locust's AL is that, its fast mode oscillation is caused by the driven of a gabaergic (GABA) synapse. As a result, its fast mode oscillation may be easier to analyze. Also, the simulation model of locust's AL has been well established, and that also makes oscillations easier to manipulate.
+
+Locust's olfactory pathway starts from the antennae. Whenever an odor appears, odorant molecules stimulate olfactory receptor neurons (ORNs) in antennae, and the latter stimulate neurons in AL in turn. There are two kind of neurons in AL, that is, the excitatory projection neurons (PNs) and the inhibitory local neurons (LNs). Both PNs and LNs may receieve voltage fluctuations from ORNs, while only PNs relay olfactory information to higher brain centers, i.e., the mushroom body (MB). %(see Fig.~\ref{Fig:bulb} for detail).
+There are two tpical dynamical phenomena observed in AL, that is, the fast mode and the slow mode. The fast mode refers to that, PNs activities are synchronized in iesponsing odors, and a strong 20 Hz oscillation in the local field potential (LFP) can be observed in AL. The slow mode refers to the fact that, in response to a stimulus the firing rate of each PN is reproducible in a both odor specific and PN specific way. It has been reported that, odors may be identified in the moment when odors are just applied and the fast mode is quite strong.
+
+%% \begin{figure}[!phtb] \centering
+%% %\usepackage{float}
+%% \begin{overpic}[scale=0.75]{figures/the_bulb.eps} \end{overpic}
+%% \caption[locust~AL]{\label{Fig:bulb} The locust AL}
+%% \end{figure}
+
+This study is based on a carefully tested full-scale AL model where all neurons are of Hodgkin-Huxley type~\citep{Patel2009, Patel2013}. Our model can well reproduce both the fast mode and the slow mode. Basing on this model and the PN fire rate in the period when odors are just applied, we show that, \cdots
+
+\section{Results}
+
+\subsection{Fast mode related PN sets} \label{Sect:PNsets}
+A specific odor stimuluses a specific set of PNs, and this in turn leads to a specific distribution of fire rates among PNs which closely relate to representations of odors~\citep{Mazor2005}. Here, we plot the distribution of PNs fire rate (sorted from high to low) in the transition process in Fig.~\ref{Fig:sorted_sprate}. The number of PNs with firing rates around 25 Hz is rather small, and as a result, PNs are divided into two sets according to their firing rates. PNs with firing rate larger than 25 Hz are in the active set, and PNs with firing rate less than 25 Hz are in the silent set. % (see Fig.~\ref{} for detail).
+
+\begin{figure}[phtb] \centering
+%\usepackage{float}
+\begin{overpic}[scale=0.3]{figures/sum_sorted.eps} \end{overpic}
+\caption[qqq]{\label{Fig:sorted_sprate} \small Sorted PNs fire rate. Each PN's 4-odors averaged (max/min) fire rate are plotted (for each odor 5 trials averaged fire rate are calculated).}
+\end{figure}
+
+%The active PNs are generally considered relate to the odor representation~\citep{}.
+%Here we tend to find out the function of the silent PNs.
+In Fig.~\ref{Fig:silent_fast}, we plot the correlationship of the correlation coefficient of each PN's voltage fluctuation with the total voltage oscillation of all PNs (LFP) {\em{v.s.}} its firing rate in the region {[1200 ms, 1500 ms]}. We can see that, the two factors are significantly negatively correlated. We can say that, it is the silence PNs contribute to the fast mode oscillation.
+
+\begin{figure}[phtb] \centering
+%\usepackage{float}
+\begin{overpic}[scale=0.3]{figures/osc_corr_vs_fire_rate.eps} \end{overpic}
+\caption[qqq]{\label{Fig:silent_fast} \small The correlation coefficient of each PN's voltage fluctuation with LFP  {\emph{v.s.}}  each PN's firing rate. There are 4 odors plotted in the figure. For each odor, the 5-trials averaged fire rate and averaged correlation coefficients are plotted. To avoid the effection of voltage fluctuations caused by spikes, all PNs' voltages are truncated to no larger than -50mV. Although, the voltages are not adjusted then computing the LFP. All points are jittered to make the correlationship easier to observe.}
+\end{figure}
+
+\subsection{Effection on PN firing distribution} \label{Sect:redistribution}
+What will happen if the fast GABA is removed $\rightarrow$ no fast mode $\rightarrow$ what PN firing distribution? A larger gap will be obtained, suppose there is a fast oscillation.
+
+The reason is the 2d maps related things.
+
+\subsection{Fast mode contributes to spikes alignment} \label{Sect:alignment}
+
+\subsection{Slowen by the oscillation} \label{Sect:slowen}
+
+\subsection{Dispersion by the oscillation} \label{Sect:dispersion}
+
+\section{Discussion} \label{Sect:discussion}
+
+Lastly, parameters selection are discussed here.
+
+\section*{Acknowledgments}
+This work was supported by grants from Study on Group Dynamics and Information Theory of Complex Network of Cerebral Neurons, National Natural Science Foundation of China, (No. ---); The Dynamics of Cerebral Neuronal Network, Shanghai Committee of Science and Technology, (No. ---); Features of Cerebral Neuronal Network dynamics, Shanghai Committee of Science and Technology, (No. ---) \cdots
+
+\begin{thebibliography}{99} \scriptsize
+
+\bibitem{Wilson2006}
+Wilson RI, Mainen ZF. Early events in olfactory processing. Annu Rev Neurosci 29, 163 (2006)
+
+\bibitem{Mazor2005}
+Mazor, O., Laurent, G. Transient dynamics versus fixed points in odor representations by locust antennal lobe projection neurons. Neuron 48, 661 (2005)
+
+\bibitem{Patel2009}
+Mainak Patel, Aaditya V. Rangan, David Cai. A large-scale model of the locust antennal lobe. J Comput Neurosci 27, 553 (2009)
+
+\bibitem{Patel2013}
+Mainak J. Patel, Aaditya V. Rangan, David Cai. Coding of odors by temporal binding within a model network of the locust antennal lobe. Frontiers in Computational Neuroscience, (2013)
+
+\bibitem{Jortner2007}
+R A Jortner, S S Farivar, G Laurent. A simple connectivity scheme for sparse coding in an olfactory system. J Neurosci 27, 1659, 2007
+
+\bibitem{Miura2012}
+Keiji Miura, Zachary F. Mainen, Naoshige Uchida. Odor Representations in Olfactory Cortex: Distributed Rate Coding and Decorrelated Population Activity. Neuron 74, 1087 (2012)
+
+\end{thebibliography}
+
+% \newpage{}
+\section*{Appendix} \label{Sect:appendix}
+\subsection*{Model and stimuluses} \label{Sect:model}
+In this study, we use the same model and stimuluses with the previous work~\citep{}, with only a few parameters adjusted. In detail, there are 830 PNs and 300 LNs in the adjusted model, and the connection probabilities among them are also adjusted with values given in Table~\ref{tab:connect_prob}. The rate constants in the concentration of receptor G proteins in slow GABA current are adjusted to $r_1 = 1.0 mM^{-1}ms^{-1}, r_2 = 0.0025 ms^{-1}, r_3 = 0.1 ms^{-1}, r_4 = 0.060 ms^{-1}$.
+%% var r3, r4 float64 = 0, 0.1000, 0.0600 // !!! r4: 0.033(paper); 0.06(program) \\
+%% var r1, r2 float64 = 1.0000, 0.0025 // !!! r1, r2: 0.5, 0.0013(paper); 1.0, 0.0025(pragram)
+
+\begin{table}[htp]
+\centering
+\caption[connection probabilities]{connection probabilities among the neurons in AL} \label{tab:connect_prob}
+\begin{tabular}{c|c c} % after \\: \ hline or \ cline {col1−col2} \cline{col3−col4 }  \cdots
+\hline
+\backslashbox{from}{to} & PN & LN \\ \hline
+PN  & 0.010  & 0.010 \\
+LN  & 0.025  & 0.025 \\ \hline
+\end{tabular}
+\end{table}
+
+Odor are simulated by stimulating a set of 120 PNs and 120 LNs. In additional to the odor stimulus, PNs and LNs also accept background noises. Both odor stimulus and background noise are input in the form of Poisson spike trains with their mean rates (spike per second) and the strength of each spike ($\mu A$) given in Table~\ref{tab:inputs}.
+%% Stim PN 120 (of 830), LN 120 (of 300). While in the prev work, stim PN 36 (of 90), LN 12 (of 30).
+%% Each PN received current input in the form of a  with a mean rate of 3500 spikes/second and a spike strength of 0.0610 \mu A.
+
+\begin{table}[htp]
+\centering
+\caption[inputs to neurons]{parameters of odor stimulus and background noise input to PNs and LNs} \label{tab:inputs}
+\begin{tabular}{c|c c} % after \\: \ hline or \ cline {col1−col2} \cline{col3−col4 }  \cdots
+\hline
+\diagbox{source}{mean rate, strength}{target} & PNs & LNs \\ \hline
+ORNs stimulus    &   35, 0.0184 &   35, 0.0176 \\
+background noise & 3500, 0.0610 & 3500, 0.0001 \\ \hline
+\end{tabular}
+\end{table}
+
+%% BG_input_strength_PN  float64 = 0.06100 \\
+%% BG_input_strength_LN  float64 = 0.00010 \\
+%% ORN_input_strength_PN float64 = 0.01840 \\
+%% ORN_input_strength_LN float64 = 0.01760 \\
+
+%% %% prev
+%% %% BG_input_strength_PN  float64 = 0.06540
+%% %% BG_input_strength_LN  float64 = 0.00010
+%% %% ORN_input_strength_PN float64 = 0.01743
+%% %% ORN_input_strength_LN float64 = 0.01667
+
+%% \begin{table}[htop]
+%% \centering
+%% \caption[prev connection probabilities]{previous connection probabilities among the neurons in AL} \label{tab:connect_prob}
+%% \begin{tabular}{c|c c}
+%% % after \\: \ hline or \ cline {col1−col2} \cline{col3−col4 }  \cdots
+%% \hline
+%% \backslashbox{\(from\)}{\(to\)} & PN & LN \\ \hline
+%% PN  & 0.10  & 0.10 \\
+%% LN  & 0.15  & 0.25 \\ \hline
+%% \end{tabular}
+%% \end{table}
+
+\subsection*{Experiment} \label{Sect:experiment}
+There are 4 base odors $Q_i, i=0..3$, each of which derivate 20 odors $Q_i^j, j=0..19$. Derivated odor $Q_i^j$ have $6j$ different stimulated PNs with its base odor $Q_i$. 5 trials are runned for each derivated odor, and 6.5 seconds are simulated for each trial.
+
+\subsection*{Data processing} \label{Sect:data_proc}
+ \cdots
+
+\subsection*{Model checking} \label{Sect:model_checking}
+
+Our model is adopted from the previous work~\citep{Patel2009, Patel2013}. In this study, we have it adjusted to the full scale, i.e., 830 PNs and 300 LNs. The network coupling probabilities and the stimulus intensities are also adjusted to reproduce the fast mode and the slow mode observed in experiments. The adjusted parameters are given in Appendix, and the reproductions of slow mode and fast mode are shown in Fig.~\ref{Fig:model}.
+
+\begin{figure}[htbp]\centering
+\subfigure[20 Hz peak]{\label{Fig:model_20Hz}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.2]{figures/psd_0_0_4.eps} \end{overpic}
+\end{minipage} }
+\hspace{0.5cm}
+\subfigure[bandpower]{\label{Fig:model_bandpower}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.2]{figures/sum_bandpower.eps} \end{overpic}
+\end{minipage} }
+\hspace{0.5cm}
+\subfigure[fire rate]{\label{Fig:model_firerate}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.2]{figures/sum_sprate.eps} \end{overpic}
+\end{minipage} }
+\hspace{0.5cm}
+\subfigure[response ratio]{\label{Fig:model_respratio}
+\begin{minipage}[h]{0.4\textwidth}
+\begin{overpic}[scale=0.2]{figures/sum_response.eps} \end{overpic}
+\end{minipage} }
+\vspace{-2mm}
+\caption[short~Title~Here]{\label{Fig:model} \small Reproductions of slow mode and fast mode. Fig.~\ref{Fig:model_20Hz} shows a PSD of a derivated odor in a single trial. The PSD analyze analysis is applied on the averaged per PN voltage fluctuation, and the power of the very low frequency ($<5$Hz) is set to 0. Fig.~\ref{Fig:model_bandpower} gives the bandpower in {[15Hz,25Hz]} of 4 derivated odors averaged over 5 trials. The blue region indicates the max/min values of the 4 trial-averaged values corresponding to the 4 odors. Fig.~\ref{Fig:model_firerate} shows the averaged PN fire rates in successive 50ms timebins. It is also averaged (or max/min) over 4 odors and 5 trials. Fig.~\ref{Fig:model_respratio} shows the PN response ratio in successive 50ms timebins. It is also averaged (or max/min) over 4 odors, and for each odor a PN is regarded as response iff it fires in 80\% trials ($4/5$).}
+\end{figure}
+
+From Fig.~\ref{Fig:model_20Hz}, we can see a 20 Hz peak; and from Fig.~\ref{Fig:model_bandpower}, we can see a peak on the appearance of an odor, which decreases afterwards and disappears when the odor is withdrawen. From Fig.~\ref{Fig:model_firerate} and \ref{Fig:model_respratio}, we can say that, both the onset bounce and offset bounce are produced. In short, most qualitative results are reproduced in our model.
+
+Previous investigation~\citep{Mazor2005} indicates that, odor identifing may take place in a short region in the transition process shortly after stimulus presents, and PNs activities after the transition process do not contribute to the identification significantly. % Now, we are trying to locate the exact boundaries of the transition process, i.e., the region that odors may be identified.Here, we mainly focus on the stability of PNs' fire rates. % and reproducibility of PNs' fire rates.
+According to previous studies and our experiences, we would use the region {[1200 ms, 1500 ms]}. Although, some other regions are also discussed. As is can be seen from Fig.~\ref{Fig:trial_sf_corr} that, although this time region is rather short, PNs' fire rates in this region are reproducible over trials.
+
+\begin{figure}[phtb] \centering
+%\usepackage{float}
+\begin{overpic}[scale=0.3]{figures/trial_sf_corr.eps} \end{overpic} %\vspace{-2mm}
+\caption[qqq]{\label{Fig:trial_sf_corr} \small Correlationship of each PN's fire rate between trials in the time region {[1200ms, 1500ms]}. 4 odors are investigated, and for each odor the correlationship between 2 trials are plotted. All points are jittered to make the correlationship easier to observe.}
+\end{figure}
+
+%% \begin{figure}[htbp]\centering
+%% \subfigure[20 Hz peak]{\label{Fig:sf_stab}
+%% \begin{minipage}[h]{0.4\textwidth}
+%% \begin{overpic}[scale=0.2]{figures/.eps} \end{overpic}
+%% \end{minipage} }
+%% \hspace{0.5cm}
+%% \subfigure[bandpower]{\label{Fig:sf_rep}
+%% \begin{minipage}[h]{0.4\textwidth}
+%% \begin{overpic}[scale=0.2]{figures/.eps} \end{overpic}
+%% \end{minipage} }
+%% \vspace{-2mm}
+%% \caption[short~Title~Here]{\label{Fig:trans_proc} \small  \cdots
+%% \end{figure}
+
+\end{document}
