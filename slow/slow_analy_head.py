@@ -256,7 +256,7 @@ def generate_sf_file(c, s, t, cf=real_begin, ct=real_end, cd=sf_count_duration, 
     """
     if not (cd in set(sfcd_ls)):
         print("Error in calling load_sf_file: cd is not in sfcd list:", sfcd_ls)
-        return sf_num
+        return -1
     # ...
     if ifPN:
         data = loaddata(c, s, t)
@@ -314,19 +314,19 @@ def load_sf_from_file(c,s,t, cf, ct, cd=sf_count_duration, ifPN=True):
     #
     if cf < real_begin:
         print("Error in calling load_sf_file: cf is less than %d!"%sf_count_from)
-        return sf_num
+        return sf_sum
     # ...
     if ct > real_end:
         print("Error in calling load_sf_file: ct is larger than %d!"%sf_count_to)
-        return sf_num
+        return sf_sum
     # ...
     if not (cd in set(sfcd_ls)):
         print("Error in calling load_sf_file: cd is not in sfcd list:", sfcd_ls)
-        return sf_num
+        return sf_sum
     # ...
     if mod(ct, cd) != 0 or mod(cf, cd) != 0:
         print("Error in calling load_sf_file: cf/ct is not at x*%d!"%cd)
-        return sf_num
+        return sf_sum
     # ...
     if ifPN:
         for i in cf+array(range(count_num))*cd:

@@ -16,7 +16,7 @@ plot(bp_avg)
 xlabel("time (ms)")
 ylabel("bandpower")
 x1 = [0, 20, 40,60, 80, 100,120, 140]
-labels1 = ['0', '1000','2000','300', '4000', '5000','6000', '7000']
+labels1 = ['0', '1000','2000', '3000', '4000', '5000', '6000', '7000']
 xticks(x1, labels1)  #, rotation='vertical')
 axvspan(22, 27, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 savefig("bandpower_avg_over_%dc_%ds.jpg"%(couple_number,shift_number))
