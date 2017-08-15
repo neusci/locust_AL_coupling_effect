@@ -4,7 +4,7 @@
 \usepackage{amsmath}
 \usepackage{mathrsfs}
 \usepackage{amssymb}
-\usepackage{latexsym, lineno, indentfirst, caption2}
+\usepackage{latexsym, lineno, indentfirst, caption2} %caption
 \usepackage[super,square,comma,numbers,sort&compress]{natbib}
 \usepackage{hyperref}
 % \usepackage{subcaption}
@@ -68,46 +68,51 @@ Due to the simple fact that odors are not easy to manipulate in experiments, we 
 
 %A brief introduction on the experiments and stimulation.
 
-We use a well tested point neuron model adopted from the previous studies~\citep{} to simulate the locust AL. We use 830 Hodgkin-Huxley-type cells in the model to simulate PNs, and use 300 other Hodgkin-Huxley-type cells to simulate LNs. In accordance with experiment~\citep{}, PNs in the model are excitatory and generate fast ($\sim$ 3 ms) sodium spikes, while LNs are inhibitory and generate slow calcium spikes ($\sim$ 25 ms). Once triggered, PNs would form fast cholinergic synapses (via nicotinic receptors) with other neurons, while LNs would form fast GABAergic synapses via fast GABA$_\mbox{A}$ receptors. Similar with previous studies~\citep{}, an extra slow inhibitory current from LNs to PNs is introduced to reproduce the slow pattern.
+We use a well tested point neuron model adopted from the previous studies~\citep{} to simulate the locust AL. We use 830 Hodgkin-Huxley-type cells in the model to simulate PNs, and use 300 other Hodgkin-Huxley-type cells to simulate LNs. In accordance with experiment~\citep{}, PNs in the model are excitatory and generate fast ($\sim$ 3 ms) sodium spikes, while LNs are inhibitory and generate slow calcium spikes ($\sim$ 25 ms). Once triggered, PNs would form fast cholinergic synapses (via nicotinic receptors) with other neurons, while LNs would form fast GABAergic synapses via fast GABA$_{\mbox{A}}$ receptors. Similar with previous studies~\citep{}, an extra slow inhibitory current from LNs to PNs is introduced to reproduce the slow pattern.
 % The lack of anatomical or functional glomerular units containing more than one PN within the locust AL suggests that spatially uniform connectivity statistics are a reasonable assumption (Leitch and Laurent, 1996; Laurent, 1996; Wilson and Mainen, 2006).
 In our model, PNs and LNs are randomly interconnected with cell-type specific connection probabilities, %. Consistent with experiment~\citep{},
 and the coupling network does not evolve with time.
 An odor is simulated by stimulating a subset of 120 PNs and 120 LNs in the network, and different odors are represented by different subsets of stimulated neurons. (see Methods for details)
 
 In accordance with experiment~\citep{}, %It is verified in Fig.~\ref{Figure1:model} that,
-this model exhibits 20 Hz LFP oscillations when an odor appears (see Fig.~\ref{Fig1:psd}), and its bandpower in the range of 15 Hz to 25 Hz is peaking shortly after the odor is applied ($\sim$ 100 ms - 350 ms after the odor onset; see Fig.~\ref{Fig1:bandpower}).
-The slow GABA currents and the slow pattern dynamics would get rather strong subsequently, and as a result, the bandpower would be suppressed to a relatively low level but still much higher than the baseline bandpower.
-Also, it is confirmed that, slow temporal patterning of PN responses is generated in the model (see Fig.~\ref{}).
+this model exhibits 20 Hz LFP oscillations when an odor appears (see Fig.~\ref{Fig1:psd}), and its 20 Hz bandpower (integrated in the range of 15 Hz to 25 Hz) is peaking shortly after the odor is applied ($\sim$ 100 ms - 350 ms after the odor onset; see Fig.~\ref{Fig1:bandpower}). The slow GABA currents and the slow pattern dynamics would get rather strong subsequently, and as a result, the bandpower would be suppressed to a relatively low level but still much higher than the baseline bandpower. Also, it is confirmed that, the slow GABAergic current generates slow temporal patterning of PN responses (see Fig.~\ref{Fig1:slowraster} and~\ref{Fig1:slowfirerate}).
 
-To test the response of PNs to odors, we count the average PN spiking rate in a succession of nonoverlapping timebins in the strong oscillation period, the length of each timebin is 50ms. Then, the counted spiking numbers are divided by the length of timebins, and the change of PN firing rates vs time can be obatined (Figs.~\ref{Fig1:firerate}). Similar with the previous study~\citep{}, we say a PN reliably responses to an odor in a timebin, if it spikes in no less than 7 trials in all the 10 trials (Figs.~\ref{Fig1:response}). As is can be seen from Figs.~\ref{Fig1:firerate} and~\ref{Fig1:response} that, PN firing rates are most high and most reliable in the same period that the oscillation is peaking. Again, both phenomena consist with previous findings~\citep{}.
+To test the response of PNs to odors, we count the average PN spiking rate in a succession of nonoverlapping timebins in the strong oscillation period, the length of each timebin is 50 ms. Then, the counted spiking numbers are divided by the length of timebins, and the change of PN firing rates vs time can be obatined (Fig.~\ref{Fig1:firerate}). Similar with the previous study~\citep{}, we say a PN responses to an odor in a timebin if it spikes in no less than 7 trials in all the 10 trials in that timebin, and the PN response rate vs time is plotted in Fig.~\ref{Fig1:response}. In accordance with experiment~\citep{}, PN spikes most actively and most reliably in the same period that the oscillation is peaking (see Fig.~\ref{Fig1:firerate} and~\ref{Fig1:response}).
 
-Previous studies on locust's AL~\citep{} and drosophila's AL~\citep{} indicate that, the odor may be encoded in a very short period after the odor onset, since various statistical particularities can be observed from the PN spiking rates.
-We shall focus on this strong fast oscillation period hereinafter, unless otherwise stated.
-% As is can be seen in this part that, the fast oscillation also occurs in that period, and affects the spiking rates significantly (see Fig.~\ref{Figure1:fastmode}).
-
-% The decrease of firing rates and response reliable are also results of slow inhibitions, instead of the fast ones. To illustrate this, we plot the direct relationship between the wave of the fast oscillation and PNs spiking rates in Figs.~\ref{Fig1:fastsync}. From Figs.~\ref{Fig1:fastsync} we can see that, the PN firing rates are not significantly changed in successive fast oscillation cycles. Instead, we can see from Fig.~\ref{Fig1:fastsync} that, the wave of the fast oscillation and that of PNs spiking rates are well synchronized. The overall (strong) relation between the oscillation in its most strong period, and the PNs spiking rates are given in Fig.~\ref{Fig1:fastcorr}. That is, the fast oscillation adjust PN firing rates only in a small time scale, the length of which can be compared with its own wave period.
-
-
-\begin{figure}[htbp]\centering
+\begin{figure}[htbp]%\ContinuedFloat
+  \centering
     \subfigure[PSD]{\label{Fig1:psd}
-    \begin{minipage}[h]{0.4\textwidth}
-    \begin{overpic}[scale=0.25]{figures/fig1/psd_20Hz.eps} \end{overpic}
+    \begin{minipage}[h]{0.3\textwidth}
+    \begin{overpic}[scale=0.2]{figures/fig1/psd_20Hz.eps} \end{overpic}
     \end{minipage} }
-    \hspace{0.5cm}
+    %\hspace{0.5cm}
     \subfigure[bandpower]{\label{Fig1:bandpower}
-    \begin{minipage}[h]{0.4\textwidth}
-    \begin{overpic}[scale=0.25]{figures/fig1/bandpower.eps} \end{overpic}
-    \end{minipage} } % \vspace{-2mm}
-
-    \subfigure[firing rate]{\label{Fig1:firerate}
-    \begin{minipage}[h]{0.4\textwidth}
-    \begin{overpic}[scale=0.25]{figures/fig1/fire_rate.eps} \end{overpic}
+    \begin{minipage}[h]{0.3\textwidth}
+    \begin{overpic}[scale=0.2]{figures/fig1/bandpower.eps} \end{overpic}
     \end{minipage} }
-    \hspace{0.5cm}
+  %\vspace{-15mm}
+    \subfigure[raster plot]{\label{Fig1:slowraster}
+    \begin{minipage}[h]{0.3\textwidth}
+    \begin{overpic}[scale=0.2]{figures/fig1/v_short_line_12.eps} \end{overpic}
+    \end{minipage} }
+    %\hspace{0.5cm}
+  \vspace{-5mm}
+
+    \subfigure[3 PNs' firing rate]{\label{Fig1:slowfirerate}
+    \begin{minipage}[h]{0.3\textwidth}
+    \begin{overpic}[scale=0.2]{figures/fig1/firerate_of_a_neuron_curves.eps} \end{overpic}
+    \end{minipage} }
+  %\vspace{-15mm}
+    \subfigure[firing rate]{\label{Fig1:firerate}
+    \begin{minipage}[h]{0.3\textwidth}
+    \begin{overpic}[scale=0.2]{figures/fig1/fire_rate.eps} \end{overpic}
+    \end{minipage} }
+    %\hspace{0.5cm}
     \subfigure[response rate]{\label{Fig1:response}
-    \begin{minipage}[h]{0.4\textwidth}
-    \begin{overpic}[scale=0.25]{figures/fig1/response.eps} \end{overpic}
-    \end{minipage} } % \vspace{-2mm}
+    \begin{minipage}[h]{0.3\textwidth}
+    \begin{overpic}[scale=0.2]{figures/fig1/response.eps} \end{overpic}
+    \end{minipage} }
+  \vspace{-5mm}
 
 %   \subfigure[synchronization]{\label{Fig1:fastsync}
 %   \begin{minipage}[h]{0.4\textwidth}
@@ -117,11 +122,18 @@ We shall focus on this strong fast oscillation period hereinafter, unless otherw
 %   \subfigure[correlation]{\label{Fig1:fastcorr}
 %   \begin{minipage}[h]{0.4\textwidth}
 %   \begin{overpic}[scale=0.25]{figures/fig1/fast_corr.eps} \end{overpic}
-%   \end{minipage} } % \vspace{-2mm}
-\caption[Model]{\label{Figure1:model} \small The fast oscillation and the concurrence spiking booming. (a) is the power spectral-density analysis applied on the average membrane potential of a single trial. (b) is the bandpower in the range [15Hz,25Hz], averaged over all odors and all trials. (c) is the PN firing rates in sucessive nonoverlapping 50ms timebins, averaged over all odors and trials. (d) is the reliable response percent in successive 50ms timebins. Here, a PN is considered to be reliablely response to an odor, if it fire in no less than 7 trials in all the 10 trials.}
+%   \end{minipage} }
+%   \vspace{-2mm}
+  \caption[Model]{\label{Figure1:model} \small Model checking. (a) is the power spectral-density analysis (PSD) applied on the LFP during stimulus presentation (single trial). (b) is the bandpower integrated in the range 15-25Hz, computed in successive nonoverlapping 50 ms timebins, and averaged over all odors and all trials. The gray span shows the region that the bandpower is peaking.
+    (c) shows spiking responses of a PN to stimuli in 10 trials, in which raster odors applied from 0 s. The gray line shows the region that the stimulus is on. (d) shows the responding firing rates of 3 PNs to stimuli, averaged over 10 trials.
+    (e) is the PN firing rates in sucessive nonoverlapping 50 ms timebins, averaged over all odors and trials. Odors are applied from 1 s.(f) is the responsive PN percent in successive 50 ms timebins. A PN is considered responsive to an odor, if it fire in no less than 7 trials in all the 10 trials. }
 \end{figure}
 
-In this work, we work on the above model to show that, ...
+Taken together, the above results indicate that our model fits experimental observations well. %mechanism modeling
+In this work, we shall work on this model to show that, the lateral inhibition itself significantly improves the separability of odor representations. Previous studies on locust's AL~\citep{} and drosophila's AL~\citep{} indicate that, the odor may be encoded in a very short period after the odor onset, since various statistical particularities can be observed from the PN spiking rates in that period. Also, the Kenyon cells in locust mushroombody would spike in about 300 ms after an odor appears~\citep{}. We shall focus on this period (100 - 350 ms after odor onset), unless otherwise stated. Note that, the fast oscillation is also most strong in this period.
+
+% As is can be seen in this part that, the fast oscillation also occurs in that period, and affects the spiking rates significantly (see Fig.~\ref{Figure1:fastmode}).
+% The decrease of firing rates and response reliable are also results of slow inhibitions, instead of the fast ones. To illustrate this, we plot the direct relationship between the wave of the fast oscillation and PNs spiking rates in Fig.~\ref{Fig1:fastsync}. From Fig.~\ref{Fig1:fastsync} we can see that, the PN firing rates are not significantly changed in successive fast oscillation cycles. Instead, we can see from Fig.~\ref{Fig1:fastsync} that, the wave of the fast oscillation and that of PNs spiking rates are well synchronized. The overall (strong) relation between the oscillation in its most strong period, and the PNs spiking rates are given in Fig.~\ref{Fig1:fastcorr}. That is, the fast oscillation adjust PN firing rates only in a small time scale, the length of which can be compared with its own wave period.
 
 
 \subsection{Histogram equalization} \label{Sect:histeq}
