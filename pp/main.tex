@@ -44,10 +44,9 @@
 \begin{abstract} \footnotesize
   Odors are noisy multidimensional objects, which are noticed to be faster processed, broader tuned, and more uniformly distributed in representing space in Drosophila antennal lobe (AL). However, there are still exists arguments that, whether these properties are caused by vesicle-depletion from olfactory receptor neurons (ORNs) to projection neurons (PNs), or caused by presynaptic-inhibition due to the activity of inhibitory local neurons within the AL. Also, it is not clear if such transformation properties can also be observed in other animal's olfactory systems. In this work we use a %well-tested
   large-scale locust AL %point neuron
-  %model of the
   to investigate the properties and potential consequences of olfactory processing in the locust AL. We find that, similar with the Drosophila AL, the processing are also expedited and broad tuned in locust AL. Moreover, since only the AL network is simulated in our work, we can say that, the lateral presynaptic-inhibition is sufficient to increase the odor representation's separability by optimizing their distributions in the coding space.
-% stimulus model  %PNonly  decoupled model
-% response model  %coupled intact    model
+% s (stimulus) model  %PNonly  decoupled model
+% r (response) model  %coupled intact    model
 \end{abstract}
 
 \section{Introduction}
@@ -61,7 +60,7 @@ There are two tpical dynamical oscillations observed in AL, that is, the fast os
 
 Setting out from effective information transmission properties, a recent study~\citep{Bhandawat2007} described some fundamental principles of olfactory processing in the Drosophila melanogaster AL. In detail, by analyse the input and output spike trains of seval identified glomeruli, the authors of~\citep{Bhandawat2007} showed that, PN responses rise more rapidly than ORN. Moreover, the transformation in AL broadens PN tuning and produces more uniform distances between odor representations in PN coding space. In addition, portions of the odor response profile of a PN are not systematically related to their direct ORN inputs. {\bf (copied - need tobe revised)}. %, which probably indicates the presence of lateral connections between glomeruli. Finally, we show that a linear discriminator classifies odors more accurately using PN spike trains than using an equivalent number of ORN spike trains.
 
-Due to the simple fact that odors are not easy to manipulate in experiments, we work on a carefully tested full-scale locust AL model, in which all neurons are of Hodgkin-Huxley type~\citep{Patel2009, Patel2013}. This model can well reproduce both the fast mode and the slow mode oscillations. In the study, we first show the concurrence of the PN spike booming and the fast oscillation. Also, we show the fast oscillation causes noise. Then, by analyzing the PN fire rates in that period, we show that, Euclidean distances between similar odors are increased, and correlation coefficient are decreased after the processing of AL. Once that established, we show that, representation distributions of the same odor usually orthogonal to the distribution of neighboring odors. Lastly, we show the increasement of odor representations separability. To end the introduction we would like to emphasize that, our result confirms Laurnet's long proposed but not yet tested hypotheses, i.e., similar odors are decorrelated and their distribution in representations space are optimized {\bf (need tobe revised)}.
+Due to the simple fact that odors are not easy to manipulate in experiments, we work on a carefully tested full-scale locust AL model, in which all neurons are of Hodgkin-Huxley type~\citep{Patel2009, Patel2013}. This model can well reproduce both the fast pattern and the slow pattern. In the study, we first show the concurrence of the PN spike booming and the fast oscillation. Also, we show the fast oscillation causes noise. Then, by analyzing the PN fire rates in that period, we show that, Euclidean distances between similar odors are increased, and correlation coefficient are decreased after the processing of AL. Once that established, we show that, representation distributions of the same odor usually orthogonal to the distribution of neighboring odors. Lastly, we show the increasement of odor representations separability. To end the introduction we would like to emphasize that, our result confirms Laurnet's long proposed but not yet tested hypotheses, i.e., similar odors are decorrelated and their distribution in representations space are optimized {\bf (need tobe revised)}.
 
 
 \section{Results}
@@ -74,99 +73,149 @@ In our model, PNs and LNs are randomly interconnected with cell-type specific co
 and the coupling network does not evolve with time.
 An odor is simulated by stimulating a subset of 120 PNs and 120 LNs in the network, and different odors are represented by different subsets of stimulated neurons. (see Methods for details)
 
-In accordance with experiment~\citep{}, %It is verified in Fig.~\ref{Figure1:model} that,
-this model exhibits 20 Hz LFP oscillations when an odor appears (see Fig.~\ref{Fig1:psd}), and its 20 Hz bandpower (integrated in the range of 15 Hz to 25 Hz) is peaking shortly after the odor is applied ($\sim$ 100 ms - 350 ms after the odor onset; see Fig.~\ref{Fig1:bandpower}). The slow GABA currents and the slow pattern dynamics would get rather strong subsequently, and as a result, the bandpower would be suppressed to a relatively low level but still much higher than the baseline bandpower. Also, it is confirmed that, the slow GABAergic current generates slow temporal patterning of PN responses (see Fig.~\ref{Fig1:slowraster} and~\ref{Fig1:slowfirerate}).
+In accordance with experiment~\citep{}, %It is verified in Fig.~\ref{Figure0:model} that,
+this model exhibits 20 Hz LFP oscillations when an odor appears (see Fig.~\ref{Fig0:psd}), and its 20 Hz bandpower (integrated in the range of 15 Hz to 25 Hz) is peaking shortly after the odor is applied ($\sim$ 100 ms - 350 ms after the odor onset; see Fig.~\ref{Fig0:bandpower}). The slow GABA currents and the slow pattern dynamics would get rather strong subsequently, and as a result, the bandpower would be suppressed to a relatively low level but still much higher than the baseline bandpower. Also, it is confirmed that, the slow GABAergic current generates slow temporal patterning of PN responses (see Fig.~\ref{Fig0:slowraster} and~\ref{Fig0:slowfirerate}).
 
-To test the response of PNs to odors, we count the average PN spiking rate in a succession of nonoverlapping timebins in the strong oscillation period, the length of each timebin is 50 ms. Then, the counted spiking numbers are divided by the length of timebins, and the change of PN firing rates vs time can be obatined (Fig.~\ref{Fig1:firerate}). Similar with the previous study~\citep{}, we say a PN responses to an odor in a timebin if it spikes in no less than 7 trials in all the 10 trials in that timebin, and the PN response rate vs time is plotted in Fig.~\ref{Fig1:response}. In accordance with experiment~\citep{}, PN spikes most actively and most reliably in the same period that the oscillation is peaking (see Fig.~\ref{Fig1:firerate} and~\ref{Fig1:response}).
+To test the response of PNs to odors, we count the average PN spiking rate in a succession of nonoverlapping timebins in the strong oscillation period, the length of each timebin is 50 ms. Then, the counted spiking numbers are divided by the length of timebins, and the change of PN firing rates vs time can be obatined (Fig.~\ref{Fig0:firerate}). Similar with the previous study~\citep{}, we say a PN responses to an odor in a timebin if it spikes in no less than 7 trials in all the 10 trials in that timebin, and the PN response rate vs time is plotted in Fig.~\ref{Fig0:response}. In accordance with experiment~\citep{}, PN spikes most actively and most reliably in the same period that the oscillation is peaking (see Fig.~\ref{Fig0:firerate} and~\ref{Fig0:response}).
 
 \begin{figure}[htbp]%\ContinuedFloat
   \centering
-    \subfigure[PSD]{\label{Fig1:psd}
+    \subfigure[PSD]{\label{Fig0:psd}
     \begin{minipage}[h]{0.3\textwidth}
-    \begin{overpic}[scale=0.2]{figures/fig1/psd_20Hz.eps} \end{overpic}
+    \begin{overpic}[scale=0.2]{figures/fig0/psd_20Hz.eps} \end{overpic}
     \end{minipage} }
     %\hspace{0.5cm}
-    \subfigure[bandpower]{\label{Fig1:bandpower}
+    \subfigure[bandpower]{\label{Fig0:bandpower}
     \begin{minipage}[h]{0.3\textwidth}
-    \begin{overpic}[scale=0.2]{figures/fig1/bandpower.eps} \end{overpic}
+    \begin{overpic}[scale=0.2]{figures/fig0/bandpower.eps} \end{overpic}
     \end{minipage} }
   %\vspace{-15mm}
-    \subfigure[raster plot]{\label{Fig1:slowraster}
+    \subfigure[raster plot]{\label{Fig0:slowraster}
     \begin{minipage}[h]{0.3\textwidth}
-    \begin{overpic}[scale=0.2]{figures/fig1/v_short_line_12.eps} \end{overpic}
+    \begin{overpic}[scale=0.2]{figures/fig0/v_short_line_12.eps} \end{overpic}
     \end{minipage} }
     %\hspace{0.5cm}
   \vspace{-5mm}
 
-    \subfigure[3 PNs' firing rate]{\label{Fig1:slowfirerate}
+    \subfigure[3 PNs' firing rate]{\label{Fig0:slowfirerate}
     \begin{minipage}[h]{0.3\textwidth}
-    \begin{overpic}[scale=0.2]{figures/fig1/firerate_of_a_neuron_curves.eps} \end{overpic}
+    \begin{overpic}[scale=0.2]{figures/fig0/firerate_of_a_neuron_curves.eps} \end{overpic}
     \end{minipage} }
   %\vspace{-15mm}
-    \subfigure[firing rate]{\label{Fig1:firerate}
+    \subfigure[firing rate]{\label{Fig0:firerate}
     \begin{minipage}[h]{0.3\textwidth}
-    \begin{overpic}[scale=0.2]{figures/fig1/fire_rate.eps} \end{overpic}
+    \begin{overpic}[scale=0.2]{figures/fig0/fire_rate.eps} \end{overpic}
     \end{minipage} }
     %\hspace{0.5cm}
-    \subfigure[response rate]{\label{Fig1:response}
+    \subfigure[response rate]{\label{Fig0:response}
     \begin{minipage}[h]{0.3\textwidth}
-    \begin{overpic}[scale=0.2]{figures/fig1/response.eps} \end{overpic}
+    \begin{overpic}[scale=0.2]{figures/fig0/response.eps} \end{overpic}
     \end{minipage} }
   \vspace{-5mm}
 
-%   \subfigure[synchronization]{\label{Fig1:fastsync}
+%   \subfigure[synchronization]{\label{Fig0:fastsync}
 %   \begin{minipage}[h]{0.4\textwidth}
-%   \begin{overpic}[scale=0.25]{figures/fig1/fast_sync.eps} \end{overpic}
+%   \begin{overpic}[scale=0.25]{figures/fig0/fast_sync.eps} \end{overpic}
 %   \end{minipage} }
 %   \hspace{0.5cm}
-%   \subfigure[correlation]{\label{Fig1:fastcorr}
+%   \subfigure[correlation]{\label{Fig0:fastcorr}
 %   \begin{minipage}[h]{0.4\textwidth}
-%   \begin{overpic}[scale=0.25]{figures/fig1/fast_corr.eps} \end{overpic}
+%   \begin{overpic}[scale=0.25]{figures/fig0/fast_corr.eps} \end{overpic}
 %   \end{minipage} }
 %   \vspace{-2mm}
-  \caption[Model]{\label{Figure1:model} \small Model checking. (a) is the power spectral-density analysis (PSD) applied on the LFP during stimulus presentation (single trial). (b) is the bandpower integrated in the range 15-25Hz, computed in successive nonoverlapping 50 ms timebins, and averaged over all odors and all trials. The gray span shows the region that the bandpower is peaking.
+  \caption[Model]{\label{Figure0:model} \small Model checking. (a) is the power spectral-density analysis (PSD) applied on the LFP during stimulus presentation (single trial). (b) is the bandpower integrated in the range 15-25Hz, computed in successive nonoverlapping 50 ms timebins, and averaged over all odors and all trials. The gray span shows the region that the bandpower is peaking.
     (c) shows spiking responses of a PN to stimuli in 10 trials, in which raster odors applied from 0 s. The gray line shows the region that the stimulus is on. (d) shows the responding firing rates of 3 PNs to stimuli, averaged over 10 trials.
     (e) is the PN firing rates in sucessive nonoverlapping 50 ms timebins, averaged over all odors and trials. Odors are applied from 1 s.(f) is the responsive PN percent in successive 50 ms timebins. A PN is considered responsive to an odor, if it fire in no less than 7 trials in all the 10 trials. }
 \end{figure}
 
 Taken together, the above results indicate that our model fits experimental observations well. %mechanism modeling
-In this work, we shall work on this model to show that, the lateral inhibition itself significantly improves the separability of odor representations. Previous studies on locust's AL~\citep{} and drosophila's AL~\citep{} indicate that, the odor may be encoded in a very short period after the odor onset, since various statistical particularities can be observed from the PN spiking rates in that period. Also, the Kenyon cells in locust mushroombody would spike in about 300 ms after an odor appears~\citep{}. We shall focus on this period (100 - 350 ms after odor onset), unless otherwise stated. Note that, the fast oscillation is also most strong in this period.
+In this work, we shall work on this model to show that, the lateral inhibition itself significantly improves the separability of odor representations.
+---
+- use a series of odors
+- two modes
+--- {\bf S} (stimulus) mode
+--- {\bf R} (response) mode
+---
+Previous studies on locust's AL~\citep{} and drosophila's AL~\citep{} indicate that, the odor may be encoded in a very short period after the odor onset, since various statistical particularities can be observed from the PN spiking rates in that period. Also, the Kenyon cells in locust MB would spike in about 300 ms after an odor appears~\citep{}. We shall focus on this period (100 - 350 ms after odor onset), unless otherwise stated. Note that, the fast oscillation is also most strong in this period.
 
-% As is can be seen in this part that, the fast oscillation also occurs in that period, and affects the spiking rates significantly (see Fig.~\ref{Figure1:fastmode}).
-% The decrease of firing rates and response reliable are also results of slow inhibitions, instead of the fast ones. To illustrate this, we plot the direct relationship between the wave of the fast oscillation and PNs spiking rates in Fig.~\ref{Fig1:fastsync}. From Fig.~\ref{Fig1:fastsync} we can see that, the PN firing rates are not significantly changed in successive fast oscillation cycles. Instead, we can see from Fig.~\ref{Fig1:fastsync} that, the wave of the fast oscillation and that of PNs spiking rates are well synchronized. The overall (strong) relation between the oscillation in its most strong period, and the PNs spiking rates are given in Fig.~\ref{Fig1:fastcorr}. That is, the fast oscillation adjust PN firing rates only in a small time scale, the length of which can be compared with its own wave period.
+\subsection{PN activities peak eariler}
+Since there is a time constraint in odor processing, it is interesting to ask if the first relay center have accelerated this process. In the {\bf S} mode, PNs response increases steadily with the increase of odor intensity before getting saturated. So we can expect that, these PNs response would peak when the stimulus almost peaks. On the other hand, since responses can be rapidly trigged in the MB, it would be benifit, if PNs activities in the {\bf R} mode peak eariler than in the {\bf S} mode. Although this sounds not easy to achieve, a similar phenomenon has been spotted from drosophila AL~\citep{}. How about the case in locust AL?
+
+In Fig.~\ref{Fig1:fasterCurve}, we plot peri-stimulus time histograms averaged across all odors in all PNs, where we can see that, PNs' activities rise much faster than ORNs' activities. In fact, when ORNs' activities peak, PNs' activities have almost decaied to the steady state. Because PN responses accommodate rapidly, we chose to quantify response magnitudes in PNs by measuring the average firing rates during an early epoch of the response (a 100-ms time window beginning 100 ms after odor onset; Fig. 1b). Because a fruitfly can respond rapidly after encountering an odor, this early epoch should be particularly informative to downstream neurons. Throughout this study, we also quantified PN responses in a different way: following other investigators 21,24 , we measured the average spike rates over the entire 500-ms stimulus period. The main conclusions from this study are the same for both of these response metrics.
+
+
+\begin{figure}[htbp]\centering
+    \subfigure[response curve]{\label{Fig1:fasterCurve}
+    \begin{minipage}[h]{0.4\textwidth}
+    \begin{overpic}[scale=0.25]{figures/fig1/faster_curve.eps} \end{overpic}
+    \end{minipage} }
+    \hspace{0.5cm}
+    \subfigure[peaking time]{\label{Fig1:fasterDots}
+    \begin{minipage}[h]{0.4\textwidth}
+    \begin{overpic}[scale=0.25]{figures/fig1/faster_dots.eps} \end{overpic}
+    \end{minipage} } % \vspace{-2mm}
+\caption[Peak~eariler]{\label{Figure1:peakEariler} \small Faster, which means more fast. (a) and (b) are trial averaged PN firing rate histograms, for all odors, in the time period [1100ms,1350ms]. (c) and (d) are the std. of the same odor of the offnet and {\bf R} mode, averaged over all odors, and sorted according to the mean spiking rates of all odors.}
+\end{figure}
 
 
 \subsection{Histogram equalization} \label{Sect:histeq}
-The specific kind of sensory transformation, namely, the ``histogram equalization''~\citep{}, has been spotted from drosophila in the previous study~\citep{}. That is, neurons spiking rates are flatter in the higher centers, and thus neurons and the channel capacity are made better use. In this section, we show that, similar resulut can also be observed from locust AL (see~\ref{Figure2:histflatten}). Comparing Fig.~\ref{Fig2:offnet} and~\ref{Fig2:onnetosc}, we can see that, when PNs are coupled, the histogram of their firing rates are much more flatter than that the case that PNs are decoupled. This can be important since each KC in MB only receives inputs from a portion of PNs. Unlike the visual system stimuli of which have important inner structures, the inputing odor are general recognized as a whole in AL. As a result, this flatten effect would not cause a trouble. Instead, as is can be seen latter in Sect.~\ref{Sect:classify}, the odor classfication and identification ability have in fact been improved.
+The ``histogram equalization'' has been spotted as a specific kind of sensory transformation in drosophila AL in the previous study~\citep{}. That is, neurons spiking rates are more uniformly distributed in the higher centers than in receptor neurons, and thus representing neurons, odor space, and the channel capacity to even higher centers are made better use in higher centers. In this section, we tend to figure it out, whether such kind of transformation is also engaged in locust AL.
 
-We would also emphasize that, the histogram equalization in locust AL is mainly caused by the fast oscillation. The reason is that, (1) the slow inhibition is still rather weak in the period we are discussing, and (2) whithout the fast inhibition and the fast oscillation, there exists no more inhibitions, therefore, nearly all PNs would spike actively and the histograms would not be flatten either. Note that, the closed-loop of {PN~$\rightarrow$~LN~$\rightarrow$~PN} which caused the fast oscillation may also introduce a larger error in PN spiking rates, and this is confirmed in Fig.~\ref{Fig2:offnetSort} and~\ref{Fig2:onnetSort}. For the active PNs, their noise in the on-net model is smaller, while for the inactive PNs, their noise in the off-net model is smaller. Since there are more inactive PNs than the active PNs, there would be an noise enhencement effect in the more realistic on-net model. As is shown latter that, locust can in fact benifit from this noise enhencement effect.
+First, we show that, the some PNs spike very actively in the {\bf{S}} mode, while most others are almost silence when an odor appears.
+Then, we show that, the histogram becomes much flatter in the {\bf{R}} mode.
+
+``
+The ORN response histogram shows a large
+peak at low response intensities, and a long, flat tail covering the rest of
+the ORN dynamic range. The PN response histogram, by contrast, is
+much flatter, indicating that all available response intensities are used
+with more uniform frequency. In this sense, PNs encode our odor
+stimuli more efficiently than ORNs do.
+Although there is a clear overall relationship between ORN and PN
+responses for each glomerulus, it is also important to note that these
+functions do not predict PN odor responses completely. Because ORNs
+and PNs differ in their ranked odor preferences, no monotonic
+function will account for all these data.
+'' --- from Wilson2007
+
+We show in this section that, similar resulut can also be observed from locust AL (see Fig.~\ref{Figure2:histflatten}). Comparing Fig.~\ref{Fig2:offnet} and~\ref{Fig2:onnetosc}, we can see that, when PNs are coupled, the histogram of their firing rates are much more flatter than that the case that PNs are decoupled. This can be important since each KC in MB only receives inputs from a portion of PNs. Unlike the visual system stimuli of which have important inner structures, the inputing odor are general recognized as a whole in AL. As a result, this flatten effect would not cause a trouble. Instead, as is can be seen latter in Sect.~\ref{Sect:classify}, the odor classfication and identification ability have in fact been improved.
+
+%We would also emphasize that, the histogram equalization in locust AL is mainly caused by the fast oscillation. The reason is that, (1) the slow inhibition is still rather weak in the period we are discussing, and (2) whithout the fast inhibition and the fast oscillation, there exists no more inhibitions, therefore, nearly all PNs would spike actively and the histograms would not be flatten either.
+
+Note that, the closed-loop of {PN~$\rightarrow$~LN~$\rightarrow$~PN} which caused the fast oscillation may also introduce a larger error in PN spiking rates, and this is confirmed in Fig.~\ref{Fig2:offnetSort} and~\ref{Fig2:onnetSort}. For the active PNs, their noise in the {\bf R} mode is smaller, while for the inactive PNs, their noise in the {\bf S} mode is smaller. Since there are more inactive PNs than the active PNs, there would be an noise enhencement effect in the more realistic {\bf R} mode. As is shown latter that, locust can in fact benifit from this noise enhencement effect.
+
+---
+- lateral inhibition plays an important role here
+- from uncoupled to coupled,, (if there is no lateral inhibition, all would fire, odor representations are almost the same)
+- fast inhibition -> fast oscillation may have played a role here (slow inhibition is still weak at that moment).
+---
 
 \begin{figure}[htbp]\centering
-    \subfigure[off Net]{\label{Fig2:offnet}
+    \subfigure[{\bf S}]{\label{Fig2:offnet}
     \begin{minipage}[h]{0.4\textwidth}
     \begin{overpic}[scale=0.25]{figures/fig2/hist_offNet.eps} \end{overpic}
     \end{minipage} }
     \hspace{0.5cm}
-    \subfigure[on net - osc]{\label{Fig2:onnetosc}
+    \subfigure[{\bf R} - osc]{\label{Fig2:onnetosc}
     \begin{minipage}[h]{0.4\textwidth}
     \begin{overpic}[scale=0.25]{figures/fig2/hist_onNet1.eps} \end{overpic}
     \end{minipage} } % \vspace{-2mm}
 
-    \subfigure[off net - sort]{\label{Fig2:offnetSort}
+    \subfigure[{\bf S} - sort]{\label{Fig2:offnetSort}
     \begin{minipage}[h]{0.4\textwidth}
     \begin{overpic}[scale=0.25]{figures/fig2/sf_avg_c100_var_1100_1350.eps} \end{overpic}
     \end{minipage} }
     \hspace{0.5cm}
-    \subfigure[on net - sort]{\label{Fig2:onnetSort}
+    \subfigure[{\bf R} - sort]{\label{Fig2:onnetSort}
     \begin{minipage}[h]{0.4\textwidth}
     \begin{overpic}[scale=0.25]{figures/fig2/sf_avg_c0_var_1100_1350.eps} \end{overpic}
     \end{minipage} } % \vspace{-2mm}
-\caption[Hist~Flatten]{\label{Figure2:histflatten} \small The histograms of PN response magnitudes are flattened. (a) and (b) are trial averaged PN firing rate histograms, for all odors, in the time period [1100ms,1350ms]. (c) and (d) are the std. of the same odor of the offnet and onnet model, averaged over all odors, and sorted according to the mean spiking rates of all odors.}
+\caption[Hist~Flatten]{\label{Figure2:histflatten} \small The histograms of PN response magnitudes are flattened. (a) and (b) are trial averaged PN firing rate histograms, for all odors, in the time period [1100ms,1350ms]. (c) and (d) are the std. of the same odor of the offnet and {\bf R} mode, averaged over all odors, and sorted according to the mean spiking rates of all odors.}
 \end{figure}
 
 
 \subsection{Distance enlargement among PN spiking rate vectors} \label{Sect:distance}
-We plot the Euclidean distances between the PN spiking vector of each trial of an odor and the mean PN spiking vector of the other odors in Fig.~\ref{Fig3:offnet} (the offnet model) and~\ref{Fig3:onnetosc} (the onnet model). The diagonal elements of the two figures are the distances between the PN spiking vector of each trial of an odor to the mean spiking vector of the same odor. By comparing these diagonal elements of Fig.~\ref{Fig3:offnet} and~\ref{Fig3:onnetosc}, we can see that, the distance from each trial's spiking vector to its center is enlarged in the onnet model, which can be regarded an enhencement of noise.
+We plot the Euclidean distances between the PN spiking vector of each trial of an odor and the mean PN spiking vector of the other odors in Fig.~\ref{Fig3:offnet} (the {\bf S} mode) and~\ref{Fig3:onnetosc} (the {\bf R} mode). The diagonal elements of the two figures are the distances between the PN spiking vector of each trial of an odor to the mean spiking vector of the same odor. By comparing these diagonal elements of Fig.~\ref{Fig3:offnet} and~\ref{Fig3:onnetosc}, we can see that, the distance from each trial's spiking vector to its center is enlarged in the {\bf R} mode, which can be regarded an enhencement of noise.
 
 Although noise is usually considered to be a negative factor in information processing and transmitting system, it brings some advantages here. In fact, by comparing the elements around the diagonal elements of the two figures, we can see that the distances between representing vectors are larger than their stimuli counterparts. That is, the AL representing process enlarge the distances among simlar odors (see the centering red region in Fig.~\ref{Fig3:gridcompare}). Although, the distances among rather different odors are decreased (see the blue regions in Fig.~\ref{Fig3:gridcompare}), which implies that, AL does not simplely enlarge the distance. Instead, it is in fact trying to optimize the arrangement in the representating space of different odors.
 
