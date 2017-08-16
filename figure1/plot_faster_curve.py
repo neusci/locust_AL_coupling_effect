@@ -15,6 +15,6 @@ labels1 = ['0','200','400','600','800','1000']
 xticks(x1, labels1)  #, rotation='vertical')
 xlabel('time from odor onset')
 ylabel('fraction of maximum')
-savefig('faster.jpg')
-savefig('faster.eps')
+savefig('faster_curve.jpg')
+savefig('faster_curve.eps')
 clf()
