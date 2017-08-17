@@ -30,16 +30,19 @@ for li,lx in enum(ylist):
     if lx>2500:
         ylist[li]=nan
 
+savetxt('./peaking_time_dots_xlist.txt', xlist)
+savetxt('./peaking_time_dots_ylist.txt', ylist)
 
-plot(rand(len(xlist)), xlist, '.', c='r')
-plot(rand(len(ylist))+1.5, ylist, '.', c='b')
+plot(rand(len(ylist))+0.5, ylist, '.', c='b') # odor
+plot(rand(len(xlist))+2.5, xlist, '.', c='r') # response
 axhline(y=350, color='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 axhline(y=100, color='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 #x1 = [0, 4, 8, 12, 16, 20]
 #labels1 = ['0','200','400','600','800','1000']
+xlim([0,4])
 xticks([], [])  #, rotation='vertical')
 #xlabel('time from odor onset')
-ylabel('fraction of maximum')
+ylabel('peaking time (ms)')
 savefig('faster_dots.jpg')
 savefig('faster_dots.eps')
 clf()
