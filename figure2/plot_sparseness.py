@@ -1,6 +1,8 @@
 #  !/usr/bin/env python
 #  -*- coding:utf-8 -*-
 
+print('plot Fig.3b (and 4b) of Wilson2007')
+print('     that is the lifetime-sparseness compared in pairs')
 
 execfile('../slow/slow_analy_head.py')
 
@@ -46,6 +48,7 @@ for i in range(0,250,10):
 
 
 PNls=[20,30,40,50,60,70,180,190,200,210,220,230]
+print(PNls, '     the selectd PNs')
 onsp_inls=onsp[PNls]
 offsp_inls=offsp[PNls]
 #figure(figsize=(10,2)) # set figure size -- this removes xlabel??
