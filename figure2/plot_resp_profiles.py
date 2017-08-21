@@ -2,6 +2,8 @@
 #  -*- coding:utf-8 -*-
 
 
+print('plot Fig.3a (and 4a) of Wilson2007')
+print('     that is the PN response profiles in coupled and uncoupled models')
 execfile('../slow/slow_analy_head.py')
 
 slist=shift_list
