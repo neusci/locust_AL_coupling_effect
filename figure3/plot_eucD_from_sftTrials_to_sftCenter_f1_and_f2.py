@@ -22,7 +22,7 @@ asf_trial_ls = array([[load_spec_sf_1trial(couple,s,t,tb,te,td) \
 
 sftAvg_on_asf_trial_ls=[mean(asf_trial_ls[i], 0) for i in range(shift_number)]
 # In [14]: shape(sftAvg_on_asf_trial_ls)
-
+# I believe that, the answer should be (20, 830)
 
 def eucd_from_aShiftTrials_to_bShiftCenter_avg_std_ls(s0, s1):
     # this is based on the just loaded sftAvg_on_asf_trial_ls
@@ -37,7 +37,7 @@ eucd_mat = zeros([shift_number, shift_number])
 for i,j in itertools.product(range(shift_number), range(shift_number)):
     print("couple=%d, begin time=%d, end time=%d"%(c,tb,te),
           'shifts:', shift_list[i], shift_list[j])
-    #if i > j: continue
+    #if i > j: continue  # not symmetrical, cannot skip!!!
     eucd_mat[i,j] = eucd_from_aShiftTrials_to_bShiftCenter_avg_std_ls(i, j)[0]
 
 #for i,j in itertools.product(range(shift_number), range(shift_number)):
@@ -84,15 +84,16 @@ savetxt("./data/eucd_from_aShiftTrials_to_bShiftCenter_c%d_t%d_%d.txt"%(c,tb,te)
 
 # --- --- --- --- --- --- ---
 
-#subplot(121)
 x=loadtxt('./data/eucd_from_aShiftTrials_to_bShiftCenter_c0_t1100_1350.txt')
+y=loadtxt('./data/eucd_from_aShiftTrials_to_bShiftCenter_c100_t1100_1350.txt')
+
+#subplot(121)
 p=pcolormesh(x, vmin=50, vmax=400, cmap="coolwarm")
 savefig('./eucd_from_shiftTrials_to_shiftCenter_c0_t%d_%d.jpg'%(tb,te))
 savefig('./eucd_from_shiftTrials_to_shiftCenter_c0_t%d_%d.eps'%(tb,te))
 clf()
 
 #subplot(122)
-y=loadtxt('./data/eucd_from_aShiftTrials_to_bShiftCenter_c100_t1100_1350.txt')
 q=pcolormesh(y, vmin=50, vmax=400, cmap="coolwarm")
 savefig('./eucd_from_shiftTrials_to_shiftCenter_c100_t%d_%d.jpg'%(tb,te))
 savefig('./eucd_from_shiftTrials_to_shiftCenter_c100_t%d_%d.eps'%(tb,te))

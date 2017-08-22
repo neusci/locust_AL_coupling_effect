@@ -142,7 +142,7 @@ Previous studies on locust's AL~\citep{} and drosophila's AL~\citep{} indicate t
 Since there is a time constraint in odor processing, it is interesting to ask if the first relay center have accelerated the odor representating process. In the {\bf S} mode, PNs response increases steadily with the increase of odor intensity before getting saturated. So we can estimate that, the PN response in the {\bf S} mode does not peak before the stimulus almost peaks. On the other hand, since responses in MB can be rapidly trigged, it would be benifit if PNs activities peak eariler in the {\bf R} mode than in the {\bf S} mode. Although this sounds not easy to achieve, a similar phenomenon has been spotted from drosophila AL~\citep{}. How about the case in locust AL?
 
 In Fig.~\ref{Fig1:fasterCurve}, we plot peri-stimulus time histograms averaged across all odors in all PNs. As is can be seen from Fig.~\ref{Fig1:fasterCurve} that, when an odor appears, PNs' activities rise much faster in the {\bf R} mode than in the {\bf S} mode. In fact, when PNs' activities begin to decay in the {\bf R} mode, their counterparts activities in the {\bf S} mode are still growing. % When ORNs' activities peak, PNs' activities have almost decaied to the steady state.
-To have a more direct comparison, we plot the peaking time of PN activities in the two modes in Fig.~\ref{Fig1:fasterDots}. Again, we can see that, PNs response in the {\bf R} mode always peak eariler than in the {\bf S} mode. In fact, in the {\bf R} mode, PNs' responses nearly always peak in the time region 100 - 350 ms after the osor appears. However, in the {\bf S} mode, their responses' peaking time are distributed from 350 ms after the odor onset to the time the odor offsets.
+To have a more direct comparison, we plot the peaking time of PN activities in the two modes in Fig.~\ref{Fig1:fasterDots}. Again, we can see that, PNs response in the {\bf R} mode always peak eariler than in the {\bf S} mode. In fact, in the {\bf R} mode, PNs' responses nearly always peak in the time region 100 - 350 ms after the osor appears. However, in the {\bf S} mode, their responses' peaking time are distributed from 350 ms after the odor onset to the time the odor offsets, which indicates PNs response keeps growing for $\sim$ 350 ms and keeps flat afterwards.
 
 The reason is that, the LNs have a rather large spike threshold. As a result, LNs would rarely spike in a short period after the odor onset. Since PNs' spike threshold is much smaller and LNs barely play a role here, PNs' responses would grow dramatically due to the positive feedback mechanism in the network in that period. After that short period, the actively firing PNs and the increased odor stimulus would trigger LNs to spike, then LNs would apply fast inhibition to PNs. Therefore, PNs response would begin to decay. The whole process happens so fast that, when PNs activities begin to decay the odor stimulus is still growing. The activities of PNs and LNs would finally achieve a steady state after the stimulus is stable.
 
@@ -157,42 +157,30 @@ The reason is that, the LNs have a rather large spike threshold. As a result, LN
     \begin{overpic}[scale=0.25]{figures/fig1/faster_dots.eps} \end{overpic}
     \end{minipage} } % \vspace{-2mm}
     \caption[Peak~eariler]{\label{Figure1:peakEariler} \small PNs in the {\bf R} mode response faster than in the {\bf S} mode.
-    (a) Peak-normalized peri-stimulus time histograms (PSTHs), averaged across all odors and all PNs. Odor stimulation begins at 0 ms. (b) Comparison of PN responses peaking time in the two modes, PNs in the {\bf R} mode has a shorter latency to reach the peak than in the {\bf S} mode. ({\bf need tobe revised})
+    (a) Peak-normalized peri-stimulus time histograms (PSTHs), averaged across all odors and all PNs. Odor stimulation begins at 0 ms. (b) Comparison of PN responses peaking time in the two modes, PNs in the {\bf R} mode has a shorter latency to reach the peak than in the {\bf S} mode. ({\bf need tobe revised}) Gray lines draw boundaries around the time region 100 - 350 ms after odor onset. A few cases that peaks after odor offsets are not plotted.
     }
 \end{figure}
 
 
 \subsection{Histogram equalization} \label{Sect:histeq}
-The ``histogram equalization'' has been spotted as a specific kind of sensory transformation in drosophila AL in the previous study~\citep{}. That is, neurons spiking rates are more uniformly distributed in the higher centers than in receptor neurons, and thus representing neurons, odor space, and the channel capacity to even higher centers are made better use in higher centers. In this section, we tend to figure it out, whether such kind of transformation is also engaged in locust AL.
+The ``histogram equalization'' has been adopted as a specific kind of sensory transformation in the previous study~\citep{}. That is, neurons spiking rates are more uniformly distributed in the higher centers than in lower centers or in receptor neurons. As a result, representing neurons, odor space, and the setting out channel capacity are made better use in higher centers. Eventually, representations are more separable than stimuli. In this section, we tend to figure it out, whether such kind of transformation has also been engaged in locust AL.
 
-First, we show that, the some PNs spike very actively in the {\bf{S}} mode, while most others are almost silence when an odor appears.
-Then, we show that, the histogram becomes much flatter in the {\bf{R}} mode.
+First, we show that some PNs spike very actively in the {\bf{S}} mode, while most others are almost silence when an odor appears. As is can be seen from Fig.~\ref{Fig2:offnet}, their response histogram shows two separated peaks located at low response intensities and high response intensities, respectively. Then, we show in Fig.~\ref{Fig2:onnet} that, PNs response histogram becomes much flatter in the {\bf{R}} mode, indicating that PNs use more uniform frequencies to representating odors in the {\bf R} mode than in the {\bf S} mode.
+% ...
+Thus, PNs in the {\bf R} mode response less specifically than in the {\bf S} mode. In other words, PNs are more efficiently used in odor representation in the {\mf R} mode than in the {\bf S} mode.
 
-``
-The ORN response histogram shows a large
-peak at low response intensities, and a long, flat tail covering the rest of
-the ORN dynamic range. The PN response histogram, by contrast, is
-much flatter, indicating that all available response intensities are used
-with more uniform frequency. In this sense, PNs encode our odor
-stimuli more efficiently than ORNs do.
-Although there is a clear overall relationship between ORN and PN
-responses for each glomerulus, it is also important to note that these
-functions do not predict PN odor responses completely. Because ORNs
-and PNs differ in their ranked odor preferences, no monotonic
-function will account for all these data.
-'' --- from Wilson2007
-
-We show in this section that, similar resulut can also be observed from locust AL (see Fig.~\ref{Figure2:histflatten}). Comparing Fig.~\ref{Fig2:offnet} and~\ref{Fig2:onnetosc}, we can see that, when PNs are coupled, the histogram of their firing rates are much more flatter than that the case that PNs are decoupled. This can be important since each KC in MB only receives inputs from a portion of PNs. Unlike the visual system stimuli of which have important inner structures, the inputing odor are general recognized as a whole in AL. As a result, this flatten effect would not cause a trouble. Instead, as is can be seen latter in Sect.~\ref{Sect:classify}, the odor classfication and identification ability have in fact been improved.
+The fact that PNs are made full used can be important since the number of PNs is kind of limited, and each KC in MB only receives inputs from a portion of PNs. %We show in this section that, similar resulut can also be observed from locust AL (see Fig.~\ref{Figure2:histflatten}). Comparing Fig.~\ref{Fig2:offnet} and~\ref{Fig2:onnet}, we can see that, when PNs are coupled, the histogram of their firing rates are much more flatter than that the case that PNs are decoupled.
+On the other hand, unlike the visual system stimuli which have important inner structures, the inputing odor are general recognized as a whole in AL. Thus, PNs do not need to bother to describe complex inner structures of odors, and this flatten effect would not cause a trouble. Indeed, as is can be seen latter in Sect.~\ref{Sect:classify}, the odor classfication and identification ability have in fact been improved in the {\bf R} mode than in the {\bf S} mode.
 
 %We would also emphasize that, the histogram equalization in locust AL is mainly caused by the fast oscillation. The reason is that, (1) the slow inhibition is still rather weak in the period we are discussing, and (2) whithout the fast inhibition and the fast oscillation, there exists no more inhibitions, therefore, nearly all PNs would spike actively and the histograms would not be flatten either.
 
-Note that, the closed-loop of {PN~$\rightarrow$~LN~$\rightarrow$~PN} which caused the fast oscillation may also introduce a larger error in PN spiking rates, and this is confirmed in Fig.~\ref{Fig2:offnetSort} and~\ref{Fig2:onnetSort}. For the active PNs, their noise in the {\bf R} mode is smaller, while for the inactive PNs, their noise in the {\bf S} mode is smaller. Since there are more inactive PNs than the active PNs, there would be an noise enhencement effect in the more realistic {\bf R} mode. As is shown latter that, locust can in fact benifit from this noise enhencement effect.
+Lastly, we plot ... Note that, the fast oscillation formed by the closed-loop in the {\bf R} mode may introduce a larger error in PN responsing spiking rates, and this is confirmed in Fig.~\ref{Fig2:offnetSort} and~\ref{Fig2:onnetSort}. Since the inactive PNs rarely spike in the {\bf S} mode, it is not surprised to see they have a smaller noise in the {\bf S} mode. However, it is quite interesting to see that, the active PNs have smaller noise in the {\bf R} mode. Since the active PNs can play an more important rol in odor representation, locust AL may benifit from this effect. %Since there are more inactive PNs than the active PNs, there would be an noise enhencement effect in the more realistic {\bf R} mode. As is shown latter that, locust can in fact benifit from this noise enhencement effect.
 
----
-- lateral inhibition plays an important role here
-- from uncoupled to coupled,, (if there is no lateral inhibition, all would fire, odor representations are almost the same)
-- fast inhibition -> fast oscillation may have played a role here (slow inhibition is still weak at that moment).
----
+%% ---
+%% - lateral inhibition plays an important role here
+%% - from uncoupled to coupled,, (if there is no lateral inhibition, all would fire, odor representations are almost the same)
+%% - fast inhibition -> fast oscillation may have played a role here (slow inhibition is still weak at that moment).
+%% ---
 
 \begin{figure}[htbp]\centering
     \subfigure[{\bf S}]{\label{Fig2:offnet}
@@ -200,7 +188,7 @@ Note that, the closed-loop of {PN~$\rightarrow$~LN~$\rightarrow$~PN} which cause
     \begin{overpic}[scale=0.25]{figures/fig2/hist_offNet.eps} \end{overpic}
     \end{minipage} }
     \hspace{0.5cm}
-    \subfigure[{\bf R} - osc]{\label{Fig2:onnetosc}
+    \subfigure[{\bf R} - osc]{\label{Fig2:onnet}
     \begin{minipage}[h]{0.4\textwidth}
     \begin{overpic}[scale=0.25]{figures/fig2/hist_onNet1.eps} \end{overpic}
     \end{minipage} } % \vspace{-2mm}
@@ -214,12 +202,41 @@ Note that, the closed-loop of {PN~$\rightarrow$~LN~$\rightarrow$~PN} which cause
     \begin{minipage}[h]{0.4\textwidth}
     \begin{overpic}[scale=0.25]{figures/fig2/sf_avg_c0_var_1100_1350.eps} \end{overpic}
     \end{minipage} } % \vspace{-2mm}
-\caption[Hist~Flatten]{\label{Figure2:histflatten} \small The histograms of PN response magnitudes are flattened. (a) and (b) are trial averaged PN firing rate histograms, for all odors, in the time period [1100ms,1350ms]. (c) and (d) are the std. of the same odor of the offnet and {\bf R} mode, averaged over all odors, and sorted according to the mean spiking rates of all odors.}
+\caption[Hist~Flatten]{\label{Figure2:histflatten} \small The histograms of PN response magnitudes are flattened. (a) and (b) are trial averaged PN firing rate histograms, for all odors, in the time period [1100ms,1350ms]. (c) and (d) are the std. of the same odor of the {\bf S} and {\bf R} mode, averaged over all odors, and sorted according to the mean spiking rates of all odors.}
+\end{figure}
+
+\subsection{PNs efficien} \label{Sect:PNefficience}
+We are going to show in this section that, PNs are more efficiently used in the {\bf R} mode than in the {\bf S} mode.
+
+\begin{figure}[htbp]\centering
+    \subfigure[Response profiles]{\label{Fig2plus:resProfile}
+    %\begin{minipage}[h]{0.75\textwidth}
+    \begin{overpic}[scale=0.25]{figures/fig2plus/off2onnet_selectivity_PN12.eps} \end{overpic}
+    \begin{overpic}[scale=0.25]{figures/fig2plus/off2onnet_selectivity_PN166.eps} \end{overpic}
+    %\end{minipage}
+    }
+    \hspace{0.5cm}
+    \subfigure[Selectivity]{\label{Fig2plus:selectivity}
+    %\begin{minipage}[h]{0.3\textwidth}
+    \begin{overpic}[scale=0.3]{figures/fig2plus/lifetimeSparseness.eps} \end{overpic}
+    %\end{minipage}
+    } % \vspace{-2mm}
+
+    %% \subfigure[{\bf S} - sort]{\label{Fig2:offnetSort}
+    %% \begin{minipage}[h]{0.4\textwidth}
+    %% \begin{overpic}[scale=0.25]{figures/fig2/sf_avg_c100_var_1100_1350.eps} \end{overpic}
+    %% \end{minipage} }
+    %% \hspace{0.5cm}
+    %% \subfigure[{\bf R} - sort]{\label{Fig2:onnetSort}
+    %% \begin{minipage}[h]{0.4\textwidth}
+    %% \begin{overpic}[scale=0.25]{figures/fig2/sf_avg_c0_var_1100_1350.eps} \end{overpic}
+    %% \end{minipage} } % \vspace{-2mm}
+\caption[PN~efficience]{\label{Figure2plus:PNefficience} \small PN efficience. (a) is trial averaged PN firing rate histograms, for all odors, in the time period [1100ms,1350ms]. (b) is the std. of the same odor of the offnet and {\bf R} mode, averaged over all odors, and sorted according to the mean spiking rates of all odors.}
 \end{figure}
 
 
 \subsection{Distance enlargement among PN spiking rate vectors} \label{Sect:distance}
-We plot the Euclidean distances between the PN spiking vector of each trial of an odor and the mean PN spiking vector of the other odors in Fig.~\ref{Fig3:offnet} (the {\bf S} mode) and~\ref{Fig3:onnetosc} (the {\bf R} mode). The diagonal elements of the two figures are the distances between the PN spiking vector of each trial of an odor to the mean spiking vector of the same odor. By comparing these diagonal elements of Fig.~\ref{Fig3:offnet} and~\ref{Fig3:onnetosc}, we can see that, the distance from each trial's spiking vector to its center is enlarged in the {\bf R} mode, which can be regarded an enhencement of noise.
+We plot the Euclidean distances between the PN spiking vector of each trial of an odor and the mean PN spiking vector of the other odors in Fig.~\ref{Fig3:offnet} (the {\bf S} mode) and~\ref{Fig3:onnet} (the {\bf R} mode). The diagonal elements of the two figures are the distances between the PN spiking vector of each trial of an odor to the mean spiking vector of the same odor. By comparing these diagonal elements of Fig.~\ref{Fig3:offnet} and~\ref{Fig3:onnet}, we can see that, the distance from each trial's spiking vector to its center is enlarged in the {\bf R} mode, which can be regarded an enhencement of noise.
 
 Although noise is usually considered to be a negative factor in information processing and transmitting system, it brings some advantages here. In fact, by comparing the elements around the diagonal elements of the two figures, we can see that the distances between representing vectors are larger than their stimuli counterparts. That is, the AL representing process enlarge the distances among simlar odors (see the centering red region in Fig.~\ref{Fig3:gridcompare}). Although, the distances among rather different odors are decreased (see the blue regions in Fig.~\ref{Fig3:gridcompare}), which implies that, AL does not simplely enlarge the distance. Instead, it is in fact trying to optimize the arrangement in the representating space of different odors.
 
@@ -231,7 +248,7 @@ Lastly, similar result can also be obtained from Fig.~\ref{Fig3:linecompare}, in
     \begin{overpic}[scale=0.25]{figures/fig5n/eucd_from_shiftTrials_to_shiftCenter_c100_t1100_1350_cbar.eps} \end{overpic}
     \end{minipage} }
     \hspace{0.5cm}
-    \subfigure[on net - osc]{\label{Fig3:onnetosc}
+    \subfigure[on net - osc]{\label{Fig3:onnet}
     \begin{minipage}[h]{0.4\textwidth}
     \begin{overpic}[scale=0.25]{figures/fig5n/eucd_from_shiftTrials_to_shiftCenter_c0_t1100_1350_cbar.eps} \end{overpic}
     \end{minipage} } % \vspace{-2mm}
@@ -259,7 +276,7 @@ The difference enlargement and decorrelation effect can also be displayed by the
     \begin{overpic}[scale=0.25]{figures/fig34n/ppcc_from_shiftTrials_to_shiftCenter_c100_t1100_1350_cbar.eps} \end{overpic}
     \end{minipage} }
     \hspace{0.5cm}
-    \subfigure[on net - osc]{\label{Fig4:onnetosc}
+    \subfigure[on net - osc]{\label{Fig4:onnet}
     \begin{minipage}[h]{0.4\textwidth}
     \begin{overpic}[scale=0.25]{figures/fig34n/ppcc_from_shiftTrials_to_shiftCenter_c0_t1100_1350_cbar.eps} \end{overpic}
     \end{minipage} } % \vspace{-2mm}

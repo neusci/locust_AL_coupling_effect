@@ -14,7 +14,7 @@ homedir = "/media/mw/seagate20170619/32cores/"
 
 # be very careful on the below vars!!!
 execfile(homedir+".ipython/profile_default/startup/10-init.py")
-execfile(homedir+"locust_AL_aa/slow/slow_analy_head.py")
+execfile("../../slow/slow_analy_head.py")
 
 coupleID = 0  # 0--49 --- 99
 shiftID = 0  # 0 2 4 6 8 10 20 40 60 80
@@ -167,7 +167,7 @@ spike_ls = map(vol_matrix_to_spike_matrix, vol_ls)
 print("psd ...")
 for i in muloop([tnumber]):
     print("\tprocessing PSD #", coupleID, shiftID, i)
-    ppp, fff = myPSD(PNavged_vol_ls[i], sampling_freq, 2**nfft_exp)
+    ppp, fff = myPSD(PNavged_vol_ls[i][stim_onset:stim_offset], sampling_freq, 2**nfft_exp)
     ppp[:5]=0
     figure()
     plot(fff[:95], ppp[:95])
