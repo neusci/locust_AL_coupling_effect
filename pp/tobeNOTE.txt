@@ -1,0 +1,24 @@
+What is the functional consequence of the fact that lateral inhibition is mainly presynaptic? Recall that the ORN-to-PN transformation exhibits a compressive nonlinearity (Figure 3). This is thought to be due (at least in part) to intrinsic short-term synaptic depression at ORN-to-PN synapses due to vesicle depletion [15]. Presynaptic lateral inhibition decreases release probability, and thus should make it more difficult to deplete vesicles from ORN terminals. However, if the synapse is driven vigorously, it should still be possible to dump the entire readily releasable pool. Thus, we would expect that lateral inhibition should increase the level of direct ORN input that is needed to drive a PN to saturation, without changing the level at which PNs saturate.
+
+R.I. Wilson (2011) Understanding the functional consequences of synaptic specialization: insight from the Drosophila antennal lobe. Current Opinion in Neurobiology 21:254-260
+http://wilson.med.harvard.edu/Wilson2011.pdf
+
+Wilson2013 review
+
+---
+
+This was the first study to provide a detailed electrophysiological characterization of a synapse in the Drosophila central nervous system. These results showed that several of the distinctive features of antennal lobe PN odor responses can be potentially accounted for by the specialized properties of ORN-to-PN synapses.
+
+Kazama H, Wilson RI: Homeostatic matching and nonlinear amplification at genetically-identified central synapses.  Neuron 2008, 58:401-413
+
+---
+
+Aaditya V. Rangan. Functional Roles for Synaptic-Depression within a Model of the Fly Antennal Lobe.
+Published: August 23, 2012
+https://doi.org/10.1371/journal.pcbi.1002622
+
+---
+
+response reliablity has not been produced in this model.
+may be because, Drosophila LN presynaptic inhibites ORN, (wilson2008)
+    which may improve the response stability according to Rangan2012.
