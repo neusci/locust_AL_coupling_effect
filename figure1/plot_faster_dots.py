@@ -33,10 +33,11 @@ for li,lx in enum(ylist):
 savetxt('./peaking_time_dots_xlist.txt', xlist)
 savetxt('./peaking_time_dots_ylist.txt', ylist)
 
-plot(rand(len(ylist))+0.5, ylist, '.', c='b') # odor
-plot(rand(len(xlist))+2.5, xlist, '.', c='r') # response
-axhline(y=350, color='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
-axhline(y=100, color='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
+plot(rand(len(ylist))+0.5, ylist, '.', c='green') # odor
+plot(rand(len(xlist))+2.5, xlist, '.', c='purple') # response
+#axhline(y=350, color='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
+#axhline(y=100, color='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
+axhspan(100,350, color='0.75', alpha=0.75)
 #x1 = [0, 4, 8, 12, 16, 20]
 #labels1 = ['0','200','400','600','800','1000']
 xlim([0,4])

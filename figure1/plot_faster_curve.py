@@ -5,19 +5,22 @@ execfile('../slow/slow_analy_head.py')
 print('Fig.2a of Wilson2007')
 
 c=0
-
 stim_avg_ls=[load_sf_trial_avged(100,s,cd=50) for s in shift_list]
 resp_avg_ls=[load_sf_trial_avged(c  ,s,cd=50) for s in shift_list]
 
 stim_avg,stim_sem=mean(stim_avg_ls,0),std(stim_avg_ls,0)
 resp_avg,resp_sem=mean(resp_avg_ls,0),std(resp_avg_ls,0)
 
-'''
-line(dark) fill(lite)
-crimson    pink/green lime
-purple     violet
-'''
+savetxt('./stim_avg.txt', stim_avg)
+savetxt('./stim_sem.txt', stim_sem)
+savetxt('./resp_avg.txt', resp_avg)
+savetxt('./resp_sem.txt', resp_sem)
 
+
+'''
+#line(dark) fill(lite)
+#crimson    pink/green lime
+#purple     violet
 
 def plot_avg_std(x,xsem,c1,c2,m):
     fill_between(x=range(20),
@@ -29,15 +32,27 @@ def plot_avg_std(x,xsem,c1,c2,m):
          x[20:40]/max(x[20:40]),
          marker=m, markersize=4.5,
          color=c1, linewidth=1.5)
+'''
 
-axvspan(2, 7, ymax=0.1, facecolor='0.75', alpha=0.75) # 21-27:50-350ms => 100-400ms
+def plot_avg_std(x,xsem,c):
+    plot_begin,plot_end=20,40 # begin and end click on the figure
+    errorbar(x=range(plot_end-plot_begin),
+             y=x[plot_begin:plot_end]/max(x[plot_begin:plot_end]),
+             yerr=xsem[plot_begin:plot_end]/max(x[plot_begin:plot_end]),
+             color=c, linewidth=1.5)
 
-#plot_avg_std(stim_avg,stim_sem,'crimson', 'pink',   'X');
-plot_avg_std(stim_avg,stim_sem,'green', 'lime',   'X');
-plot_avg_std(resp_avg,resp_sem,'purple','violet', 'o');
+
+axvspan(2, 7, facecolor='0.75', alpha=0.75)
+#axvspan(2, 7, ymax=0.1, facecolor='0.75', alpha=0.75) # 21-27:50-350ms => 100-400ms
+
+##plot_avg_std(stim_avg,stim_sem,'crimson', 'pink','X'); # this color is not good
+#plot_avg_std(stim_avg,stim_sem,'green', 'lime',   'X');
+#plot_avg_std(resp_avg,resp_sem,'purple','violet', 'o');
+plot_avg_std(stim_avg,stim_sem,'green');
+plot_avg_std(resp_avg,resp_sem,'purple');
 
 xticks([0, 4, 8, 12, 16, 20], ['0','200','400','600','800','1000'])  #, rotation='vertical')
-xlabel('time from odor onset')
+xlabel('time (ms)') #xlabel('time from odor onset')
 ylabel('fraction of maximum')
 savefig('faster_curve.jpg')
 savefig('faster_curve.eps')
