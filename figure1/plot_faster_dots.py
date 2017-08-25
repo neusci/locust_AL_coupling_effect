@@ -35,6 +35,7 @@ savetxt('./peaking_time_dots_ylist.txt', ylist)
 
 plot(rand(len(ylist))+0.5, ylist, '.', c='green') # odor
 plot(rand(len(xlist))+2.5, xlist, '.', c='purple') # response
+
 #axhline(y=350, color='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 #axhline(y=100, color='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 axhspan(100,350, color='0.75', alpha=0.75)

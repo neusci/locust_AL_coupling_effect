@@ -39,7 +39,7 @@ else:
     savetxt('./data/hist_offNet.txt', y)
 
 
-hist(x, 20, normed=1, histtype='bar', color='b', alpha=0.75);
+hist(x, 20, normed=1, histtype='bar', color='purple', alpha=0.75);
 xlabel('firing rate (Hz)')
 ylabel('fraction')
 if len(sList)==1:
@@ -51,7 +51,7 @@ else:
 clf()
 
 
-hist(y, 20, normed=1, histtype='bar', color='b', alpha=0.75);
+hist(y, 20, normed=1, histtype='bar', color='green', alpha=0.75);
 xlabel('firing rate (Hz)')
 ylabel('fraction')
 if len(sList)==1:
@@ -75,7 +75,7 @@ if len(sList)==1:
 else:
     savetxt('./data/hist_onNet_period2.txt', z)
 
-hist(z, 20, normed=1, histtype='bar', color='b', alpha=0.75);
+hist(z, 20, normed=1, histtype='bar', color='purple', alpha=0.75);
 xlabel('firing rate (Hz)')
 ylabel('fraction')
 if len(sList)==1:
@@ -96,7 +96,7 @@ if len(sList)==1:
 else:
     savetxt('./data/hist_onNet_period3.txt', zz)
 
-hist(zz, 20, normed=1, histtype='bar', color='b', alpha=0.75);
+hist(zz, 20, normed=1, histtype='bar', color='purple', alpha=0.75);
 xlabel('firing rate (Hz)')
 ylabel('fraction')
 if len(sList)==1:

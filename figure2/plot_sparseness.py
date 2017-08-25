@@ -55,8 +55,8 @@ offsp_inls=offsp[PNls]
 
 for i in rlen(PNls):
     plot([onsp_inls[i],offsp_inls[i]],[1,0], '-',c='gray')
-    plot(onsp_inls[i], 1, 'o', c='r')
-    plot(offsp_inls[i],0, 'o', c='b')
+    plot(onsp_inls[i], 1, 'o', c='purple')
+    plot(offsp_inls[i],0, 'o', c='green')
 
 #ax1 = axes() # to hide yaxis
 #ax1.axes.get_yaxis().set_visible(False)

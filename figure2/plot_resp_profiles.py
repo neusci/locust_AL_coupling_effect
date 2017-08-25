@@ -22,12 +22,12 @@ for i in range(PN_number):
     print(i)
 
     rects1 = bar(index-bar_width/2, offnet[:,i], bar_width,
-                    alpha=opacity, color='b',
+                    alpha=opacity, color='green',
                     #yerr=std_men, error_kw=error_config,
                     label='offnet')
 
     rects2 = bar(index+bar_width/2, onnet[:,i], bar_width,
-                    alpha=opacity, color='r',
+                    alpha=opacity, color='purple',
                     #yerr=std_women, error_kw=error_config,
                     label='onnet')
 
