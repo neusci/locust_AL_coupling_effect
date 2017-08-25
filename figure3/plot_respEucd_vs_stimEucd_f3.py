@@ -33,9 +33,9 @@ def get_an_odor_resp(c,tb,te,td=50):
     return dis_avg_ls, dis_std_ls, dis_trial_ls
 
 
-resp_avg, resp_std, _ = get_an_odor_resp(couple, tb, te)
-odor_avg, odor_std, _ = get_an_odor_resp(odor_coupling, tb, te)
-plot(odor_avg, resp_avg, '.-') #color='white'
+resp_avg, resp_std, _ = get_an_odor_resp(couple, tbgn, tend)
+odor_avg, odor_std, _ = get_an_odor_resp(odor_coupling, tbgn, tend)
+errorbar(x=odor_avg, y=resp_avg, xerr=odor_std, yerr=resp_std) #color='white'
 
 fig_len=500
 fplot("y=x", [0,fig_len])
