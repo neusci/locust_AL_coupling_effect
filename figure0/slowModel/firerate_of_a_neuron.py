@@ -21,7 +21,7 @@ plot(bX);
 #plot(dX);
 plot(eX)
 
-axvspan(xmin=2,xmax=7, facecolor='0.25', alpha=0.5)
+axvspan(xmin=2,xmax=7, facecolor='0.75', alpha=0.75)
 axhline(xmin=0,xmax=0.5, y=-2.5, lw=4, color='gray')
 xlim([0,110])
 xlabel('time (ms)')
@@ -47,7 +47,7 @@ plot(bY);
 #plot(dY);
 plot(eY)
 
-axvspan(xmin=2,xmax=7, facecolor='0.25', alpha=0.5)
+axvspan(xmin=2,xmax=7, facecolor='0.75', alpha=0.75)
 axhline(xmin=0,xmax=0.5, y=-2.5, lw=4, color='gray')
 xlim([0,110])
 xlabel('time (ms)')
@@ -55,6 +55,6 @@ ylabel('fire rate (Hz)')
 x1 = [0, 20, 40, 60, 80, 100]
 labels1 = ['0', '1000','2000', '3000', '4000', '5000']
 xticks(x1, labels1)
-savefig('firerate_of_a_neuron_curve_smoothed.jpg')
-savefig('firerate_of_a_neuron_curve_smoothed.eps')
+savefig('firerate_of_a_neuron_curves_smoothed.jpg')
+savefig('firerate_of_a_neuron_curves_smoothed.eps')
 clf()

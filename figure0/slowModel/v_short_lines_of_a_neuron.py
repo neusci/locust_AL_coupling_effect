@@ -16,7 +16,7 @@ def v_short_line_a_neuron(nid):
                 axvline(x=xi, ymin=0.02+i*0.1, ymax=0.08+i*0.1, lw=0.15)
 
     axhline(xmin=0,xmax=0.5,linewidth=4, color='gray')
-    axvspan(xmin=100,xmax=350, facecolor='0.25', alpha=0.5)
+    axvspan(xmin=100,xmax=350, facecolor='0.75', alpha=0.75)
     xlim([0,te-tb])
     axis('off')
     savefig('v_short_line_%d.jpg'%nid)
