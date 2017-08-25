@@ -374,8 +374,9 @@ def load_sf_trial_avged(c,s, cd=sf_count_duration, ifPN=True):
       show()
     """
     l = int(round(1.0*(real_end-real_begin)/cd))
-    ret=zeros([trial_number, l])
-    for i in range(trial_number): ret[i,:]=load_sf_in_trial(c,s,i,cd, ifPN)
+    ret=zeros([trial_number, l])# the trial_number dim will be avged/stded
+    for i in range(trial_number):
+        ret[i,:]=load_sf_in_trial(c,s,i,cd, ifPN)
     return array([mean(ret[:,i]) for i in range(l)])
 
 
@@ -398,10 +399,23 @@ def load_sf_trial_stded(c,s, cd=sf_count_duration, ifPN=True):
         show()
     """
     l = int(round((real_end-real_begin)/cd))
-    ret=zeros([trial_number, l])
-    for i in range(trial_number): ret[i,:]=load_sf_in_trial(c,s,i,cd, ifPN)
+    ret=zeros([trial_number, l])# the trial_number dim will be avged/stded
+    for i in range(trial_number):
+        ret[i,:]=load_sf_in_trial(c,s,i,cd, ifPN)
     return array([std(ret[:,i]) for i in range(l)])
 
+
+def load_sf_trial_avg_std(c,s, cd=sf_count_duration, ifPN=True):
+    """
+      Same with load_sf_trial_avg_std and load_sf_trial_avg_std
+        only that both avg and std are returned
+      return array is of (real_end-real_begin)/cd size
+    """
+    l = int(round(1.0*(real_end-real_begin)/cd))
+    ret=zeros([trial_number, l])# the trial_number dim will be avged/stded
+    for i in range(trial_number):
+        ret[i,:]=load_sf_in_trial(c,s,i,cd, ifPN)
+    return array([mean(ret[:,i]) for i in range(l)]), array([std(ret[:,i]) for i in range(l)])
 
 def load_sf_matrix(c,s,t, cf,ct, cd=sf_count_duration, ifPN=True):
     """
