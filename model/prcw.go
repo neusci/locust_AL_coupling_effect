@@ -229,6 +229,8 @@ package main
 // c) change initial states of neurons
 // D 1.1.1 update:
 // a) save stim input into PNs and LNs by default
+// D 1.2 update:
+// a) change the `set` lib to the fatih's version
 
 import (
 	"encoding/csv"
@@ -242,7 +244,8 @@ import (
 	"strings"
 	"time"
 	// ...
-	"github.com/deckarep/golang-set"
+	//"github.com/deckarep/golang-set"
+	"gopkg.in/fatih/set.v0"
 	"github.com/namsral/flag"
 	"github.com/sabhiram/go-tracey"
 	"github.com/sbinet/go-gnuplot"
@@ -256,7 +259,7 @@ const (
 	if_init_rt_plots     = 0 // >0 init gnuplot; <=0 do not init: default !!!
 	if_runtime_trace     = 0
 	if_save_doc_v        = 1
-	if_save_doc_stim     = 1
+	if_save_doc_stim     = 0
 	if_save_doc_sync     = 0
 	if_save_doc_PNvs     = 1 // save volt and stim of PNs?
 	if_save_doc_LNvs     = 1
@@ -345,8 +348,8 @@ var (
 	matrix_seed int64 = 0 // rand.seed() in init_matrix()
 	rand_seed   int64 = 0
 	odor_slip   int64 = 0 // how many stimulated PNs are chosen from right (max IDs)
-	odor_PN_set mapset.Set
-	odor_LN_set mapset.Set
+	odor_PN_set set.Interface // will be inited in func: init_odor()
+	odor_LN_set set.Interface // for the previous set lib:  mapset.Set
 	tracy_opt   = tracey.Options{DisableTracing: if_runtime_trace <= 0}
 	Exit, Enter = tracey.New(&tracy_opt)
 )
@@ -1299,7 +1302,7 @@ func get_stim_PN(id int64) {
 		//inputRate = ((stim_offset + stim_pDecay - clock) / stim_pDecay) * ORN_input_rate
 		//elif ...: inputRate = 0
 	}
-	if odor_PN_set.Contains(id) {
+	if odor_PN_set.Has(id) { // Contains
 		for i = 0; i < ORN_number; i++ {
 			if rand.Float64() < (inputRate * time_stepLen) {
 				ret -= ORN_input_strength_PN
@@ -1347,7 +1350,7 @@ func get_stim_LN(id int64) {
 		//inputRate = ((stim_offset + stim_pDecay - clock) / stim_pDecay) * ORN_input_rate
 		//elif ...: inputRate = 0
 	}
-	if odor_LN_set.Contains(id) {
+	if odor_LN_set.Has(id) { // Contains
 		for i = 1; i <= ORN_number; i++ {
 			if rand.Float64() < (inputRate * time_stepLen) {
 				ret -= ORN_input_strength_LN
@@ -2857,8 +2860,8 @@ func disp_spike_freq() {
 func init_odor() {
 	var i int64
 	defer Exit(Enter("$FN()"))
-	odor_PN_set = mapset.NewSet()
-	odor_LN_set = mapset.NewSet()
+	odor_PN_set = set.New() // init the sets defined before
+	odor_LN_set = set.New() // mapset.NewSet()
 	for i = 0; i < PN_number; i++ {
 		if i >= odor_slip && i < stim_PN_num+odor_slip {
 			odor_PN_set.Add(i)
