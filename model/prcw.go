@@ -233,6 +233,8 @@ package main
 // a) change the `set` lib to the fatih's version
 // D 1.2.1 update:
 // a) add parameter `scale_CP_latl` to control coupling prob between LNs and PNs
+// D 1.3 update:
+// a) add func to round a float64 to an int64. (unused)
 
 import (
 	"encoding/csv"
@@ -254,6 +256,36 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+/* round a float64 to an int64
+func round_F64_I64(val float64) int64 {
+    if val < 0 {
+        return int64(val-0.5)
+    }
+    return int64(val+0.5)
+} */
+
+// abs an int64 scalar
+func abs_I64(x int64) int64 {
+	if x < 0 {
+		return -x
+	} else {
+		return x
+	}
+}
+
+// do the error check with a func
+func check_err(e error) {
+	if e != nil {
+		panic(e)
+	}
+}
+
+// check if there is a file of given filename
+func exist_file(filename string) bool {
+	_, err := os.Stat(filename)
+	return err == nil || os.IsExist(err)
+}
+
 const (
 	neuron_num_coefs     = 1 // 1: 830-300;;; 0.1; 0.5; 1; 5; 10; ...
 	if_readin_matrix     = 0 // readin matrix, or randomly set?
@@ -270,7 +302,7 @@ const (
 	sf_duration          = "stimulated" // spike freq of rising, stimulated, decay  # noStim has been removed
 	// ...
 	ms_per_second int64 = 1000                                 // 1000 ms = 1 S
-	early_end     int64 = 4 * ms_per_second                    // the early end length. stop before the 1st para in time_len
+	early_end     int64 = int64(4.0 * float64(ms_per_second))  // the early end length. stop before the 1st para in time_len
 	time_all_S    int64 = 11                                   // run how many seconds in the simulation --- an extra second
 	time_len      int64 = time_all_S*ms_per_second - early_end // run how many ms really! always count from 0 (data in [0,time_len] are saved)
 	PN_number     int64 = 830 * neuron_num_coefs
@@ -1464,17 +1496,6 @@ func take_iteration(click int64) { // xNs_pre -> xNs_cur
 // For this part``` ////////////////////////////////////////
 ///////////////// do the input, interface and main func ////
 ////////////////////////////////////////////////////////////
-
-func check_err(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
-func exist_file(filename string) bool {
-	_, err := os.Stat(filename)
-	return err == nil || os.IsExist(err)
-}
 
 var (
 	ms_per_frame int64 = 750 // millisecond per gnuplot frame
@@ -2879,14 +2900,6 @@ func init_odor() {
 	}
 }
 
-func absI64(x int64) int64 {
-	if x < 0 {
-		return -x
-	} else {
-		return x
-	}
-}
-
 func proc_args() {
 	defer Exit(Enter("$FN()"))
 	// ...
@@ -2896,11 +2909,11 @@ func proc_args() {
 	flag.Parse()
 	// ...
 	if odor_slip < 0 || odor_slip >= PN_number {
-		odor_slip = absI64(odor_slip) % PN_number
+		odor_slip = abs_I64(odor_slip) % PN_number
 		fmt.Println("WARNing: odor_slip is reset to ", odor_slip)
 	}
-	rand_seed = absI64(rand_seed)
-	matrix_seed = absI64(matrix_seed)
+	rand_seed = abs_I64(rand_seed)
+	matrix_seed = abs_I64(matrix_seed)
 	// ...
 	fmt.Println(odor_slip, " <= stim_PN_ID < ", stim_PN_num+odor_slip)
 	fmt.Println("\t if (stim_PN_num+odor_slip)>PN_number then the slip stops at PN_number")
