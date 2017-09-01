@@ -231,6 +231,8 @@ package main
 // a) save stim input into PNs and LNs by default
 // D 1.2 update:
 // a) change the `set` lib to the fatih's version
+// D 1.2.1 update:
+// a) add parameter `scale_CP_latl` to control coupling prob between LNs and PNs
 
 import (
 	"encoding/csv"
@@ -245,10 +247,10 @@ import (
 	"time"
 	// ...
 	//"github.com/deckarep/golang-set"
-	"gopkg.in/fatih/set.v0"
 	"github.com/namsral/flag"
 	"github.com/sabhiram/go-tracey"
 	"github.com/sbinet/go-gnuplot"
+	"gopkg.in/fatih/set.v0"
 	"gopkg.in/yaml.v2"
 )
 
@@ -273,7 +275,7 @@ const (
 	time_len      int64 = time_all_S*ms_per_second - early_end // run how many ms really! always count from 0 (data in [0,time_len] are saved)
 	PN_number     int64 = 830 * neuron_num_coefs
 	LN_number     int64 = 300 * neuron_num_coefs
-	stim_PN_num   int64 = 120 * neuron_num_coefs // how many PNs will receive stimulus
+	stim_PN_num   int64 = 120 * neuron_num_coefs // parameter-test!!!
 	stim_LN_num   int64 = 120 * neuron_num_coefs
 	// ...
 	ORN_number  int64   = 200
@@ -295,15 +297,20 @@ const (
 	const_scale_025 float64 = 0.25
 	const_scale_033 float64 = 0.33
 	const_scale_1   float64 = 1.0
+	const_scale_1p2 float64 = 1.2
+	const_scale_1p5 float64 = 1.5
+	const_scale_1p8 float64 = 1.8
 	const_scale_2   float64 = 2.0
 	const_scale_3   float64 = 3.0
 	const_scale_4   float64 = 4.0
 )
 
 var (
+	// scale lateral coupling prob.
+	scale_CP_latl float64 = const_scale_1 // parameter-test!!!
 	// scale & remove-coupling things.
-	scale_slow_PN float64 = const_scale_1 // change this one
-	scale_GABA_PN float64 = const_scale_1 // change this one
+	scale_slow_PN float64 = const_scale_1 // parameter-test!!!
+	scale_GABA_PN float64 = const_scale_1 // parameter-test!!!
 	scale_GABA_LN float64 = const_scale_1 // NO need change this
 	scale_nACH_PN float64 = const_scale_1 // this can be changed
 	scale_nACH_LN float64 = const_scale_1 // this can be changed
@@ -314,11 +321,11 @@ var (
 	if_PN2PN_nACHed int64 = 1 // if has PN-2-PN links ; >0: true; <0: false
 	if_PN2LN_nACHed int64 = 1 // if has PN-2-LN links
 	// ...
-	LN2PN_slow_prob float64 = 0.025 / neuron_num_coefs // 0.015
-	LN2PN_GABA_prob float64 = 0.025 / neuron_num_coefs // 0.015
-	LN2LN_GABA_prob float64 = 0.025 / neuron_num_coefs // 0.025
-	PN2PN_nACH_prob float64 = 0.010 / neuron_num_coefs // 0.010
-	PN2LN_nACH_prob float64 = 0.010 / neuron_num_coefs // 0.010
+	LN2PN_slow_prob float64 = 0.025 * scale_CP_latl / neuron_num_coefs // parameter-test!!!
+	LN2PN_GABA_prob float64 = 0.025 * scale_CP_latl / neuron_num_coefs // parameter-test!!!
+	LN2LN_GABA_prob float64 = 0.025 / neuron_num_coefs                 // parameter-test!!!
+	PN2PN_nACH_prob float64 = 0.010 / neuron_num_coefs
+	PN2LN_nACH_prob float64 = 0.010 * scale_CP_latl / neuron_num_coefs // parameter-test!!!
 	// if run, if plot...
 	if_running          int64 = 1 // >0 set to run , <=0 set to pause.
 	if_slowGABA_overlap int64 = 1 // LN2PN slow == GABA ??
@@ -345,11 +352,11 @@ var (
 	PN_stim_baseline float64 = 0.0 // -1.14423
 	PN_stim_plusORNs float64 = 0.0 // -1.79143
 	// more configurations:
-	matrix_seed int64 = 0 // rand.seed() in init_matrix()
-	rand_seed   int64 = 0
-	odor_slip   int64 = 0 // how many stimulated PNs are chosen from right (max IDs)
-	odor_PN_set set.Interface // will be inited in func: init_odor()
-	odor_LN_set set.Interface // for the previous set lib:  mapset.Set
+	matrix_seed int64         = 0 // rand.seed() in init_matrix()
+	rand_seed   int64         = 0
+	odor_slip   int64         = 0 // how many stimulated PNs are chosen from right (max IDs)
+	odor_PN_set set.Interface     // will be inited in func: init_odor()
+	odor_LN_set set.Interface     // for the previous set lib:  mapset.Set
 	tracy_opt   = tracey.Options{DisableTracing: if_runtime_trace <= 0}
 	Exit, Enter = tracey.New(&tracy_opt)
 )
