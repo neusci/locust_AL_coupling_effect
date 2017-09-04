@@ -1,18 +1,36 @@
 # !/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+import os
+import sys
+
+if os.path.exists('/home/mwang'): # working on 32-cores cluster
+    homedir = "/home/mwang/"
+    execfile(homedir+".ipython/profile_default/startup/10-init.py")
+elif os.path.exists('/home/mw'):  # working on PCs
+    homedir = "/media/mw/seagate20170619/32cores/"  # USB-HDD!
+    execfile(homedir+".ipython/profile_default/startup/10-init.py")
+elif os.path.exists('/home/mogei'):
+    homedir = "/home/mogei/" #homedir = "/media/mw/seagate20170619/32cores/"
+    execfile(homedir+".ipython/profile_default/startup/10-init.py")
+else:  # WTF?
+    # homesir have NOT been defined in this case, cannot go on.
+    print("homedir not set! Trouble ahead!!!")
+    sys.exit()
+
+print("working on the home dir:", homedir)
+
 # be very careful on the below vars!!!
-homedir = "/media/mw/seagate20170619/32cores/"
-datadir = homedir+"neodec/"
-
-execfile(homedir+".ipython/profile_default/startup/10-init.py")
-
 analy_time_begin=1100 # the period that fast osc. is very strong!
 analy_time_end=1350   # ^^^   from 1.1S to 1.35S,
 PN_resp_thres=25 # PN with firing rate alrger than this is active
 
-couple_number = 1 #20  only use 5 trials??? use only 1 couple now
-trial_number = 10 # 10 trials later!!!
+couple_number = 1 # use only 1 couple now and means testX in parameter test!
+ptCouple_ls = [111,112,113,121,122,123,131,132,133,
+               211,212,213,221,222,223,231,232,233,
+               311,312,313,321,322,323,331,332,333,]
+trial_number = 10
+ptTrial_number = 5 # !!! parameter test !!!
 
 PN_number = 830
 LN_number = 300
@@ -40,7 +58,7 @@ nfft_exp = 10 # 2**nfft_exp -> nfft
 #shift_list = range(0,PN_stim_number,int(round(1.0*PN_stim_number/shift_number)))
 # do not use shift1..5, which are useless, althoug well runned
 shift_list = [0,6,12,18,24,30,36,42,48,54,60,66,72,78,84,90,96,102,108,114]
-# shift_list = [0,1,2,3,4,5,6,12,18,24,30,36,42,48,54,60,66,72,78,84,90,96,102,108,114]
+ptShift_list = [0,12,24,36,48]  # !!! parameter test !!!
 
 # [0,2,4,6,8,10,20,40,60,80]  # olds: j = int(floor(2**(jjj-1)))
 shift_number = len(shift_list) # int(round(0.5*PN_stim_number/shift_list_step))
@@ -80,6 +98,14 @@ def model_check_dir(t):
 def cst_to_dir(c, s, t, model_check=False):
     # for model checking, a same dir saves everything
     if model_check: return model_check_dir(t) # c and s are just ignored!!
+    # working on the normal case:
+    if c in ptCouple_ls:
+        datadir = homedir+"neodecParaTest/"  # # !!! parameter test !!!
+    elif c <= 100: # 100-odor; 99-model-check; no more than 100!
+        datadir = homedir+"neodec/"  # # !!! parameter test !!!
+    else:
+        print("you are using a bad coupling/testID", c)
+        # datadir has not been defined in this branch!!
     return datadir+"%d/shift%d_trial%d/"%(c,s,t)
 
 
@@ -212,7 +238,7 @@ def count_sf_from_spike_matrix(a, tbgn,tend):
       ...
       return an array, with each item representing a spike freq of a neuron
       ...
-      x=vol_matrix_to_spike_matrix(loaddata(c,s,t,model_check), th)
+      x=vol_matrix_to_spike_matrix(loaddata(c,s,t), th)
       count_sf_from_spike_matrix(x, 1000, 1500)
     """
     return sum(a[:,tbgn:tend],1)
