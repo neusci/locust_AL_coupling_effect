@@ -3,22 +3,17 @@
 
 """
 #  we can run this script in this way:
-for coupleID in range(10): # 0--49
-    for shiftID in [0, 2, 4, 6, 8, 10, 20, 40, 60, 80]:
+for coupleID in ptCouple_list: # 0--49
+    for shiftID in ptShift_list:
         execfile("model_check.py")
 """
 
-
-homedir = "/media/mw/seagate20170619/32cores/"
-
-
 # be very careful on the below vars!!!
-execfile(homedir+".ipython/profile_default/startup/10-init.py")
-execfile(homedir+"locust_AL_aa/slow/slow_analy_head.py")
+execfile("../slow/slow_analy_head.py")
 
-coupleID = 0  # 0--49 --- 99
-shiftID = 0  # 0 2 4 6 8 10 20 40 60 80
-tnumber = 10 # 20 # trial number
+coupleID = 333
+shiftID = 0
+tnumber = ptTrial number
 if_mc = False #True # if we are doing model check. if so, load different data...
 
 PN_number = 830

@@ -26,9 +26,9 @@ analy_time_end=1350   # ^^^   from 1.1S to 1.35S,
 PN_resp_thres=25 # PN with firing rate alrger than this is active
 
 couple_number = 1 # use only 1 couple now and means testX in parameter test!
-ptCouple_ls = [111,112,113,121,122,123,131,132,133,
-               211,212,213,221,222,223,231,232,233,
-               311,312,313,321,322,323,331,332,333,]
+ptCouple_list = [111,112,113,121,122,123,131,132,133,
+                 211,212,213,221,222,223,231,232,233,
+                 311,312,313,321,322,323,331,332,333,]
 trial_number = 10
 ptTrial_number = 5 # !!! parameter test !!!
 
@@ -73,7 +73,7 @@ timebin_len = 50
 sf_count_from = 1200 # stim_onset
 sf_count_to = 1500 # stim_offset # this was from 1000ms till 1500ms
 sf_count_duration = 50 # use a very small period
-sfcd_ls = [5, 50]  # generate sf files with sf_count_duration being 5 or 50
+sfcd_list = [5, 50]  # generate sf files with sf_count_duration being 5 or 50
 
 # model checking vars
 coupleID_mc = 99  # 0--49
@@ -99,7 +99,7 @@ def cst_to_dir(c, s, t, model_check=False):
     # for model checking, a same dir saves everything
     if model_check: return model_check_dir(t) # c and s are just ignored!!
     # working on the normal case:
-    if c in ptCouple_ls:
+    if c in ptCouple_list:
         datadir = homedir+"neodecParaTest/"  # # !!! parameter test !!!
     elif c <= 100: # 100-odor; 99-model-check; no more than 100!
         datadir = homedir+"neodec/"  # # !!! parameter test !!!
@@ -280,8 +280,8 @@ def generate_sf_file(c, s, t, cf=real_begin, ct=real_end, cd=sf_count_duration, 
       plot(x,y,'.'); show()
       plot((aaa+bbb+ccc+ddd)/4.0, loadtxt(cst_to_dir(0,0,0)+"PN_spike_freq.txt")[:,1], '.'); show()
     """
-    if not (cd in set(sfcd_ls)):
-        print("Error in calling load_sf_file: cd is not in sfcd list:", sfcd_ls)
+    if not (cd in set(sfcd_list)):
+        print("Error in calling load_sf_file: cd is not in sfcd list:", sfcd_list)
         return -1
     # ...
     if ifPN:
@@ -346,8 +346,8 @@ def load_sf_from_file(c,s,t, cf, ct, cd=sf_count_duration, ifPN=True):
         print("Error in calling load_sf_file: ct is larger than %d!"%sf_count_to)
         return sf_sum
     # ...
-    if not (cd in set(sfcd_ls)):
-        print("Error in calling load_sf_file: cd is not in sfcd list:", sfcd_ls)
+    if not (cd in set(sfcd_list)):
+        print("Error in calling load_sf_file: cd is not in sfcd list:", sfcd_list)
         return sf_sum
     # ...
     if mod(ct, cd) != 0 or mod(cf, cd) != 0:
