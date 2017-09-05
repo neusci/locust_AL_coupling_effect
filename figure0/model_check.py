@@ -144,8 +144,8 @@ for i in muloop([tnumber]):
     xlabel("frequence (Hz)")
     ylabel("PSD")
     savefig("psd_%d_%d_%d.jpg"%(coupleID,shiftID,i))
-    savetxt("psd_fff_%d_%d_%d.jpg"%(coupleID,shiftID,i), fff[:95])
-    savetxt("psd_ppp_%d_%d_%d.jpg"%(coupleID,shiftID,i), ppp[:95])
+    savetxt("psd_fff_%d_%d_%d.txt"%(coupleID,shiftID,i), fff[:95])
+    savetxt("psd_ppp_%d_%d_%d.txt"%(coupleID,shiftID,i), ppp[:95])
     clf()
 
 
@@ -176,5 +176,5 @@ xlabel("time (ms)")
 ylabel("spike rate ($S^{-1}$)")
 axvspan(22, 27, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 savefig("spike_rate_%d_%d.jpg"%(coupleID,shiftID))  # _timebin
-savetxt("spike_rate_%d_%d.jpg"%(coupleID,shiftID), xls)
+savetxt("spike_rate_%d_%d.txt"%(coupleID,shiftID), xls)
 clf()
