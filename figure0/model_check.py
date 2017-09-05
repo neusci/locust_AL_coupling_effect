@@ -4,7 +4,7 @@
 """
 #  in model checking, we can run this script in this way:
 execfile("../slow/slow_analy_head.py")
-for coupleID in ptCouple_list: # 0--49
+for coupleID in ptCouple_list:
     for shiftID in ptShift_list:
         execfile("model_check.py")
 """
@@ -12,7 +12,6 @@ for coupleID in ptCouple_list: # 0--49
 #coupleID = 333
 #shiftID = 0
 print(coupleID, shiftID)
-
 tnumber = ptTrial_number
 
 #=================================
@@ -85,6 +84,7 @@ vol_ls = [loaddata(coupleID,shiftID,i) for i in range(tnumber)]
 PNavged_vol_ls = [1.0*sum(i,0)/PN_number for i in vol_ls]
 spike_ls = map(vol_matrix_to_spike_matrix, vol_ls)
 
+
 print("fluction ...")
 figure()
 plot(sum(vol_ls[0],0)/1000.0) # to mV
@@ -94,6 +94,7 @@ xlabel("time (ms)")
 ylabel("voltage (mv)")
 axvspan(22*50, 27*50, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 savefig("fluction_%d_%d.jpg"%(coupleID,shiftID))
+savetxt("fluction_%d_%d.txt"%(coupleID,shiftID), sum(vol_ls[0],0)/1000.0)
 clf()
 
 
@@ -104,7 +105,6 @@ t1 = zeros(shape(t0))
 t1[t0 <= (0.666*tnumber)]=0  # 6 responses in 9 trials in Laurent2005
 t1[t0 >  (0.666*tnumber)]=1
 plot(100.0*sum(t1, 0)/PN_number)
-savetxt("response_%d_%d.txt"%(coupleID,shiftID), 100.0*sum(t1, 0)/PN_number)
 ylabel("response PN rate (%)")
 x1 = [0, 40, 80, 120, 160, 200]
 labels1 = ['0', '2000', '4000', '6000', '8000', '10000']
@@ -113,14 +113,15 @@ xlim([0, 140])
 axvspan(22, 27, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 xlabel("time (ms)")
 savefig("response_%d_%d.jpg"%(coupleID,shiftID))
+savetxt("response_%d_%d.txt"%(coupleID,shiftID), 100.0*sum(t1, 0)/PN_number)
 clf()
+
 
 print("plotting bandpower...")
 bp_ls = [thisBandpower(i) for i in PNavged_vol_ls]
 figure()
 bp=1.0*sum(bp_ls,0)/tnumber
 plot(bp)
-savetxt("bandpower_%d_%d.txt"%(coupleID,shiftID), bp)
 xlabel("time (ms)")
 ylabel("bandpower")
 x1 =      [0,       40,     80,    120,     160,    200]
@@ -129,6 +130,7 @@ xticks(x1, labels1)  #, rotation='vertical')
 xlim([0, 140])
 axvspan(22, 27, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 savefig("bandpower_%d_%d.jpg"%(coupleID,shiftID))
+savetxt("bandpower_%d_%d.txt"%(coupleID,shiftID), bp)
 clf()
 
 
@@ -142,7 +144,10 @@ for i in muloop([tnumber]):
     xlabel("frequence (Hz)")
     ylabel("PSD")
     savefig("psd_%d_%d_%d.jpg"%(coupleID,shiftID,i))
+    savetxt("psd_fff_%d_%d_%d.jpg"%(coupleID,shiftID,i), fff[:95])
+    savetxt("psd_ppp_%d_%d_%d.jpg"%(coupleID,shiftID,i), ppp[:95])
     clf()
+
 
 print("sorted ...")
 figure()
@@ -150,10 +155,10 @@ figure()
 spike_avg1 = [1000.0*sum(i[:,sf_count_from:sf_count_to],1)/(sf_count_to-sf_count_from) for i in spike_ls]
 ssa=sorted(sum(spike_avg1, 0)/tnumber, reverse=True)
 plot(ssa)
-savetxt("sorted_%d_%d.txt"%(coupleID,shiftID), ssa)
 xlabel("PN #")
 ylabel("spike rate ($S^{-1}$)")
 savefig("sorted_%d_%d.jpg"%(coupleID,shiftID))
+savetxt("sorted_%d_%d.txt"%(coupleID,shiftID), ssa)
 clf()
 
 
@@ -163,7 +168,6 @@ spike_avg0 = [1.0*sum(i, 0)/PN_number for i in spike_ls]
 xls=map(mean, equally_divide(1000.0*sum(spike_avg0,0)/tnumber, sf_count_duration))
 figure()
 plot(xls)
-savetxt("spike_rate_%d_%d.txt"%(coupleID,shiftID), xls)
 x1 = [0, 40, 80, 120, 160, 200]
 labels1 = ['0', '2000', '4000', '6000', '8000', '10000']
 xticks(x1, labels1)  #, rotation='vertical')
@@ -172,4 +176,5 @@ xlabel("time (ms)")
 ylabel("spike rate ($S^{-1}$)")
 axvspan(22, 27, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 savefig("spike_rate_%d_%d.jpg"%(coupleID,shiftID))  # _timebin
+savetxt("spike_rate_%d_%d.jpg"%(coupleID,shiftID), xls)
 clf()
