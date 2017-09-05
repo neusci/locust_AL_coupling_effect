@@ -1,8 +1,10 @@
 # !/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+
 import os
 import sys
+
 
 if os.path.exists('/home/mwang'): # working on 32-cores cluster
     homedir = "/home/mwang/"
@@ -10,7 +12,15 @@ if os.path.exists('/home/mwang'): # working on 32-cores cluster
     print("working on 32-cores in the home dir:", homedir)
 elif os.path.exists('/home/mw'):  # working on PCs
     homedir = "/media/mw/seagate20170619/32cores/"  # USB-HDD!
-    execfile(homedir+".ipython/profile_default/startup/10-init.py")
+    # try to use PC local py-init script, first..
+    if os.path.exists("/home/mw/.ipython/profile_default/startup/10-init.py"):
+        execfile("/home/mw/.ipython/profile_default/startup/10-init.py")
+    elif os.path.exists(homedir+".ipython/profile_default/startup/10-init.py"):
+        execfile(homedir+".ipython/profile_default/startup/10-init.py")
+    else:
+        print("ipy-init script not found! quitting")
+        sys.exit()
+    # ...
     print("working on PC in the home dir:", homedir)
 elif os.path.exists('/home/mogei'):
     homedir = "/home/mogei/" #homedir = "/media/mw/seagate20170619/32cores/"
@@ -18,7 +28,7 @@ elif os.path.exists('/home/mogei'):
     print("working on 12-cores in the home dir:", homedir)
 else:  # WTF?
     # homesir have NOT been defined in this case, cannot go on.
-    print("homedir not set! Trouble ahead!!!")
+    print("homedir not set! quitting")
     sys.exit()
 
 

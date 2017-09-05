@@ -93,8 +93,8 @@ xlim([0, 6000])
 xlabel("time (ms)")
 ylabel("voltage (mv)")
 axvspan(22*50, 27*50, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
-savefig("fluction_%d_%d.jpg"%(coupleID,shiftID))
-savetxt("fluction_%d_%d.txt"%(coupleID,shiftID), sum(vol_ls[0],0)/1000.0)
+savefig("./model_check_data/fluction_%d_%d.jpg"%(coupleID,shiftID))
+savetxt("./model_check_data/fluction_%d_%d.txt"%(coupleID,shiftID), sum(vol_ls[0],0)/1000.0)
 clf()
 
 
@@ -112,8 +112,8 @@ xticks(x1, labels1)  #, rotation='vertical')
 xlim([0, 140])
 axvspan(22, 27, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
 xlabel("time (ms)")
-savefig("response_%d_%d.jpg"%(coupleID,shiftID))
-savetxt("response_%d_%d.txt"%(coupleID,shiftID), 100.0*sum(t1, 0)/PN_number)
+savefig("./model_check_data/response_%d_%d.jpg"%(coupleID,shiftID))
+savetxt("./model_check_data/response_%d_%d.txt"%(coupleID,shiftID), 100.0*sum(t1, 0)/PN_number)
 clf()
 
 
@@ -129,8 +129,8 @@ labels1 = ['0', '2000', '4000', '6000', '8000', '10000']
 xticks(x1, labels1)  #, rotation='vertical')
 xlim([0, 140])
 axvspan(22, 27, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
-savefig("bandpower_%d_%d.jpg"%(coupleID,shiftID))
-savetxt("bandpower_%d_%d.txt"%(coupleID,shiftID), bp)
+savefig("./model_check_data/bandpower_%d_%d.jpg"%(coupleID,shiftID))
+savetxt("./model_check_data/bandpower_%d_%d.txt"%(coupleID,shiftID), bp)
 clf()
 
 
@@ -143,9 +143,9 @@ for i in muloop([tnumber]):
     plot(fff[:95], ppp[:95])
     xlabel("frequence (Hz)")
     ylabel("PSD")
-    savefig("psd_%d_%d_%d.jpg"%(coupleID,shiftID,i))
-    savetxt("psd_fff_%d_%d_%d.txt"%(coupleID,shiftID,i), fff[:95])
-    savetxt("psd_ppp_%d_%d_%d.txt"%(coupleID,shiftID,i), ppp[:95])
+    savefig("./model_check_data/psd_%d_%d_%d.jpg"%(coupleID,shiftID,i))
+    savetxt("./model_check_data/psd_fff_%d_%d_%d.txt"%(coupleID,shiftID,i), fff[:95])
+    savetxt("./model_check_data/psd_ppp_%d_%d_%d.txt"%(coupleID,shiftID,i), ppp[:95])
     clf()
 
 
@@ -157,8 +157,8 @@ ssa=sorted(sum(spike_avg1, 0)/tnumber, reverse=True)
 plot(ssa)
 xlabel("PN #")
 ylabel("spike rate ($S^{-1}$)")
-savefig("sorted_%d_%d.jpg"%(coupleID,shiftID))
-savetxt("sorted_%d_%d.txt"%(coupleID,shiftID), ssa)
+savefig("./model_check_data/sorted_%d_%d.jpg"%(coupleID,shiftID))
+savetxt("./model_check_data/sorted_%d_%d.txt"%(coupleID,shiftID), ssa)
 clf()
 
 
@@ -175,6 +175,6 @@ xlim([0, 140])
 xlabel("time (ms)")
 ylabel("spike rate ($S^{-1}$)")
 axvspan(22, 27, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
-savefig("spike_rate_%d_%d.jpg"%(coupleID,shiftID))  # _timebin
-savetxt("spike_rate_%d_%d.txt"%(coupleID,shiftID), xls)
+savefig("./model_check_data/spike_rate_%d_%d.jpg"%(coupleID,shiftID))  # _timebin
+savetxt("./model_check_data/spike_rate_%d_%d.txt"%(coupleID,shiftID), xls)
 clf()
