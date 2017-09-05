@@ -2,91 +2,20 @@
 # -*- coding:utf-8 -*-
 
 """
-#  we can run this script in this way:
+#  in model checking, we can run this script in this way:
+execfile("../slow/slow_analy_head.py")
 for coupleID in ptCouple_list: # 0--49
     for shiftID in ptShift_list:
         execfile("model_check.py")
 """
 
-# be very careful on the below vars!!!
-execfile("../slow/slow_analy_head.py")
+#coupleID = 333
+#shiftID = 0
+print(coupleID, shiftID)
 
-coupleID = 333
-shiftID = 0
-tnumber = ptTrial number
-if_mc = False #True # if we are doing model check. if so, load different data...
-
-PN_number = 830
-LN_number = 300
-time_begin = 500
-time_end = 10500
-stim_onset = 1000  # this is relative to time_{begin/end}
-stim_offset = 3500
-stim_rise = 400  # this is again relative to stim_{on/off}set
-stim_decay = 6500
-win_len = 100
-win_step_len = 50
-osc_begin = 1100 #stim_onset+50 see the analy_time_begin in slow/slow_analy_head
-osc_end = 1350 #stim_onset+300
-osc_begin_win = int(floor((osc_begin/win_step_len))) # window number at osc begin
-osc_end_win = int((floor(osc_end/win_step_len)))
-power_lowerlimit = 15
-power_upperlimit = 25
-sampling_freq = 1000 # 1000 data per second
-nfft_exp = 10 # 2**nfft_exp -> nfft
-
-# vars controlling PN spike freq counting
-sf_count_from = 1200 # stim_onset
-sf_count_to = 1500   # stim_offset # this was from 1000ms till 1500ms
-sf_count_duration = 50
-timebin_len = 50
+tnumber = ptTrial_number
 
 #=================================
-
-def model_check_dir(t):
-    """
-      this function returns dir of model_check trials
-      which are couple defined in coupleID, shift in shiftID, 20 trials
-      Do run full time long!!!
-    """
-    if t >= tnumber:
-        print("error in model_check_dir: max model_check trial number:", tnumber)
-        return ""
-    return "./%d/shift%d_trial%d/"%(coupleID, shiftID, t)
-
-
-''' this was for model_check
-def cst_to_dir(c, s, t, model_check=False):
-    # for model checking, a same dir saves everything
-    if model_check: return model_check_dir(t) # c and s are just ignored!!
-    if 0<=t<5:
-        return "./%d/shift%d_trial%d/"%(c,s,t)
-    elif 5<=t<10:
-        return "./%d/shift%d_trial%d/"%(c,s,t)
-    else:
-        print("error in dir, trial number of which should be in [0,10]")
-        return ""
-
-
-def get_PN_fname(c,s,t, model_check=False):
-    return cst_to_dir(c,s,t, model_check)+"doc_V_PN.txt"
-
-
-def get_LN_fname(c,s,t, model_check=False):
-    return cst_to_dir(c,s,t, model_check)+"doc_V_LN.txt"
-
-
-def load_PN_data(c,s,t, model_check=False):
-    return loadtxt(get_PN_fname(c,s,t, model_check))[time_begin+1:time_end+1,1:].T
-
-
-def load_LN_data(c,s,t, model_check=False):
-    return loadtxt(get_LN_fname(c,s,t, model_check))[time_begin+1:time_end+1,1:].T
-
-
-def loaddata(c,s,t, model_check=False):
-    return load_PN_data(c,s,t, model_check)
-'''
 
 def thisBandpower(x):
     "def this to avoid the too long code line"
@@ -149,12 +78,10 @@ def vol_matrix_to_spike_timebin(a, tblen=timebin_len, th=0, binary=True):
     if binary: b[b>1]=1
     return b
 
-
 #=================================
 
-
 print("loading data ...")
-vol_ls = [loaddata(coupleID,shiftID,i,if_mc) for i in range(tnumber)]
+vol_ls = [loaddata(coupleID,shiftID,i) for i in range(tnumber)]
 PNavged_vol_ls = [1.0*sum(i,0)/PN_number for i in vol_ls]
 spike_ls = map(vol_matrix_to_spike_matrix, vol_ls)
 
@@ -188,7 +115,6 @@ xlabel("time (ms)")
 savefig("response_%d_%d.jpg"%(coupleID,shiftID))
 clf()
 
-'''
 print("plotting bandpower...")
 bp_ls = [thisBandpower(i) for i in PNavged_vol_ls]
 figure()
@@ -217,7 +143,6 @@ for i in muloop([tnumber]):
     ylabel("PSD")
     savefig("psd_%d_%d_%d.jpg"%(coupleID,shiftID,i))
     clf()
-'''
 
 print("sorted ...")
 figure()

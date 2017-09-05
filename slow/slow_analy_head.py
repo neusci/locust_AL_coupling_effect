@@ -7,18 +7,20 @@ import sys
 if os.path.exists('/home/mwang'): # working on 32-cores cluster
     homedir = "/home/mwang/"
     execfile(homedir+".ipython/profile_default/startup/10-init.py")
+    print("working on 32-cores in the home dir:", homedir)
 elif os.path.exists('/home/mw'):  # working on PCs
     homedir = "/media/mw/seagate20170619/32cores/"  # USB-HDD!
     execfile(homedir+".ipython/profile_default/startup/10-init.py")
+    print("working on PC in the home dir:", homedir)
 elif os.path.exists('/home/mogei'):
     homedir = "/home/mogei/" #homedir = "/media/mw/seagate20170619/32cores/"
     execfile(homedir+".ipython/profile_default/startup/10-init.py")
+    print("working on 12-cores in the home dir:", homedir)
 else:  # WTF?
     # homesir have NOT been defined in this case, cannot go on.
     print("homedir not set! Trouble ahead!!!")
     sys.exit()
 
-print("working on the home dir:", homedir)
 
 # be very careful on the below vars!!!
 analy_time_begin=1100 # the period that fast osc. is very strong!
@@ -26,9 +28,11 @@ analy_time_end=1350   # ^^^   from 1.1S to 1.35S,
 PN_resp_thres=25 # PN with firing rate alrger than this is active
 
 couple_number = 1 # use only 1 couple now and means testX in parameter test!
-ptCouple_list = [111,112,113,121,122,123,131,132,133,
-                 211,212,213,221,222,223,231,232,233,
-                 311,312,313,321,322,323,331,332,333,]
+#ptCouple_list = [111,112,113,121,122,123,131,132,133,
+#                 211,212,213,221,222,223,231,232,233,
+#                 311,312,313,321,322,323,331,332,333,]
+ptCouple_list = [222,223,232,233, 322,323,332,333,] # current settings
+
 trial_number = 10
 ptTrial_number = 5 # !!! parameter test !!!
 
