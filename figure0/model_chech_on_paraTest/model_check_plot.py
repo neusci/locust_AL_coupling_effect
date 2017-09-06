@@ -15,7 +15,6 @@ print('run `model_check.py` in this way, before running this script:')
 print(reminder)
 print('fluction and sorted are not plotted here')
 
-#=================================
 
 for coupleID in ptCouple_list:
     print(coupleID)
@@ -45,12 +44,14 @@ for coupleID in ptCouple_list:
     xlim([0, 140])
     axvspan(22, 27, facecolor='0.5', alpha=0.5)
     savefig("./model_check_fig/bandpower_%d.jpg"%(coupleID))
+    savefig("./model_check_fig/bandpower_%d.eps"%(coupleID))
     clf()
 
     plot(mean(psd_list,0));
     xlabel("frequence (Hz)")
     ylabel("PSD")
     savefig("./model_check_fig/psd_%d.jpg"%(coupleID))
+    savefig("./model_check_fig/psd_%d.eps"%(coupleID))
     clf()
 
     plot(mean(rsp_list,0));
@@ -60,6 +61,7 @@ for coupleID in ptCouple_list:
     axvspan(22, 27, facecolor='0.5', alpha=0.5)
     xlabel("time (ms)")
     savefig("./model_check_fig/response_%d.jpg"%(coupleID))
+    savefig("./model_check_fig/response_%d.eps"%(coupleID))
     clf()
 
     plot(mean(sp_list,0));
@@ -69,4 +71,5 @@ for coupleID in ptCouple_list:
     ylabel("spike rate ($S^{-1}$)")
     axvspan(22, 27, facecolor='0.5', alpha=0.5) # 21-27:50-350ms => 100-400ms
     savefig("./model_check_fig/spike_rate_%d.jpg"%(coupleID))  # _timebin
+    savefig("./model_check_fig/spike_rate_%d.eps"%(coupleID))  # _timebin
     clf()

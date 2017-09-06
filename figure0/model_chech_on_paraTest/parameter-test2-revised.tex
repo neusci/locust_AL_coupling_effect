@@ -1,0 +1,353 @@
+% Created 2017-09-06 三 17:41
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+%\author{Mogei Wang}
+\date{\today}
+\title{A tentative plan for the tests}
+\hypersetup{
+ pdfauthor={Mogei Wang},
+ pdftitle={A tentative plan for the tests - revised},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.0.50 (Org mode 9.0.10)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+
+\section{3 coupling tests}
+\label{sec:org8793e13}
+\begin{center}
+\begin{tabular}{lrrr}
+\hline
+ & test1 & test2 (1.2x) & test3 (2x)\\
+\hline
+LN -> PN/LN & 0.025 & 0.03 & 0.05\\
+PN -> LN & 0.01 & 0.012 & 0.02\\
+\hline
+\end{tabular}
+\end{center}
+
+The PN->PN and LN->LN probability is 0.01 and 0.025, and will be kept unchanged in all tests.
+
+
+\section{3 slow-GABA tests}
+\label{sec:org38d7ce8}
+\begin{center}
+\begin{tabular}{lrrr}
+\hline
+ & test1 & test2 (0.5x) & test3 (2x)\\
+\hline
+slow-GABA & 0.36 & 0.18 & 0.72\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{3 fast-GABA tests}
+\label{sec:orgad3990a}
+\begin{center}
+\begin{tabular}{lrrr}
+\hline
+ & test1 & test2 (0.5x) & test3 (2x)\\
+\hline
+fast-GABA & 0.36 & 0.18 & 0.72\\
+\hline
+\end{tabular}
+\end{center}
+
+The other synapses will be kept unchanged in all tests.
+
+
+\section{Trials to be run}
+\label{sec:org725256b}
+\begin{enumerate}
+\item Final tests would be selected from 3*3*3=27 combinations.
+\label{sec:orgdf744a0}
+\item Benchmark each final test setup, before running the test.
+\label{sec:org0b4b8bf}
+\item The network will always have 830 PNs and 300 PNs.
+\label{sec:org751071d}
+\item When trying to run a final test:
+\label{sec:org3158923}
+\begin{enumerate}
+\item apply 5 odors,
+\label{sec:org78a3e49}
+\item neighboring odors have 10\% different stimed-PNs,
+\label{sec:orge73a1f3}
+\item run 5 trials for each odor,
+\label{sec:org1cc563c}
+\item simulate 6.5 seconds for each trial.
+\label{sec:org70c5d78}
+\end{enumerate}
+\end{enumerate}
+
+
+\section{Model checking}
+\label{sec:org7c8de8a}
+
+\subsection{for test 1.2x, 0.5x, 0.5x (coupling, slow, fast)}
+\label{sec:org222}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.75\linewidth]{./model_check_fig/bandpower_222.eps}
+\caption{badpower 1.2x, 0.5x, 0.5x (coupling, slow, fast)}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/psd_222.eps}
+\caption{psd 1.2x, 0.5x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/response_222.eps}
+\caption{response 1.2x, 0.5x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/spike_rate_222.eps}
+\caption{fire rate 1.2x, 0.5x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\subsection{for test 1.2x, 0.5x, 2x (coupling, slow, fast)}
+\label{sec:org223}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.75\linewidth]{./model_check_fig/bandpower_223.eps}
+\caption{badpower 1.2x, 0.5x, 2x (coupling, slow, fast)}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/psd_223.eps}
+\caption{psd 1.2x, 0.5x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/response_223.eps}
+\caption{response 1.2x, 0.5x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/spike_rate_223.eps}
+\caption{fire rate 1.2x, 0.5x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+
+\subsection{for test 1.2x, 2x, 0.5x (coupling, slow, fast)}
+\label{sec:org232}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.75\linewidth]{./model_check_fig/bandpower_232.eps}
+\caption{badpower 1.2x, 2x, 0.5x (coupling, slow, fast)}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/psd_232.eps}
+\caption{psd 1.2x, 2x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/response_232.eps}
+\caption{response 1.2x, 2x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/spike_rate_232.eps}
+\caption{fire rate 1.2x, 2x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+
+\subsection{for test 1.2x, 2x, 2x (coupling, slow, fast)}
+\label{sec:org233}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.75\linewidth]{./model_check_fig/bandpower_233.eps}
+\caption{badpower 1.2x, 2x, 2x (coupling, slow, fast)}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/psd_233.eps}
+\caption{psd 1.2x, 2x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/response_233.eps}
+\caption{response 1.2x, 2x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/spike_rate_233.eps}
+\caption{fire rate 1.2x, 2x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+
+\subsection{for test 2x, 0.5x, 0.5x (coupling, slow, fast)}
+\label{sec:org322}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.75\linewidth]{./model_check_fig/bandpower_322.eps}
+\caption{badpower 2x, 0.5x, 0.5x (coupling, slow, fast)}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/psd_322.eps}
+\caption{psd 2x, 0.5x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/response_322.eps}
+\caption{response 2x, 0.5x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/spike_rate_322.eps}
+\caption{fire rate 2x, 0.5x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+
+\subsection{for test 2x, 0.5x, 2x}
+\label{sec:org323}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.75\linewidth]{./model_check_fig/bandpower_323.eps}
+\caption{badpower 2x, 0.5x, 2x (coupling, slow, fast)}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/psd_323.eps}
+\caption{psd 2x, 0.5x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/response_323.eps}
+\caption{response 2x, 0.5x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/spike_rate_323.eps}
+\caption{fire rate 2x, 0.5x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+
+\subsection{for test 2x, 2x, 0.5x (coupling, slow, fast)}
+\label{sec:org332}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.75\linewidth]{./model_check_fig/bandpower_332.eps}
+\caption{badpower 2x, 2x, 0.5x (coupling, slow, fast)}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/psd_332.eps}
+\caption{psd 2x, 2x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/response_332.eps}
+\caption{response 2x, 2x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/spike_rate_332.eps}
+\caption{fire rate 2x, 2x, 0.5x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+
+\subsection{for test 2x, 2x, 2x (coupling, slow, fast)}
+\label{sec:org333}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.75\linewidth]{./model_check_fig/bandpower_333.eps}
+\caption{badpower 2x, 2x, 2x (coupling, slow, fast)}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/psd_333.eps}
+\caption{psd 2x, 2x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/response_333.eps}
+\caption{response 2x, 2x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=.75\linewidth]{./model_check_fig/spike_rate_333.eps}
+\caption{fire rate 2x, 2x, 2x (coupling, slow, fast)}
+\end{center}
+\end{figure}
+
+
+
+\end{document}

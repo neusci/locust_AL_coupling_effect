@@ -60,10 +60,11 @@ stim_rise = 400  # this is again relative to stim_{on/off}set
 stim_decay = 6500
 win_len = 50
 win_step_len = 50
-osc_begin = stim_onset+50
-osc_end = stim_onset+300
+osc_begin = stim_onset+100 # in this period the oscillation is strong!
+osc_end = stim_onset+350
 osc_begin_win = int(floor((1.0*osc_begin/win_step_len))) # window number at osc begin
 osc_end_win = int((floor(1.0*osc_end/win_step_len)))
+
 power_lowerlimit = 15
 power_upperlimit = 25
 sampling_freq = 1000 # 1000 data per second
@@ -76,27 +77,54 @@ ptShift_list = [0,12,24,36,48]  # !!! parameter test !!!
 
 # [0,2,4,6,8,10,20,40,60,80]  # olds: j = int(floor(2**(jjj-1)))
 shift_number = len(shift_list) # int(round(0.5*PN_stim_number/shift_list_step))
+ptShift_number = len(ptShift_list) # int(round(0.5*PN_stim_number/shift_list_step))
 
 odor_coupling = 100
 odor_list = [array(range(PN_stim_number+i)[i:]) for i in shift_list]
+ptOdor_list = [array(range(PN_stim_number+i)[i:]) for i in ptShift_list]
+
 def odor_IDs(x): return odor_list[shift_list.index(x)]
+def ptOdor_IDs(x): return ptOdor_list[ptShift_list.index(x)]
 
 
 timebin_len = 50
 # vars controlling PN spike freq counting
-sf_count_from = 1200 # stim_onset
-sf_count_to = 1500 # stim_offset # this was from 1000ms till 1500ms
-sf_count_duration = 50 # use a very small period
+sf_count_from = osc_begin
+sf_count_to = osc_end
+sf_count_duration = 50
 sfcd_list = [5, 50]  # generate sf files with sf_count_duration being 5 or 50
 
 #=================================
 
-def cst_to_dir(c, s, t):
-    # working on the normal case:
+def type_of_couple(c):
+    """
+        if c is a test id in parameter test
+        or it is a old-school coupling id
+    """
     if c in ptCouple_list:
-        datadir = homedir+"neodecParaTest/"  # # !!! parameter test !!!
-    elif c <= 100: # 100-odor; 99-old-model-check; no more than 100!
-        datadir = homedir+"neodec/"  # # !!! parameter test !!!
+        return 1
+    elif 0 <= c <= 100: # 100-odor; 99-old-model-check; no more than 100!
+        return 0
+    else:
+        return -1
+
+
+def trial_number_for_couple(c):
+    # the correct trial number for c
+    if type_of_couple(c) == 1:
+        return ptTrial_number
+    elif type_of_couple(c)==0:
+        return trial_number
+    else:
+        print("you are using a bad coupling/testID", c)
+        return 0
+
+
+def cst_to_dir(c, s, t):
+    if type_of_couple(c) == 1:
+        datadir = homedir+"neodecParaTest/"  # !!! parameter test !!!
+    elif type_of_couple(c)==0:
+        datadir = homedir+"neodec/"  # !!! parameter test !!!
     else:
         print("you are using a bad coupling/testID", c)
         # datadir has not been defined in this branch!!
@@ -261,6 +289,7 @@ def generate_sf_file(c, s, t, cf=real_begin, ct=real_end, cd=sf_count_duration, 
       xlim([-5,65]); ylim([-5,65]);
       xlabel("prev"); ylabel("next");
       savefig("t.jpg"); show()
+      # ...
       # yet another example
       aaa = loadtxt(cst_to_dir(0,0,0)+"PN_spike_freq_1200_1250.txt")+randn(PN_number)
       bbb = loadtxt(cst_to_dir(0,0,0)+"PN_spike_freq_1250_1300.txt")+randn(PN_number)
@@ -394,10 +423,13 @@ def load_sf_trial_avged(c,s, cd=sf_count_duration, ifPN=True):
       show()
     """
     l = int(round(1.0*(real_end-real_begin)/cd))
-    ret=zeros([trial_number, l])# the trial_number dim will be avged/stded
-    for i in range(trial_number):
+    # ...
+    this_trial_number = trial_number_for_couple(c)
+    # ...
+    ret=zeros([this_trial_number, l])# the trial_number dim will be avged/stded
+    for i in range(this_trial_number):
         ret[i,:]=load_sf_in_trial(c,s,i,cd, ifPN)
-    return array([mean(ret[:,i]) for i in range(l)])
+    return array([mean(ret[:,j]) for j in range(l)])
 
 
 def load_sf_trial_stded(c,s, cd=sf_count_duration, ifPN=True):
@@ -419,10 +451,13 @@ def load_sf_trial_stded(c,s, cd=sf_count_duration, ifPN=True):
         show()
     """
     l = int(round((real_end-real_begin)/cd))
-    ret=zeros([trial_number, l])# the trial_number dim will be avged/stded
-    for i in range(trial_number):
+    # ...
+    this_trial_number = trial_number_for_couple(c)
+    # ...
+    ret=zeros([this_trial_number, l])# the trial_number dim will be avged/stded
+    for i in range(this_trial_number):
         ret[i,:]=load_sf_in_trial(c,s,i,cd, ifPN)
-    return array([std(ret[:,i]) for i in range(l)])
+    return array([std(ret[:,j]) for j in range(l)])
 
 
 def load_sf_trial_avg_std(c,s, cd=sf_count_duration, ifPN=True):
@@ -432,10 +467,13 @@ def load_sf_trial_avg_std(c,s, cd=sf_count_duration, ifPN=True):
       return array is of (real_end-real_begin)/cd size
     """
     l = int(round(1.0*(real_end-real_begin)/cd))
-    ret=zeros([trial_number, l])# the trial_number dim will be avged/stded
-    for i in range(trial_number):
+    # ...
+    this_trial_number = trial_number_for_couple(c)
+    # ...
+    ret=zeros([this_trial_number, l])# the trial_number dim will be avged/stded
+    for i in range(this_trial_number):
         ret[i,:]=load_sf_in_trial(c,s,i,cd, ifPN)
-    return array([mean(ret[:,i]) for i in range(l)]), array([std(ret[:,i]) for i in range(l)])
+    return array([mean(ret[:,j]) for j in range(l)]), array([std(ret[:,j]) for j in range(l)])
 
 
 def load_sf_matrix(c,s,t, cf,ct, cd=sf_count_duration, ifPN=True):
@@ -484,8 +522,10 @@ def load_sf_avged_over_trial(c,s, cf, ct, cd=sf_count_duration, ifPN=True):
         NN_number=PN_number
     else:
         NN_number=LN_number
-    #
-    x=array([load_sf_from_file(c,s,t,cf,ct,cd, ifPN) for t in range(trial_number)])
+    # ...
+    this_trial_number = trial_number_for_couple(c)
+    # ...
+    x=array([load_sf_from_file(c,s,t,cf,ct,cd, ifPN) for t in range(this_trial_number)])
     return array([mean(x[:,i]) for i in range(NN_number)])
 
 '''
@@ -510,8 +550,10 @@ def load_sf_stded_over_trial(c,s, cf, ct, cd=sf_count_duration, ifPN=True):
         NN_number=PN_number
     else:
         NN_number=LN_number
-    #
-    x=array([load_sf_from_file(c,s,t,cf,ct,cd, ifPN) for t in range(trial_number)])
+    # ...
+    this_trial_number = trial_number_for_couple(c)
+    # ...
+    x=array([load_sf_from_file(c,s,t,cf,ct,cd, ifPN) for t in range(this_trial_number)])
     return array([std(x[:,i]) for i in range(NN_number)])
 '''
 
