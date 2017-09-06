@@ -3,7 +3,7 @@
 
 """
 #  in model checking, we can run this script in this way:
-execfile("../slow/slow_analy_head.py")
+execfile("../../slow/slow_analy_head.py")
 for coupleID in ptCouple_list:
     for shiftID in ptShift_list:
         execfile("model_check.py")

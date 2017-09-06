@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-execfile("../slow/slow_analy_head.py")
+execfile("../../slow/slow_analy_head.py")
 
 reminder =  """
 #  in model checking, we can run this script in this way:
