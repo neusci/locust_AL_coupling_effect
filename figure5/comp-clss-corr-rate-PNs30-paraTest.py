@@ -1,5 +1,6 @@
 execfile('../slow/slow_analy_head.py')
 
+
 idx = range(PN_number)
 tb = 1100
 te = 1350
@@ -28,7 +29,7 @@ stim_ccr = zeros(try_num)
 stim_coup = 100
 
 
-for resp_coup in ptCouple_list:
+for resp_coup in append(ptCouple_list, 0):
     for the_ith_try in range(try_num):
         print('\n\ntry:',the_ith_try)
         use_idx = choice(idx,use_num) # random select the PNs
@@ -58,6 +59,6 @@ for resp_coup in ptCouple_list:
         print('for couple', stim_coup, ', the classify correct ratio is:', stim_this_ccr)
         stim_ccr[the_ith_try]=stim_this_ccr
 
-
+    #...
     savetxt('./data/clss-corr-rate-couple%d-use%dPNs.txt'%(resp_coup, use_num), resp_ccr)
     savetxt('./data/clss-corr-rate-couple%d-use%dPNs.txt'%(stim_coup, use_num), stim_ccr)
