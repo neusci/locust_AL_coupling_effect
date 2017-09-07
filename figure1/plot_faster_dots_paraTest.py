@@ -4,8 +4,10 @@
 execfile('../slow/slow_analy_head.py')
 print('Fig.2d of Wilson2007 (dots version)')
 
+tprd=5 # period length, let cd=tprd!!! run these sf-files first!!
+
 for c in ptCouple_list:
-    tprd=5 # period length, let cd=tprd
+    print(c)
 
     xlist=[]
     ylist=[]
@@ -17,9 +19,9 @@ for c in ptCouple_list:
             print('\t trial', t)
             x=load_sf_in_trial(c  , s, t, cd=tprd)
             y=load_sf_in_trial(100, s, t, cd=tprd)
-            # ...
-            xlist.append( tprd*( list(x).index(max(x)) ) - 1000 ) # odor onset at 1th-Second
-            ylist.append( tprd*( list(y).index(max(y)) ) - 1000 )
+            # ... # odor onset at 1th-Second
+            xlist.append( tprd*( list(x).index(max(x)) ) - 1000.0 )
+            ylist.append( tprd*( list(y).index(max(y)) ) - 1000.0 )
 
 
     for li,lx in enum(xlist):

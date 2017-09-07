@@ -45,7 +45,6 @@ def plot_avg_std(x,xsem,c):
 axvspan(2, 7, facecolor='0.75', alpha=0.75)
 #axvspan(2, 7, ymax=0.1, facecolor='0.75', alpha=0.75) # 21-27:50-350ms => 100-400ms
 
-##plot_avg_std(stim_avg,stim_sem,'crimson', 'pink','X'); # this color is not good
 #plot_avg_std(stim_avg,stim_sem,'green', 'lime',   'X');
 #plot_avg_std(resp_avg,resp_sem,'purple','violet', 'o');
 plot_avg_std(stim_avg,stim_sem,'green');
@@ -56,7 +55,8 @@ xlabel('time (ms)') #xlabel('time from odor onset')
 ylabel('fraction of maximum')
 savefig('faster_curve.jpg')
 savefig('faster_curve.eps')
-show()
+clf()
+#show()
 
 '''
 stim_avg_ls=[]
@@ -65,7 +65,6 @@ resp_avg_ls=[]
 resp_std_ls=[]
 
 for s in shift_list:
-    #...
     print(s)
     stim_avg_it, stim_std_it=load_sf_trial_avg_std(100,s,cd=50)
     resp_avg_it, resp_std_it=load_sf_trial_avg_std(c  ,s,cd=50)
