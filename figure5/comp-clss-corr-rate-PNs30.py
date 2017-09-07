@@ -29,35 +29,34 @@ stim_coup = 100
 resp_coup = 0
 
 
-if __name__ == '__main__':
-    for the_ith_try in range(try_num):
-        print('\n\ntry:',the_ith_try)
-        use_idx = choice(idx,use_num) # random select the PNs
-        print('PNs:', use_idx)
-        stim_cent_ls = [load_sf_avged_over_trial(stim_coup,s,tb,te)[use_idx] for s in shift_list]
-        resp_cent_ls = [load_sf_avged_over_trial(resp_coup,s,tb,te)[use_idx] for s in shift_list]
+for the_ith_try in range(try_num):
+    print('\n\ntry:',the_ith_try)
+    use_idx = choice(idx,use_num) # random select the PNs
+    print('PNs:', use_idx)
+    stim_cent_ls = [load_sf_avged_over_trial(stim_coup,s,tb,te)[use_idx] for s in shift_list]
+    resp_cent_ls = [load_sf_avged_over_trial(resp_coup,s,tb,te)[use_idx] for s in shift_list]
 
-        resp_corr_num = 0
-        resp_total_num = 0
-        for s in shift_list:  # how many trials of s-th odor(shift) correctly classfied??
-            for t in range(trial_number): # all the shifts and trials are considered...
-                resp_total_num += 1
-                x=load_sf_from_file(resp_coup,s,t,tb,te)[use_idx]
-                resp_corr_num += if_class_corr(x,s,resp_cent_ls)
-        resp_this_ccr=1.0*resp_corr_num/resp_total_num
-        print('for couple', resp_coup, ', the classify correct ratio is:', resp_this_ccr)
-        resp_ccr[the_ith_try]=resp_this_ccr
+    resp_corr_num = 0
+    resp_total_num = 0
+    for s in shift_list:  # how many trials of s-th odor(shift) correctly classfied??
+        for t in range(trial_number): # all the shifts and trials are considered...
+            resp_total_num += 1
+            x=load_sf_from_file(resp_coup,s,t,tb,te)[use_idx]
+            resp_corr_num += if_class_corr(x,s,resp_cent_ls)
+    resp_this_ccr=1.0*resp_corr_num/resp_total_num
+    print('for couple', resp_coup, ', the classify correct ratio is:', resp_this_ccr)
+    resp_ccr[the_ith_try]=resp_this_ccr
 
-        stim_corr_num = 0
-        stim_total_num = 0
-        for s in shift_list:  # same with above
-            for t in range(trial_number):
-                stim_total_num += 1
-                x=load_sf_from_file(stim_coup,s,t,tb,te)[use_idx]
-                stim_corr_num += if_class_corr(x,s,stim_cent_ls)
-        stim_this_ccr=1.0*stim_corr_num/stim_total_num
-        print('for couple', stim_coup, ', the classify correct ratio is:', stim_this_ccr)
-        stim_ccr[the_ith_try]=stim_this_ccr
+    stim_corr_num = 0
+    stim_total_num = 0
+    for s in shift_list:  # same with above
+        for t in range(trial_number):
+            stim_total_num += 1
+            x=load_sf_from_file(stim_coup,s,t,tb,te)[use_idx]
+            stim_corr_num += if_class_corr(x,s,stim_cent_ls)
+    stim_this_ccr=1.0*stim_corr_num/stim_total_num
+    print('for couple', stim_coup, ', the classify correct ratio is:', stim_this_ccr)
+    stim_ccr[the_ith_try]=stim_this_ccr
 
 
 savetxt('./data/clss-corr-rate-couple0-use%dPNs.txt'%use_num, resp_ccr)
