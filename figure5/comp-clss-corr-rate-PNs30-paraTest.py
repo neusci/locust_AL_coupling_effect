@@ -6,7 +6,7 @@ te = 1350
 use_num = 30  #use 20 PNs (of 830 PNs)
 print('use %d PNs'%use_num)
 
-try_num = 20 # try 100 times (selsect 100 group PNs)
+try_num = 100 # try 100 times (selsect 100 group PNs)
 
 
 def dist_to_cent(x, cent_ls):

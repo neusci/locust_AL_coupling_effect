@@ -325,12 +325,17 @@ const (
 	time_stepLen     float64 = 1.0 / float64(click_per_ms) // each time step 0.01ms (corresponding to click_per_ms)
 	// ...
 	const_scale_0   float64 = 0
+	const_scale_080 float64 = 0.80
+	const_scale_060 float64 = 0.60
 	const_scale_050 float64 = 0.50
-	const_scale_025 float64 = 0.25
+	const_scale_040 float64 = 0.40
 	const_scale_033 float64 = 0.33
+	const_scale_025 float64 = 0.25
 	const_scale_1   float64 = 1.0
 	const_scale_1p2 float64 = 1.2
+	const_scale_1p4 float64 = 1.4
 	const_scale_1p5 float64 = 1.5
+	const_scale_1p6 float64 = 1.6
 	const_scale_1p8 float64 = 1.8
 	const_scale_2   float64 = 2.0
 	const_scale_3   float64 = 3.0
