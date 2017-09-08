@@ -18,25 +18,26 @@ def if_class_corr(x, s, cent_ls):
     #    False --- wrong
     dist_ls = dist_to_cent(x, cent_ls)
     s = int(round(s/12)) # this is 12 for paraTest cases
-    if 0.99999<(1.0*dist_ls[s]/min(dist_ls))<1.00001:
-        return 1 # True
-    return 0 #False
+    #if 0.99999<(1.0*dist_ls[s]/min(dist_ls))<1.00001: return 1 # True
+    if dist_ls[s]==min(dist_ls):
+        return 1
+    else:
+        return 0 #False
 
 
-try_num = 100 # try 100 times (selsect 100 group PNs)
+try_num = 50 # try 100 times (selsect 100 group PNs)
 resp_ccr = zeros(try_num)
 stim_ccr = zeros(try_num)
 stim_coup = 100
 
 
-for resp_coup in append(ptCouple_list, 0):
-    for the_ith_try in range(try_num):
-        print('\n\ntry:',the_ith_try)
-        use_idx = choice(idx,use_num) # random select the PNs
-        print('PNs:', use_idx)
-        stim_cent_ls = [load_sf_avged_over_trial(stim_coup,s,tb,te)[use_idx] for s in ptShift_list]
+for the_ith_try in range(try_num):
+    print('\n\ntry:',the_ith_try)
+    use_idx = choice(idx,use_num) # random select the PNs
+    print('PNs:', use_idx)
+    # ...
+    for resp_coup in append(ptCouple_list, [0,100]):
         resp_cent_ls = [load_sf_avged_over_trial(resp_coup,s,tb,te)[use_idx] for s in ptShift_list]
-
         resp_corr_num = 0
         resp_total_num = 0
         for s in ptShift_list:  # how many trials of s-th odor(shift) correctly classfied??
@@ -47,18 +48,5 @@ for resp_coup in append(ptCouple_list, 0):
         resp_this_ccr=1.0*resp_corr_num/resp_total_num
         print('for couple', resp_coup, ', the classify correct ratio is:', resp_this_ccr)
         resp_ccr[the_ith_try]=resp_this_ccr
-
-        stim_corr_num = 0
-        stim_total_num = 0
-        for s in ptShift_list:  # same with above
-            for t in range(ptTrial_number):
-                stim_total_num += 1
-                x=load_sf_from_file(stim_coup,s,t,tb,te)[use_idx]
-                stim_corr_num += if_class_corr(x,s,stim_cent_ls)
-        stim_this_ccr=1.0*stim_corr_num/stim_total_num
-        print('for couple', stim_coup, ', the classify correct ratio is:', stim_this_ccr)
-        stim_ccr[the_ith_try]=stim_this_ccr
-
-    #...
-    savetxt('./data/clss-corr-rate-couple%d-use%dPNs.txt'%(resp_coup, use_num), resp_ccr)
-    savetxt('./data/clss-corr-rate-couple%d-use%dPNs.txt'%(stim_coup, use_num), stim_ccr)
+        # ...
+        savetxt('./data/clss-corr-rate-couple%d-use%dPNs.txt'%(resp_coup, use_num), resp_ccr)
