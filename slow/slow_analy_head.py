@@ -41,7 +41,7 @@ couple_number = 1 # use only 1 couple now and means testX in parameter test!
 #ptCouple_list = [111,112,113,121,122,123,131,132,133,
 #                 211,212,213,221,222,223,231,232,233,
 #                 311,312,313,321,322,323,331,332,333,]
-ptCouple_list = [222,223,232,233, 322,323,332,333,] # current settings
+ptCouple_list = [600,601,602,603,604,605,606] ##ptCouple_list = [222,223,232,233, 322,323,332,333,] # current settings
 
 trial_number = 10
 ptTrial_number = 5 # !!! parameter test !!!
