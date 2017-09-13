@@ -1,8 +1,8 @@
 execfile('../slow/slow_analy_head.py')
 
 
-tb = 1100
-te = 1350
+tb = 1050
+te = 1300
 un_list = [10,20,30,40,50]  #  use x PNs (of 830 PNs)
 try_num = 100 # try 100 times (selsect 100 group PNs)
 
@@ -57,4 +57,9 @@ for use_num in un_list:
 
     for c in rlen(all_coup_ls):
         coup = all_coup_ls[c]
-        savetxt('./data/clss-corr-rate-couple%d-use%dPNs.txt'%(coup, use_num), ccr[c,:])
+        if tb == 1100 and te == 1350:
+            savetxt('./data/clss-corr-rate-couple%d-use%dPNs.txt'%(coup, use_num), ccr[c,:])
+        elif tb == 1050 and te == 1300:
+            savetxt('./data/clss-corr-rate-couple%d-use%dPNs-2.txt'%(coup, use_num), ccr[c,:])
+        else:
+            savetxt('./data/clss-corr-rate-couple%d-use%dPNs-3.txt'%(coup, use_num), ccr[c,:])

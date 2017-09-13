@@ -171,6 +171,46 @@ def load_LN2LN_matrix(c,s=0,t=0):
     return loadtxt(cst_to_dir(c,s,t)+'mat_LN2LN_GABA.txt')
 
 
+def color_ofc(c):  # line/points color of given couple
+    if c==0 or c==603:
+        return 'purple'
+    elif c==100:
+        return 'green'
+    elif c==604:
+        return 'red'
+    elif c==605:
+        return 'darkgoldenrod'
+    elif c==606:
+        return 'saddlebrown'
+    elif c==602:
+        return 'blue'
+    elif c==601:
+        return 'olive'
+    else       :
+        return 'black'
+
+
+def label_ofc(c):  # line/points label of given couple
+    if c==0 or c==603:
+        return 'intact(1)'
+    elif c==100:
+        return 'decouple(0)'
+    elif c==604:
+        return 'x1.4'
+    elif c==605:
+        return 'x1.6'
+    elif c==606:
+        return 'x2'
+    elif c==602:
+        return 'x0.8'
+    elif c==601:
+        return 'x0.5'
+    elif c==600:
+        return 'x0.3'
+    else       :
+        return 'Error'
+
+
 def thisBandpower(x):
     "def this to avoid the too long code line"
     return bandpower(x, sampling_freq, 2**nfft_exp, win_len, win_step_len, power_lowerlimit, power_upperlimit)
@@ -619,7 +659,35 @@ def load_odor_spec_sf_trial_stded(s,cf=analy_time_begin,ct=analy_time_end, cd=sf
     return load_odor_sf_stded_over_trial(odor_coupling,s, cf, ct, cd, ifPN)
 """
 
+
 # ------
+
+
+def comp_eucd_from_sf(c0,s0,t0,c1,s1,t1,cf,ct,cd=sf_count_duration, ifPN=True):
+    """
+      this function computes distance between of PN fire rates of 2 trials
+        c s t are couple shift trail number
+        cf and ct are count from and count to
+      ...
+      returns a float indicating the distance
+    """
+    a=load_sf_from_file(c0,s0,t0,cf,ct,cd,ifPN)
+    b=load_sf_from_file(c1,s1,t1,cf,ct,cd,ifPN)
+    return norm(a-b)
+
+
+def comp_ppcc_from_sf(c0,s0,t0,c1,s1,t1,cf,ct,cd=sf_count_duration, ifPN=True):
+    """
+      this function computes ppcc between of PN fire rates of 2 trials
+        c s t are couple shift trail number
+        cf and ct are count from and count to
+      ...
+      returns a float indicating the ppcc
+    """
+    a=load_sf_from_file(c0,s0,t0,cf,ct,cd,ifPN)
+    b=load_sf_from_file(c1,s1,t1,cf,ct,cd,ifPN)
+    return corrcoef([a,b])[0,1] # 00:aa,11:bb,01:ab,10:ba
+
 
 '''
 def filter_active_NN_from_sf(c,s, th, cf,ct,cd=sf_count_duration, ifPN=True):
@@ -684,7 +752,6 @@ def filter_inactive_NN_from_sf_1trial(c,s,t, th, cf,ct,cd=sf_count_duration, ifP
     return array([i for i,x in enum(a) if x<=th])
 '''
 
-
 '''
 def comp_sets_diverg_from_sf(c0,s0,t0, c1,s1,t1, th, tb,te,cd=sf_count_duration, ifPN=True):
     """
@@ -717,29 +784,3 @@ def count_barrier_jumper_from_sf(c0,s0,t0,c1,s1,t1,th, cf,ct,cd=sf_count_duratio
     b[b>th]=1
     return sum(abs(a-b))/2.0
 '''
-
-
-def comp_eucd_from_sf(c0,s0,t0,c1,s1,t1,cf,ct,cd=sf_count_duration, ifPN=True):
-    """
-      this function computes distance between of PN fire rates of 2 trials
-        c s t are couple shift trail number
-        cf and ct are count from and count to
-      ...
-      returns a float indicating the distance
-    """
-    a=load_sf_from_file(c0,s0,t0,cf,ct,cd,ifPN)
-    b=load_sf_from_file(c1,s1,t1,cf,ct,cd,ifPN)
-    return norm(a-b)
-
-
-def comp_ppcc_from_sf(c0,s0,t0,c1,s1,t1,cf,ct,cd=sf_count_duration, ifPN=True):
-    """
-      this function computes ppcc between of PN fire rates of 2 trials
-        c s t are couple shift trail number
-        cf and ct are count from and count to
-      ...
-      returns a float indicating the ppcc
-    """
-    a=load_sf_from_file(c0,s0,t0,cf,ct,cd,ifPN)
-    b=load_sf_from_file(c1,s1,t1,cf,ct,cd,ifPN)
-    return corrcoef([a,b])[0,1] # 00:aa,11:bb,01:ab,10:ba
