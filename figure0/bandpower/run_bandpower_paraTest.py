@@ -3,14 +3,13 @@
 
 execfile("../../slow/slow_analy_head.py")
 
-#couple_number=5 # use 5 couples only?
-for coupleID in range(couple_number):
-    for shiftID in shift_list:
+for coupleID in ptCouple_list:
+    for shiftID in ptShift_list:
         print("current couple and shift:", coupleID, shiftID)
-        vol_ls = [loaddata(coupleID,shiftID,i) for i in range(trial_number)]
+        vol_ls = [loaddata(coupleID,shiftID,i) for i in range(ptTrial_number)]
         PNavged_vol_ls = [1.0*sum(i,0)/PN_number for i in vol_ls]
         bp_ls = [thisBandpower(i) for i in PNavged_vol_ls]
-        bp_this = 1.0*sum(bp_ls,0)/trial_number
+        bp_this = 1.0*sum(bp_ls,0)/ptTrial_number
         savetxt("./data/bandpower_%dms_%d_%d.txt"%(win_len,coupleID,shiftID), bp_this)
         """
         figure()

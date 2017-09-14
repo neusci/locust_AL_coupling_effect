@@ -37,14 +37,18 @@ def get_an_odor_resp(c,tb,te,td=50):
 for couple in ptCouple_list:
     resp_avg, resp_std, _ = get_an_odor_resp(couple, tbgn, tend)
     odor_avg, odor_std, _ = get_an_odor_resp(odor_coupling, tbgn, tend)
-    errorbar(x=odor_avg, y=resp_avg, xerr=odor_std, yerr=resp_std) #color='white'
+    errorbar(x=odor_avg, y=resp_avg, xerr=odor_std, yerr=resp_std, color=color_ofc(couple), label=label_ofc(couple))
 
-    fig_len=500
-    fplot("y=x", [0,fig_len])
-    xlim([0,fig_len])
-    ylim([0,fig_len])
-    xlabel("stimulation distance")
-    ylabel("representation distance")
-    savefig("eucd_stim_vs_resp_c%d_%d_%d_%d.jpg"%(couple, tbgn,tend,td))
-    savefig("eucd_stim_vs_resp_c%d_%d_%d_%d.eps"%(couple, tbgn,tend,td))
-    clf()
+# include the following in the loop, to save figs for each couple
+fig_len=300
+fplot("y=x", [0,fig_len])
+xlim([0,fig_len])
+ylim([0,fig_len])
+xlabel("stimulation distance")
+ylabel("representation distance")
+legend()
+#savefig("eucd_stim_vs_resp_c%d_%d_%d_%d_paraTest.jpg"%(couple, tbgn,tend,td))
+#savefig("eucd_stim_vs_resp_c%d_%d_%d_%d_paraTest.eps"%(couple, tbgn,tend,td))
+savefig("eucd_stim_vs_resp_%d_%d_%d_paraTest.jpg"%(tbgn,tend,td))
+savefig("eucd_stim_vs_resp_%d_%d_%d_paraTest.eps"%(tbgn,tend,td))
+clf()
