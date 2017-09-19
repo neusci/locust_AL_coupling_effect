@@ -172,44 +172,47 @@ def load_LN2LN_matrix(c,s=0,t=0):
     return loadtxt(cst_to_dir(c,s,t)+'mat_LN2LN_GABA.txt')
 
 
-def color_ofc(c):  # line/points color of given couple
-    if c==0 or c==603:
+def color_ofc(cc):  # line/points color of given couple
+    if cc==0:
         return 'purple'
-    elif c==100:
+    elif cc==100:
         return 'green'
-    elif c==604:
-        return 'red'
-    elif c==605:
-        return 'darkgoldenrod'
-    elif c==606:
-        return 'saddlebrown'
-    elif c==602:
-        return 'blue'
-    elif c==601:
-        return 'olive'
-    else       :
-        return 'black'
+    else:
+        c = type_of_couple(cc)*1000+mod(cc,100)
+        if   c==1003:
+            return 'purple'
+        elif c==1004:
+            return 'red'
+        elif c==1005:
+            return 'darkgoldenrod'
+        elif c==1006:
+            return 'saddlebrown'
+        elif c==1002:
+            return 'blue'
+        elif c==1001:
+            return 'olive'
+        else       : #1000 or others
+            return 'black'
 
 
-def label_ofc(c):  # line/points label of given couple
-    if c==0 or c==603:
+couple_tune_labels = ['x0.3' , 'x0.5' , 'x0.8' , 'intact(1)' , 'x1.4' , 'x1.6' , 'x2']
+GABA_tune_labels = ['x0.3' , 'x0.5' , 'intact(1)' , 'x2', 'x3']
+
+
+def label_ofc(cc,typ='couple'):  # line/points label of given couple
+    if cc==0: # neodec cases
         return 'intact(1)'
-    elif c==100:
+    elif cc==100:
         return 'decouple(0)'
-    elif c==604:
-        return 'x1.4'
-    elif c==605:
-        return 'x1.6'
-    elif c==606:
-        return 'x2'
-    elif c==602:
-        return 'x0.8'
-    elif c==601:
-        return 'x0.5'
-    elif c==600:
-        return 'x0.3'
-    else       :
-        return 'Error'
+    else:
+        c = mod(cc,100)
+        if typ=='couple':
+            return couple_tune_labels[c]
+        elif typ=='GABA':
+            return GABA_tune_labels[c-1]
+        else:
+            print("ERROR in calling label_ofc - wrong type provided - use couple or GABA")
+            return 'Error'
 
 
 def thisBandpower(x):
