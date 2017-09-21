@@ -1,8 +1,7 @@
 execfile('../slow/slow_analy_head.py')
 
-
-tb = 1050
-te = 1300
+tb = 1100
+te = 1350
 un_list = [10,20,30,40,50]  #  use x PNs (of 830 PNs)
 try_num = 100 # try 100 times (selsect 100 group PNs)
 
@@ -27,8 +26,8 @@ def if_class_corr(x, s, cent_ls):
 
 
 all_coup_ls = append(ptCouple_list, [0,100])
+#all_coup_ls = ptCouple_list
 ccr = zeros([len(all_coup_ls),try_num])
-
 
 for use_num in un_list:
     print('use %d PNs'%use_num)

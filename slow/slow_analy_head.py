@@ -41,7 +41,12 @@ couple_number = 1 # use only 1 couple now and means testX in parameter test!
 #ptCouple_list = [111,112,113,121,122,123,131,132,133,
 #                 211,212,213,221,222,223,231,232,233,
 #                 311,312,313,321,322,323,331,332,333,]
-ptCouple_list = [600,601,602,603,604,605,606] ##ptCouple_list = [222,223,232,233, 322,323,332,333,] # current settings
+
+#ptCouple_list = [222,223,232,233, 322,323,332,333,] # combos
+#ptCouple_list = [600,601,602,603,604,605,606] # coupling
+#ptCouple_list = [700,701,702,703,704,705,706] # fast GABA
+ptCouple_list = [800,801,802,803,804,805,806] # slow GABA
+
 ptCouple_number = len(ptCouple_list)
 
 trial_number = 10
@@ -179,14 +184,14 @@ def color_ofc(cc):  # line/points color of given couple
         return 'green'
     else:
         c = type_of_couple(cc)*1000+mod(cc,100)
-        if   c==1003:
-            return 'purple'
-        elif c==1004:
-            return 'red'
+        if   c==1006:
+            return 'saddlebrown'
         elif c==1005:
             return 'darkgoldenrod'
-        elif c==1006:
-            return 'saddlebrown'
+        elif c==1004:
+            return 'red'
+        elif c==1003: # this is the intact version
+            return 'purple'
         elif c==1002:
             return 'blue'
         elif c==1001:
@@ -195,8 +200,8 @@ def color_ofc(cc):  # line/points color of given couple
             return 'black'
 
 
-couple_tune_labels = ['x0.3' , 'x0.5' , 'x0.8' , 'intact(1)' , 'x1.4' , 'x1.6' , 'x2']
-GABA_tune_labels = ['x0.3' , 'x0.5' , 'intact(1)' , 'x2', 'x3']
+couple_tune_labels = ['x0.3', 'x0.5', 'x0.8', 'intact(1)', 'x1.4', 'x1.6', 'x2']
+GABA_tune_labels   = ['x0.1', 'x0.3', 'x0.5', 'intact(1)', 'x2'  , 'x3'  , 'x10']
 
 
 def label_ofc(cc,typ='couple'):  # line/points label of given couple
@@ -209,7 +214,7 @@ def label_ofc(cc,typ='couple'):  # line/points label of given couple
         if typ=='couple':
             return couple_tune_labels[c]
         elif typ=='GABA':
-            return GABA_tune_labels[c-1]
+            return GABA_tune_labels[c]
         else:
             print("ERROR in calling label_ofc - wrong type provided - use couple or GABA")
             return 'Error'
